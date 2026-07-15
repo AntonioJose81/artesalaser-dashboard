@@ -133,23 +133,9 @@
 
 <script>
 // ── DATA ─────────────────────────────────────
-const ingresosF = [
-  {fecha:"2026-07-10",cliente:"Iluro Hockey Club",concepto:"2 trofeos personalizados",proyecto:"iAwards",total:76.00,estado:"Pagada"},
-  {fecha:"2026-07-08",cliente:"Concello de Pontevedra",concepto:"Trofeos conmemorativos",proyecto:"iAwards",total:544.50,estado:"Pagada"},
-  {fecha:"2026-07-05",cliente:"Swagglamanca",concepto:"Gestión integral diseño+producción",proyecto:"iAwards",total:387.20,estado:"Pendiente"},
-  {fecha:"2026-07-14",cliente:"MIRAD",concepto:"Trofeo corporativo 190x100mm",proyecto:"iAwards",total:120.00,estado:"Pagada"},
-];
-
-const ingresosNF = [
-  {fecha:"2026-07-12",cliente:"Particular",concepto:"Arreglo pieza 3D",proyecto:"ARTESALASER",importe:30.00},
-];
-
-const gastos = [
-  {fecha:"2026-07-10",proveedor:"Amazon",concepto:"PLA mate blanco 2kg",categoria:"Materiales",total:24.00},
-  {fecha:"2026-07-05",proveedor:"FilamentPM",concepto:"TPU Filaflex 82A 1kg",categoria:"Materiales",total:48.00},
-  {fecha:"2026-07-03",proveedor:"Luz",concepto:"Factura electricidad julio",categoria:"Suministros",total:114.95},
-  {fecha:"2026-07-13",proveedor:"Amazon",concepto:"PLA mate 1kg",categoria:"Materiales",total:12.00},
-];
+const ingresosF = [];
+const ingresosNF = [];
+const gastos = [];
 
 // ── CALCULATE ───────────────────────────────
 const totalIF = ingresosF.reduce((s,i)=>s+i.total,0);
