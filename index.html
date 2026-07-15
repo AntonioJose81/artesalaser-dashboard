@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARTESALASER · Panel Financiero</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #0f0f1a;
+    --card: #1a1a2e;
+    --card2: #252540;
+    --gold: #c9a96e;
+    --green: #2ecc71;
+    --red: #e74c3c;
+    --blue: #3498db;
+    --text: #e8e0d5;
+    --muted: #8b8b9e;
+    --teal: #2a9d8f;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { 
+    background: var(--bg); color: var(--text); 
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    padding: 16px; min-height: 100vh;
+  }
+  .container { max-width: 600px; margin: 0 auto; }
+  h1 { font-family: Georgia, serif; font-size: 1.5rem; color: var(--gold); margin-bottom: 4px; }
+  .subtitle { font-size: 0.8rem; color: var(--muted); margin-bottom: 20px; }
+  
+  /* KPI Cards */
+  .kpi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+  .kpi { 
+    background: var(--card); border-radius: 12px; padding: 14px 16px;
+    border-top: 3px solid var(--gold); position: relative; overflow: hidden;
+  }
+  .kpi.green { border-top-color: var(--green); }
+  .kpi.red { border-top-color: var(--red); }
+  .kpi.blue { border-top-color: var(--blue); }
+  .kpi-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); margin-bottom: 4px; }
+  .kpi-value { font-size: 1.6rem; font-weight: 700; }
+  .kpi-value.green { color: var(--green); }
+  .kpi-value.gold { color: var(--gold); }
+  .kpi-value.red { color: var(--red); }
+  .kpi-value.blue { color: var(--blue); }
+
+  /* Charts */
+  .chart-card { 
+    background: var(--card); border-radius: 12px; padding: 16px; margin-bottom: 12px;
+  }
+  .chart-card h3 { font-size: 0.85rem; color: var(--muted); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .chart-wrap { position: relative; height: 200px; }
+  canvas { width: 100% !important; }
+
+  /* Transactions */
+  .tx-card { background: var(--card); border-radius: 12px; padding: 16px; margin-bottom: 12px; }
+  .tx-row { 
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .tx-row:last-child { border-bottom: none; }
+  .tx-left { flex: 1; }
+  .tx-name { font-size: 0.85rem; font-weight: 600; }
+  .tx-detail { font-size: 0.7rem; color: var(--muted); margin-top: 2px; }
+  .tx-right { text-align: right; }
+  .tx-amount { font-size: 0.95rem; font-weight: 700; }
+  .tx-amount.in { color: var(--green); }
+  .tx-amount.out { color: var(--red); }
+  .tx-tag {
+    display: inline-block; font-size: 0.6rem; padding: 2px 6px; border-radius: 4px;
+    margin-top: 3px; background: rgba(201,169,110,0.15); color: var(--gold);
+  }
+
+  /* Tabs */
+  .tabs { display: flex; gap: 4px; margin-bottom: 16px; flex-wrap: wrap; }
+  .tab { 
+    padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; cursor: pointer;
+    background: var(--card); color: var(--muted); border: 1px solid transparent;
+    transition: all 0.2s;
+  }
+  .tab.active { background: var(--gold); color: var(--bg); font-weight: 600; }
+
+  .footer { text-align: center; font-size: 0.65rem; color: var(--muted); padding: 20px 0 10px; }
+  .updated { font-size: 0.6rem; color: var(--muted); text-align: right; margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>ARTESALASER</h1>
+  <p class="subtitle">Panel financiero · Julio 2026</p>
+
+  <!-- KPI Cards -->
+  <div class="kpi-grid">
+    <div class="kpi green">
+      <div class="kpi-label">Ingresos Totales</div>
+      <div class="kpi-value green" id="kpi-ingresos">—</div>
+    </div>
+    <div class="kpi red">
+      <div class="kpi-label">Gastos Totales</div>
+      <div class="kpi-value red" id="kpi-gastos">—</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Beneficio Neto</div>
+      <div class="kpi-value gold" id="kpi-beneficio">—</div>
+    </div>
+    <div class="kpi blue">
+      <div class="kpi-label">Pendiente Cobro</div>
+      <div class="kpi-value blue" id="kpi-pendiente">—</div>
+    </div>
+  </div>
+
+  <!-- Chart -->
+  <div class="chart-card">
+    <h3>📊 Ingresos vs Gastos</h3>
+    <div class="chart-wrap"><canvas id="chartBar"></canvas></div>
+  </div>
+
+  <!-- Pie Chart -->
+  <div class="chart-card">
+    <h3>🍰 Distribución por Proyecto</h3>
+    <div class="chart-wrap"><canvas id="chartPie"></canvas></div>
+  </div>
+
+  <!-- Transactions -->
+  <div class="tx-card">
+    <h3 style="font-size:0.85rem;color:var(--muted);margin-bottom:12px;text-transform:uppercase;letter-spacing:0.5px;">📋 Últimos movimientos</h3>
+    <div id="tx-list"></div>
+  </div>
+
+  <div class="updated" id="updated"></div>
+  <div class="footer">ARTESALASER · Salamanca · hecho con ❤️</div>
+</div>
+
+<script>
+// ── DATA ─────────────────────────────────────
+const ingresosF = [
+  {fecha:"2026-07-10",cliente:"Iluro Hockey Club",concepto:"2 trofeos personalizados",proyecto:"iAwards",total:76.00,estado:"Pagada"},
+  {fecha:"2026-07-08",cliente:"Concello de Pontevedra",concepto:"Trofeos conmemorativos",proyecto:"iAwards",total:544.50,estado:"Pagada"},
+  {fecha:"2026-07-05",cliente:"Swagglamanca",concepto:"Gestión integral diseño+producción",proyecto:"iAwards",total:387.20,estado:"Pendiente"},
+  {fecha:"2026-07-14",cliente:"MIRAD",concepto:"Trofeo corporativo 190x100mm",proyecto:"iAwards",total:120.00,estado:"Pagada"},
+];
+
+const ingresosNF = [
+  {fecha:"2026-07-12",cliente:"Particular",concepto:"Arreglo pieza 3D",proyecto:"ARTESALASER",importe:30.00},
+];
+
+const gastos = [
+  {fecha:"2026-07-10",proveedor:"Amazon",concepto:"PLA mate blanco 2kg",categoria:"Materiales",total:24.00},
+  {fecha:"2026-07-05",proveedor:"FilamentPM",concepto:"TPU Filaflex 82A 1kg",categoria:"Materiales",total:48.00},
+  {fecha:"2026-07-03",proveedor:"Luz",concepto:"Factura electricidad julio",categoria:"Suministros",total:114.95},
+  {fecha:"2026-07-13",proveedor:"Amazon",concepto:"PLA mate 1kg",categoria:"Materiales",total:12.00},
+];
+
+// ── CALCULATE ───────────────────────────────
+const totalIF = ingresosF.reduce((s,i)=>s+i.total,0);
+const totalINF = ingresosNF.reduce((s,i)=>s+i.importe,0);
+const totalGastos = gastos.reduce((s,g)=>s+g.total,0);
+const pendiente = ingresosF.filter(i=>i.estado==="Pendiente").reduce((s,i)=>s+i.total,0);
+const beneficio = totalIF + totalINF - totalGastos;
+
+document.getElementById('kpi-ingresos').textContent = (totalIF+totalINF).toLocaleString('es-ES',{style:'currency',currency:'EUR'});
+document.getElementById('kpi-gastos').textContent = totalGastos.toLocaleString('es-ES',{style:'currency',currency:'EUR'});
+document.getElementById('kpi-beneficio').textContent = beneficio.toLocaleString('es-ES',{style:'currency',currency:'EUR'});
+document.getElementById('kpi-pendiente').textContent = pendiente.toLocaleString('es-ES',{style:'currency',currency:'EUR'});
+document.getElementById('updated').textContent = 'Actualizado: ' + new Date().toLocaleString('es-ES');
+
+// ── BAR CHART ───────────────────────────────
+new Chart(document.getElementById('chartBar'), {
+  type: 'bar',
+  data: {
+    labels: ['Facturado','Sin factura','Gastos','Beneficio'],
+    datasets: [{
+      data: [totalIF, totalINF, -totalGastos, beneficio],
+      backgroundColor: ['#2ecc71','#3498db','#e74c3c','#c9a96e'],
+      borderRadius: 8, borderSkipped: false,
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      y: { 
+        grid: { color: 'rgba(255,255,255,0.05)' },
+        ticks: { color: '#8b8b9e', callback: v => v+'€' }
+      },
+      x: { ticks: { color: '#8b8b9e', font: { size: 11 } }, grid: { display: false } }
+    }
+  }
+});
+
+// ── PIE CHART ───────────────────────────────
+const proyectos = {};
+ingresosF.forEach(i => { proyectos[i.proyecto] = (proyectos[i.proyecto]||0) + i.total; });
+ingresosNF.forEach(i => { proyectos[i.proyecto] = (proyectos[i.proyecto]||0) + i.importe; });
+const colors = ['#c9a96e','#2a9d8f','#e07a5f','#3498db','#9b59b6'];
+
+new Chart(document.getElementById('chartPie'), {
+  type: 'doughnut',
+  data: {
+    labels: Object.keys(proyectos),
+    datasets: [{
+      data: Object.values(proyectos),
+      backgroundColor: colors.slice(0, Object.keys(proyectos).length),
+      borderColor: '#0f0f1a', borderWidth: 2,
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { 
+      legend: { position: 'bottom', labels: { color: '#e8e0d5', padding: 16, font: { size: 11 } } }
+    }
+  }
+});
+
+// ── TRANSACTIONS ────────────────────────────
+const allTx = [
+  ...ingresosF.map(i=>({...i, tipo:'in', monto:i.total, nombre:i.cliente, detalle:i.concepto, tag:i.proyecto})),
+  ...ingresosNF.map(i=>({...i, tipo:'in', monto:i.importe, nombre:i.cliente, detalle:i.concepto, tag:i.proyecto})),
+  ...gastos.map(g=>({...g, tipo:'out', monto:-g.total, nombre:g.proveedor, detalle:g.concepto, tag:g.categoria})),
+].sort((a,b)=>new Date(b.fecha)-new Date(a.fecha));
+
+const txList = document.getElementById('tx-list');
+allTx.forEach(tx => {
+  const div = document.createElement('div');
+  div.className = 'tx-row';
+  div.innerHTML = `
+    <div class="tx-left">
+      <div class="tx-name">${tx.nombre}</div>
+      <div class="tx-detail">${tx.detalle} · ${tx.fecha.split('-').reverse().join('/')}</div>
+      <span class="tx-tag">${tx.tag}</span>
+    </div>
+    <div class="tx-right">
+      <div class="tx-amount ${tx.tipo==='in'?'in':'out'}">${tx.monto.toLocaleString('es-ES',{style:'currency',currency:'EUR'})}</div>
+    </div>
+  `;
+  txList.appendChild(div);
+});
+</script>
+</body>
+</html>

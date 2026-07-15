@@ -1,0 +1,4 @@
+fecha,proveedor,concepto,categoria,base_imponible,iva,total,justificante
+2026-07-10,Amazon,PLA mate blanco 2kg,Materiales,19.83,4.17,24.00,factura_amazon_pla.pdf
+2026-07-05,FilamentPM,TPU Filaflex 82A 1kg,Materiales,39.67,8.33,48.00,
+2026-07-03,Luz,Factura electricidad julio,Suministros,95.00,19.95,114.95,
