@@ -135,7 +135,10 @@
 // ── DATA ─────────────────────────────────────
 const ingresosF = [];
 const ingresosNF = [];
-const gastos = [];
+const gastos = [
+  {fecha:"2026-07-01",proveedor:"DeepSeek",concepto:"API tokens ~15M (jul)",categoria:"API",total:5.00},
+  {fecha:"2026-07-01",proveedor:"MiniMax",concepto:"API visión (jul)",categoria:"API",total:2.00},
+];
 
 // ── CALCULATE ───────────────────────────────
 const totalIF = ingresosF.reduce((s,i)=>s+i.total,0);
