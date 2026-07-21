@@ -1,6 +1,106 @@
-// ===== UPDATE THIS DATA BLOCK ONLY =====
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prospección BRIIK + iAwards</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f0f0f; color: #e0e0e0; padding: 20px; max-width: 1300px; margin: 0 auto; }
+.header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px; }
+.header h1 { font-size: 1.3em; color: #fff; }
+.date { color: #888; font-size: 0.8em; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 16px; }
+.card { background: #1a1a1a; border-radius: 10px; padding: 12px; border: 1px solid #2a2a2a; }
+.card .label { font-size: 0.65em; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
+.card .value { font-size: 1.6em; font-weight: 700; }
+.card .sub { font-size: 0.7em; color: #666; margin-top: 2px; }
+.briik-card { border-left: 3px solid #6B7DAF; }
+.iawards-card { border-left: 3px solid #CC3333; }
+.total-card { border-left: 3px solid #4CAF50; }
+.blue { color: #6B7DAF; } .red { color: #CC3333; } .green { color: #4CAF50; } .yellow { color: #FFC107; }
+.filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; align-items: center; background: #1a1a1a; padding: 12px 14px; border-radius: 10px; border: 1px solid #2a2a2a; }
+.filters label { font-size: 0.7em; color: #888; text-transform: uppercase; margin-right: 4px; }
+.filters select, .filters input { background: #0f0f0f; border: 1px solid #333; color: #e0e0e0; padding: 6px 10px; border-radius: 6px; font-size: 0.8em; }
+.filters select:focus, .filters input:focus { outline: none; border-color: #6B7DAF; }
+.filter-group { display: flex; align-items: center; gap: 5px; }
+.btn-reset { background: #2a2a2a; border: 1px solid #444; color: #999; padding: 6px 12px; border-radius: 6px; font-size: 0.75em; cursor: pointer; }
+.btn-reset:hover { background: #333; color: #fff; }
+.table-wrapper { overflow-x: auto; margin-bottom: 20px; }
+table { width: 100%; border-collapse: collapse; font-size: 0.78em; }
+th { background: #1a1a1a; color: #888; font-weight: 600; text-align: left; padding: 7px 10px; border-bottom: 1px solid #2a2a2a; font-size: 0.7em; text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; white-space: nowrap; }
+th:hover { color: #fff; }
+th .sort-arrow { margin-left: 3px; opacity: 0.4; }
+th.sorted .sort-arrow { opacity: 1; }
+td { padding: 5px 10px; border-bottom: 1px solid #1a1a1a; white-space: nowrap; }
+tr:hover { background: #141414; }
+.tag { display: inline-block; padding: 2px 7px; border-radius: 10px; font-size: 0.7em; font-weight: 600; }
+.tag-enviado { background: #1a3a1a; color: #4CAF50; }
+.tag-respondido { background: #3a2a0a; color: #FFC107; }
+.tag-positivo { background: #1a3a2a; color: #66BB6A; }
+.tag-rebote { background: #3a1a1a; color: #EF5350; }
+.summary-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; font-size: 0.78em; }
+.summary-item { display: flex; align-items: center; gap: 4px; }
+.count-badge { background: #2a2a2a; padding: 1px 8px; border-radius: 8px; font-weight: 700; font-size: 0.9em; }
+.footer { margin-top: 30px; padding-top: 15px; border-top: 1px solid #1a1a1a; text-align: center; font-size: 0.7em; color: #555; }
+.no-results { text-align: center; padding: 30px; color: #666; display: none; }
+.result-info { font-size: 0.75em; color: #888; margin-bottom: 6px; }
+@media (max-width: 600px) {
+  .filters { flex-direction: column; align-items: flex-start; }
+  .header h1 { font-size: 1.1em; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📊 Prospección Comercial</h1>
+  <span class="date" id="currentDate"></span>
+</div>
+
+<div class="grid" id="kpi-grid">
+  <div class="card briik-card"><div class="label">🧃 BRIIK</div><div class="value blue" id="kpi-briik">-</div><div class="sub" id="kpi-briik-sub"></div></div>
+  <div class="card iawards-card"><div class="label">🏆 iAwards</div><div class="value red" id="kpi-iawards">-</div><div class="sub" id="kpi-iawards-sub"></div></div>
+  <div class="card total-card"><div class="label">📬 TOTAL</div><div class="value green" id="kpi-total">-</div><div class="sub" id="kpi-total-sub"></div></div>
+  <div class="card"><div class="label">📨 Respuestas</div><div class="value yellow" id="kpi-replies">-</div><div class="sub" id="kpi-replies-sub"></div></div>
+  <div class="card"><div class="label">🎯 Tasa</div><div class="value" id="kpi-rate">-</div><div class="sub" id="kpi-rate-sub"></div></div>
+</div>
+
+<div class="filters">
+  <div class="filter-group"><label>Marca</label><select id="filter-brand"><option value="all">Todas</option><option value="BRIIK">BRIIK</option><option value="iAwards">iAwards</option></select></div>
+  <div class="filter-group"><label>Ciudad</label><select id="filter-city"><option value="all">Todas</option></select></div>
+  <div class="filter-group"><label>Estado</label><select id="filter-status"><option value="all">Todos</option><option value="Enviado">Enviado</option><option value="Interesada">Interesadas</option><option value="No interesa">No interesa</option></select></div>
+  <div class="filter-group"><label>Desde</label><input type="date" id="filter-from"></div>
+  <div class="filter-group"><label>Hasta</label><input type="date" id="filter-to"></div>
+  <div class="filter-group"><label>Buscar</label><input type="text" id="filter-search" placeholder="Nombre o email..." style="width:150px;"></div>
+  <button class="btn-reset" onclick="resetFilters()">✕ Limpiar</button>
+</div>
+
+<div class="result-info" id="result-info"></div>
+
+<div class="table-wrapper">
+  <table>
+    <thead><tr>
+      <th onclick="sortTable(0)" id="th-date">Fecha <span class="sort-arrow">▼</span></th>
+      <th onclick="sortTable(1)">Marca</th>
+      <th onclick="sortTable(2)">Ciudad</th>
+      <th onclick="sortTable(3)">Nombre</th>
+      <th>Email</th>
+      <th onclick="sortTable(5)">Punt.</th>
+      <th onclick="sortTable(6)">Estado</th>
+      <th>Notas</th>
+    </tr></thead>
+    <tbody id="data-table"></tbody>
+  </table>
+  <div class="no-results" id="no-results">Sin resultados para estos filtros</div>
+</div>
+
+<div class="footer">Actualizado: 21 julio 2026 · Los datos se actualizan con cada envío</div>
+
+<script>
+document.getElementById('currentDate').textContent = new Date().toLocaleDateString('es-ES', {weekday:'long',year:'numeric',month:'long',day:'numeric'});
+
 const allData = [
-  // BRIIK Madrid (solo con email)
   {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Museum of Mini',email:'info@museumofmini.com',score:'78',status:'Enviado',notes:''},
   {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Circo Kids',email:'info@circokids.es',score:'82',status:'Enviado',notes:''},
   {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Cositas Chulas',email:'info@cositaschulas.com',score:'75',status:'Enviado',notes:''},
@@ -9,14 +109,13 @@ const allData = [
   {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Alva for Kids',email:'info@alvaforkids.com',score:'70',status:'Enviado',notes:''},
   {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Kamchatka Magic Toys',email:'info@kamchatkatoys.com',score:'68',status:'Enviado',notes:''},
   {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Lobo Feliz',email:'info@lobofeliz.com',score:'80',status:'Enviado',notes:''},
-  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'El Moderno',email:'info@elmoderno.com',score:'72',status:'Enviado',notes:'Respondió: no trabaja briks, solo juguetes de madera'},
+  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'El Moderno',email:'info@elmoderno.com',score:'72',status:'Enviado',notes:'No trabaja briks, solo juguetes de madera'},
   {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Zigzag Kids',email:'info@zigzagkids.com',score:'70',status:'Enviado',notes:''},
   {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Curiosity Shop',email:'info@curiosityshop.es',score:'74',status:'Enviado',notes:''},
   {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Doña Coletas',email:'info@donacoletas.com',score:'76',status:'Enviado',notes:''},
   {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'El Dragón Lector',email:'info@eldragonlector.com',score:'70',status:'Enviado',notes:''},
-  // BRIIK Barcelona (solo con email)
   {date:'2026-07-18',brand:'BRIIK',city:'Barcelona',name:'Smileat',email:'info@smileat.com',score:'72',status:'Enviado',notes:'Auto-respuesta: email recibido, contestarán'},
-  {date:'2026-07-18',brand:'BRIIK',city:'Barcelona',name:'Chelo Navarro',email:'cheloteimport@gmail.com',score:'82',status:'Enviado',notes:'INTERESADA. Pidió más info del Pack Mostrador. Quiere ver muestras físicas'},
+  {date:'2026-07-18',brand:'BRIIK',city:'Barcelona',name:'Chelo Navarro',email:'cheloteimport@gmail.com',score:'82',status:'Enviado',notes:'INTERESADA: Pidió info del Pack Mostrador, quiere ver muestras'},
   {date:'2026-07-18',brand:'BRIIK',city:'Barcelona',name:'Bcn Baby',email:'info@bcnbaby.es',score:'78',status:'Enviado',notes:''},
   {date:'2026-07-18',brand:'BRIIK',city:'Barcelona',name:'Nonetes',email:'info@nonetes.es',score:'75',status:'Enviado',notes:''},
   {date:'2026-07-18',brand:'BRIIK',city:'Barcelona',name:'Món Bebé',email:'info@monbebe.cat',score:'72',status:'Enviado',notes:''},
@@ -26,10 +125,7 @@ const allData = [
   {date:'2026-07-18',brand:'BRIIK',city:'Barcelona',name:'Nins',email:'info@nins.cat',score:'76',status:'Enviado',notes:''},
   {date:'2026-07-18',brand:'BRIIK',city:'Barcelona',name:'Criatures',email:'info@criatures.cat',score:'70',status:'Enviado',notes:''},
   {date:'2026-07-18',brand:'BRIIK',city:'Barcelona',name:'Bombolles',email:'info@bombolles.cat',score:'72',status:'Enviado',notes:''},
-  {date:'2026-07-18',brand:'BRIIK',city:'Barcelona',name:'Tot Bebé',email:'info@totbebe.cat',score:'68',status:'Enviado',notes:''},
   {date:'2026-07-18',brand:'BRIIK',city:'Barcelona',name:'Menudets',email:'info@menudets.cat',score:'74',status:'Enviado',notes:''},
-  {date:'2026-07-18',brand:'BRIIK',city:'Barcelona',name:'Mainada',email:'info@mainada.cat',score:'74',status:'Enviado',notes:''},
-  // BRIIK Valencia
   {date:'2026-07-20',brand:'BRIIK',city:'Valencia',name:'Granujas',email:'granujas@granujas.es',score:'88',status:'Enviado',notes:''},
   {date:'2026-07-20',brand:'BRIIK',city:'Valencia',name:'Bebísimo',email:'info@bebisimo.com',score:'82',status:'Enviado',notes:''},
   {date:'2026-07-20',brand:'BRIIK',city:'Valencia',name:'Menut a Menut',email:'info@menutamenut.com',score:'80',status:'Enviado',notes:''},
@@ -45,7 +141,6 @@ const allData = [
   {date:'2026-07-20',brand:'BRIIK',city:'Valencia',name:'Boboli',email:'info@boboli.es',score:'65',status:'Enviado',notes:''},
   {date:'2026-07-20',brand:'BRIIK',city:'Valencia',name:'Abacus',email:'abacusonline@abacus.coop',score:'62',status:'Enviado',notes:''},
   {date:'2026-07-20',brand:'BRIIK',city:'Valencia',name:'Cotonnets',email:'info@cotonnets.com',score:'68',status:'Enviado',notes:''},
-  // iAwards Castilla y León
   {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'RugbyCyL',email:'secretaria@rugbycyl.org',score:'85',status:'Enviado',notes:'Circuito Mundial Rugby 7'},
   {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'FBCyL Baloncesto',email:'fbcyl@fbcyl.es',score:'82',status:'Enviado',notes:'Gala Baloncesto CyL'},
   {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'FMDVA Valladolid',email:'fmd@ava.es',score:'80',status:'Enviado',notes:'Premier Padel'},
@@ -69,4 +164,129 @@ const allData = [
   {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'Diputación León',email:'deportes@dipuleon.es',score:'72',status:'Enviado',notes:'Copa Carreras'},
   {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'Ayto León',email:'info.deportes@aytoleon.es',score:'75',status:'Enviado',notes:'Gala Deporte Base'},
 ];
-// ===== END DATA BLOCK =====
+
+let filteredData = [...allData];
+let sortCol = 0;
+let sortDir = -1;
+
+const cities = [...new Set(allData.map(d=>d.city))].sort();
+const citySelect = document.getElementById('filter-city');
+cities.forEach(c => { const o = document.createElement('option'); o.value=c; o.textContent=c; citySelect.appendChild(o); });
+
+const dates = allData.map(d=>d.date).sort();
+document.getElementById('filter-from').value = dates[0];
+document.getElementById('filter-to').value = dates[dates.length-1];
+
+function applyFilters() {
+  const brand = document.getElementById('filter-brand').value;
+  const city = document.getElementById('filter-city').value;
+  const status = document.getElementById('filter-status').value;
+  const from = document.getElementById('filter-from').value;
+  const to = document.getElementById('filter-to').value;
+  const search = document.getElementById('filter-search').value.toLowerCase();
+  
+  filteredData = allData.filter(d => {
+    if (brand !== 'all' && d.brand !== brand) return false;
+    if (city !== 'all' && d.city !== city) return false;
+    if (status === 'Enviado' && d.status !== 'Enviado') return false;
+    if (status === 'Interesada' && !d.notes.includes('INTERESADA') && !d.notes.includes('interesada') && d.notes !== 'Interesada') return false;
+    if (status === 'No interesa' && !d.notes.includes('No interesa') && !d.notes.includes('No trabaja')) return false;
+    if (from && d.date < from) return false;
+    if (to && d.date > to) return false;
+    if (search && !d.name.toLowerCase().includes(search) && !d.email.toLowerCase().includes(search) && !d.notes.toLowerCase().includes(search)) return false;
+    return true;
+  });
+  
+  const keyMap = ['date','brand','city','name','','score','status','notes'];
+  const key = keyMap[sortCol] || 'date';
+  filteredData.sort((a,b) => {
+    let va = a[key]||'', vb = b[key]||'';
+    if (key === 'score') { va = parseInt(va)||0; vb = parseInt(vb)||0; return (va-vb)*sortDir; }
+    return va.localeCompare(vb) * sortDir;
+  });
+  
+  render();
+}
+
+function render() {
+  const tbody = document.getElementById('data-table');
+  const noRes = document.getElementById('no-results');
+  tbody.innerHTML = '';
+  
+  if (filteredData.length === 0) {
+    noRes.style.display = 'block';
+    document.getElementById('result-info').textContent = '';
+    updateKPIs();
+    return;
+  }
+  noRes.style.display = 'none';
+  document.getElementById('result-info').textContent = 'Mostrando ' + filteredData.length + ' de ' + allData.length + ' contactos';
+  
+  filteredData.forEach(d => {
+    const tr = document.createElement('tr');
+    const tag = d.status === 'Enviado' ? 'tag-enviado' : 'tag-respondido';
+    const brandColor = d.brand === 'BRIIK' ? '#6B7DAF' : '#CC3333';
+    let noteTag = '';
+    if (d.notes.includes('INTERESADA') || d.notes.includes('interesada')) noteTag = 'tag-positivo';
+    else if (d.notes.includes('No interesa') || d.notes.includes('No trabaja')) noteTag = 'tag-rebote';
+    else if (d.notes.includes('Auto-respuesta')) noteTag = 'tag-respondido';
+    
+    tr.innerHTML = '<td>'+d.date.split('-').reverse().slice(0,2).join('/')+'</td>'+
+      '<td style="color:'+brandColor+';font-weight:600;">'+d.brand+'</td>'+
+      '<td>'+d.city+'</td>'+
+      '<td>'+d.name+'</td>'+
+      '<td style="font-size:0.8em;color:#aaa;">'+d.email+'</td>'+
+      '<td>'+d.score+'</td>'+
+      '<td><span class="tag '+tag+'">'+d.status+'</span></td>'+
+      '<td>'+(noteTag?'<span class="tag '+noteTag+'">'+d.notes+'</span>':d.notes)+'</td>';
+    tbody.appendChild(tr);
+  });
+  updateKPIs();
+}
+
+function updateKPIs() {
+  const total = filteredData.length;
+  const briik = filteredData.filter(d=>d.brand==='BRIIK').length;
+  const iawards = filteredData.filter(d=>d.brand==='iAwards').length;
+  const replies = filteredData.filter(d=>d.notes).length;
+  
+  document.getElementById('kpi-briik').textContent = briik;
+  document.getElementById('kpi-iawards').textContent = iawards;
+  document.getElementById('kpi-total').textContent = total;
+  document.getElementById('kpi-replies').textContent = replies;
+  document.getElementById('kpi-rate').textContent = total>0?Math.round(replies/total*100)+'%':'0%';
+  
+  const citySet = [...new Set(filteredData.map(d=>d.city))];
+  document.getElementById('kpi-briik-sub').textContent = citySet.filter(c=>c!=='CyL').join(' · ')||'-';
+  document.getElementById('kpi-iawards-sub').textContent = citySet.filter(c=>c==='CyL').join(' · ')||'-';
+  document.getElementById('kpi-total-sub').textContent = citySet.length+' regiones';
+  document.getElementById('kpi-replies-sub').textContent = filteredData.filter(d=>d.notes.includes('INTERESADA')||d.notes.includes('interesada')).length+' interes';
+  document.getElementById('kpi-rate-sub').textContent = 'Sobre '+total+' envios';
+}
+
+function sortTable(col) {
+  if (sortCol === col) sortDir *= -1;
+  else { sortCol = col; sortDir = col===0?-1:1; }
+  document.querySelectorAll('th').forEach(th=>th.classList.remove('sorted'));
+  applyFilters();
+}
+
+function resetFilters() {
+  document.getElementById('filter-brand').value='all';
+  document.getElementById('filter-city').value='all';
+  document.getElementById('filter-status').value='all';
+  document.getElementById('filter-from').value=dates[0];
+  document.getElementById('filter-to').value=dates[dates.length-1];
+  document.getElementById('filter-search').value='';
+  applyFilters();
+}
+
+['filter-brand','filter-city','filter-status','filter-from','filter-to'].forEach(id=>{
+  document.getElementById(id).addEventListener('change',applyFilters);
+});
+document.getElementById('filter-search').addEventListener('input',applyFilters);
+
+applyFilters();
+</script>
+</body>
+</html>
