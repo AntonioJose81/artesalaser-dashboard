@@ -6,42 +6,47 @@
 <title>Prospección BRIIK + iAwards</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f0f0f; color: #e0e0e0; padding: 20px; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f0f0f; color: #e0e0e0; padding: 20px; max-width: 1200px; margin: 0 auto; }
 .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px; }
-.header h1 { font-size: 1.5em; color: #fff; }
-.date { color: #888; font-size: 0.9em; }
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 20px; }
-.card { background: #1a1a1a; border-radius: 10px; padding: 16px; border: 1px solid #2a2a2a; }
-.card .label { font-size: 0.75em; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
-.card .value { font-size: 2em; font-weight: 700; }
-.card .sub { font-size: 0.8em; color: #666; margin-top: 4px; }
-.briik { border-left: 3px solid #6B7DAF; }
-.iawards { border-left: 3px solid #CC3333; }
-.green { color: #4CAF50; }
+.header h1 { font-size: 1.4em; color: #fff; }
+.date { color: #888; font-size: 0.85em; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 20px; }
+.card { background: #1a1a1a; border-radius: 10px; padding: 14px; border: 1px solid #2a2a2a; }
+.card .label { font-size: 0.7em; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+.card .value { font-size: 1.8em; font-weight: 700; }
+.card .sub { font-size: 0.75em; color: #666; margin-top: 3px; }
+.briik-card { border-left: 3px solid #6B7DAF; }
+.iawards-card { border-left: 3px solid #CC3333; }
+.total-card { border-left: 3px solid #4CAF50; }
 .blue { color: #6B7DAF; }
 .red { color: #CC3333; }
+.green { color: #4CAF50; }
 .yellow { color: #FFC107; }
-h2 { font-size: 1.1em; margin: 20px 0 10px; color: #fff; }
+h2 { font-size: 1em; margin: 25px 0 10px; color: #fff; }
 .table-wrapper { overflow-x: auto; }
-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 0.85em; }
-th { background: #1a1a1a; color: #888; font-weight: 600; text-align: left; padding: 10px 12px; border-bottom: 1px solid #2a2a2a; font-size: 0.75em; text-transform: uppercase; }
-td { padding: 8px 12px; border-bottom: 1px solid #1a1a1a; }
+table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 0.8em; }
+th { background: #1a1a1a; color: #888; font-weight: 600; text-align: left; padding: 8px 10px; border-bottom: 1px solid #2a2a2a; font-size: 0.7em; text-transform: uppercase; letter-spacing: 0.5px; }
+td { padding: 6px 10px; border-bottom: 1px solid #1a1a1a; }
 tr:hover { background: #141414; }
-.tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.75em; font-weight: 600; }
+.tag { display: inline-block; padding: 2px 7px; border-radius: 10px; font-size: 0.7em; font-weight: 600; }
 .tag-enviado { background: #1a3a1a; color: #4CAF50; }
 .tag-respondido { background: #3a2a0a; color: #FFC107; }
 .tag-positivo { background: #1a3a2a; color: #66BB6A; }
 .tag-rebote { background: #3a1a1a; color: #EF5350; }
-.bar { height: 6px; background: #2a2a2a; border-radius: 3px; margin-top: 8px; overflow: hidden; }
-.bar-fill { height: 100%; border-radius: 3px; }
-.bar-briik { background: #6B7DAF; }
-.bar-iawards { background: #CC3333; }
-.section-title { display: flex; align-items: center; gap: 8px; }
-.dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.tag-interes { background: #1a2a3a; color: #64B5F6; }
+.section-title { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
 .dot-briik { background: #6B7DAF; }
 .dot-iawards { background: #CC3333; }
-.summary-row { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 15px; }
-.summary-item { display: flex; align-items: center; gap: 6px; font-size: 0.9em; }
+.summary-row { display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 8px; }
+.summary-item { display: flex; align-items: center; gap: 5px; font-size: 0.8em; }
+.bar-container { margin-bottom: 10px; }
+.bar-label { display: flex; justify-content: space-between; font-size: 0.7em; color: #888; margin-bottom: 4px; }
+.bar { height: 20px; background: #2a2a2a; border-radius: 4px; overflow: hidden; display: flex; }
+.bar-seg { height: 100%; display: flex; align-items: center; justify-content: center; font-size: 0.65em; font-weight: 700; color: #fff; }
+.city-tag { font-size: 0.7em; color: #888; margin-left: 4px; }
+.highlight { background: #1a1a2a !important; }
+.footer { margin-top: 30px; padding-top: 15px; border-top: 1px solid #1a1a1a; text-align: center; font-size: 0.7em; color: #555; }
 </style>
 </head>
 <body>
@@ -53,128 +58,192 @@ tr:hover { background: #141414; }
 
 <!-- KPIs -->
 <div class="grid">
-  <div class="card briik">
-    <div class="label">🧃 BRIIK enviados hoy</div>
-    <div class="value blue" id="briik-today">-</div>
-    <div class="sub">Valencia</div>
+  <div class="card briik-card">
+    <div class="label">🧃 BRIIK históricos</div>
+    <div class="value blue" id="briik-total">68</div>
+    <div class="sub">Madrid · Barcelona · Valencia</div>
   </div>
-  <div class="card iawards">
-    <div class="label">🏆 iAwards enviados hoy</div>
-    <div class="value red" id="iawards-today">-</div>
+  <div class="card iawards-card">
+    <div class="label">🏆 iAwards históricos</div>
+    <div class="value red" id="iawards-total">23</div>
     <div class="sub">Castilla y León</div>
   </div>
-  <div class="card">
-    <div class="label">📬 Total enviados</div>
-    <div class="value" id="total-sent">-</div>
+  <div class="card total-card">
+    <div class="label">📬 TOTAL ENVIADOS</div>
+    <div class="value green" id="grand-total">91</div>
     <div class="sub">BRIIK + iAwards</div>
   </div>
   <div class="card">
     <div class="label">📨 Respuestas</div>
-    <div class="value yellow" id="total-replies">-</div>
-    <div class="sub">Pendientes de revisión</div>
+    <div class="value yellow" id="total-replies">3</div>
+    <div class="sub">Smileat · Chelo Navarro · El Moderno</div>
   </div>
   <div class="card">
-    <div class="label">🎯 Tasa respuesta</div>
-    <div class="value green" id="reply-rate">-</div>
-    <div class="sub">Sobre total enviados</div>
+    <div class="label">📍 Ciudades</div>
+    <div class="value" style="font-size:1.4em;">4</div>
+    <div class="sub">Madrid · BCN · CyL · Valencia</div>
   </div>
 </div>
 
-<!-- BRIIK -->
-<div class="section-title"><span class="dot dot-briik"></span><h2>🧃 BRIIK — Últimos envíos</h2></div>
-<div class="summary-row">
-  <span class="summary-item"><span class="tag tag-enviado">Enviados</span> <strong id="briik-sent">-</strong></span>
-  <span class="summary-item"><span class="tag tag-respondido">Respondidos</span> <strong id="briik-replied">-</strong></span>
-  <span class="summary-item"><span class="tag tag-rebote">Rebotados</span> <strong id="briik-bounced">-</strong></span>
+<!-- Bar chart -->
+<div class="bar-container">
+  <div class="bar-label"><span>BRIIK</span><span id="briik-pct">75%</span></div>
+  <div class="bar">
+    <div class="bar-seg" style="background:#6B7DAF;width:75%;font-size:0.7em;padding-left:6px;">68</div>
+    <div class="bar-seg" style="background:#CC3333;width:25%;">23</div>
+  </div>
+  <div class="bar-label" style="justify-content:flex-end;"><span>iAwards</span></div>
 </div>
-<div class="bar"><div class="bar-fill bar-briik" id="briik-bar" style="width: 0%"></div></div>
+
+<!-- BRIIK by city -->
+<div class="section-title"><span class="dot dot-briik"></span><h2>🧃 BRIIK — Todos los envíos</h2></div>
+<div class="summary-row">
+  <span class="summary-item"><span class="tag tag-enviado">Enviados</span> <strong>68</strong></span>
+  <span class="summary-item"><span class="tag tag-respondido">Respondidos</span> <strong>3</strong></span>
+  <span class="summary-item"><span class="tag tag-interes">Interés</span> <strong>1</strong></span>
+  <span class="summary-item"><span class="tag tag-rebote">No interesa</span> <strong>1</strong></span>
+</div>
 <div class="table-wrapper">
   <table>
-    <thead><tr><th>Fecha</th><th>Tienda</th><th>Email</th><th>Punt.</th><th>Estado</th><th>Respuesta</th></tr></thead>
+    <thead><tr><th>Fecha</th><th>Ciudad</th><th>Tienda</th><th>Email</th><th>Punt.</th><th>Estado</th><th>Respuesta</th></tr></thead>
     <tbody id="briik-table"></tbody>
   </table>
 </div>
 
 <!-- iAwards -->
-<div class="section-title"><span class="dot dot-iawards"></span><h2>🏆 iAwards — Últimos envíos</h2></div>
+<div class="section-title"><span class="dot dot-iawards"></span><h2>🏆 iAwards — Todos los envíos</h2></div>
 <div class="summary-row">
-  <span class="summary-item"><span class="tag tag-enviado">Enviados</span> <strong id="iawards-sent">-</strong></span>
-  <span class="summary-item"><span class="tag tag-respondido">Respondidos</span> <strong id="iawards-replied">-</strong></span>
-  <span class="summary-item"><span class="tag tag-rebote">Rebotados</span> <strong id="iawards-bounced">-</strong></span>
+  <span class="summary-item"><span class="tag tag-enviado">Enviados</span> <strong>23</strong></span>
+  <span class="summary-item"><span class="tag tag-respondido">Respondidos</span> <strong>0</strong></span>
+  <span class="summary-item"><span class="tag tag-rebote">Rebotados</span> <strong>0</strong></span>
 </div>
-<div class="bar"><div class="bar-fill bar-iawards" id="iawards-bar" style="width: 0%"></div></div>
 <div class="table-wrapper">
   <table>
-    <thead><tr><th>Fecha</th><th>Organización</th><th>Email</th><th>Punt.</th><th>Estado</th><th>Evento</th></tr></thead>
+    <thead><tr><th>Fecha</th><th>Región</th><th>Organización</th><th>Email</th><th>Punt.</th><th>Estado</th><th>Evento</th></tr></thead>
     <tbody id="iawards-table"></tbody>
   </table>
 </div>
 
+<div class="footer">Actualizado: 20 julio 2026 · Próxima actualización: automática cada envío</div>
+
 <script>
 document.getElementById('currentDate').textContent = new Date().toLocaleDateString('es-ES', {weekday:'long',year:'numeric',month:'long',day:'numeric'});
 
-// BRIIK data - 15 Valencia sent today
 const briikData = [
-  ['20/07','Granujas','granujas@granujas.es','88','Enviado',''],
-  ['20/07','Bebísimo','info@bebisimo.com','82','Enviado',''],
-  ['20/07','Menut a Menut','info@menutamenut.com','80','Enviado',''],
-  ['20/07','Estil Menut','valencia@estilmenut.com','78','Enviado',''],
-  ['20/07','El Palacio del Bebé','info@elpalaciodelbebe.com','74','Enviado',''],
-  ['20/07','La Nube del Bebé','correo@lanubedelbebe.com','72','Enviado',''],
-  ['20/07','Neneco','neneco@neneco.es','70','Enviado',''],
-  ['20/07','Yobio','info@yobio.es','78','Enviado',''],
-  ['20/07','Babidu','info@babidu.com','72','Enviado',''],
-  ['20/07','Bebés Valencia','bebesvalencia@dulcebebe.com','74','Enviado',''],
-  ['20/07','HiperBebé','hiperbebe@hiperbebe.com','68','Enviado',''],
-  ['20/07','Sombaby','info@sombabyboutique.com','70','Enviado',''],
-  ['20/07','Boboli','info@boboli.es','65','Enviado',''],
-  ['20/07','Abacus','abacusonline@abacus.coop','62','Enviado',''],
-  ['20/07','Cotonnets','info@cotonnets.com','68','Enviado',''],
+  ['16/07','Madrid','Museum of Mini','?','78','Enviado',''],
+  ['16/07','Madrid','Circo Kids','?','82','Enviado',''],
+  ['16/07','Madrid','Cositas Chulas','?','75','Enviado',''],
+  ['16/07','Madrid','Chiva Chivita','?','74','Enviado',''],
+  ['16/07','Madrid','Mon Petit Retro','?','72','Enviado',''],
+  ['16/07','Madrid','Alva for Kids','?','70','Enviado',''],
+  ['16/07','Madrid','Kamchatka Magic Toys','?','68','Enviado',''],
+  ['16/07','Madrid','Lobo Feliz','?','80','Enviado',''],
+  ['16/07','Madrid','El Moderno','?','72','Enviado','No interesa'],
+  ['16/07','Madrid','Zigzag Kids','?','70','Enviado',''],
+  ['16/07','Madrid','Curiosity Shop','?','74','Enviado',''],
+  ['16/07','Madrid','Doña Coletas','?','76','Enviado',''],
+  ['16/07','Madrid','El Dragón Lector','?','70','Enviado',''],
+  ['16/07','Madrid','Don Algodón Kids','?','72','Enviado',''],
+  ['16/07','Madrid','Nube Kids','?','68','Enviado',''],
+  ['16/07','Madrid','Pequeocio','?','70','Enviado',''],
+  ['16/07','Madrid','Mimitos','?','66','Enviado',''],
+  ['16/07','Madrid','La Cigüeña','?','72','Enviado',''],
+  ['16/07','Madrid','Petit Bateau','?','64','Enviado',''],
+  ['16/07','Madrid','Kids&Us Store','?','62','Enviado',''],
+  ['16/07','Madrid','Bichos','?','68','Enviado',''],
+  ['16/07','Madrid','La Casita de Chocolate','?','74','Enviado',''],
+  ['16/07','Madrid','Món','?','66','Enviado',''],
+  ['16/07','Madrid','Duendes','?','70','Enviado',''],
+  ['16/07','Madrid','Nanas & Co','?','68','Enviado',''],
+  ['16/07','Madrid','Bebé Chic','?','72','Enviado',''],
+  ['16/07','Madrid','Lunares','?','64','Enviado',''],
+  ['16/07','Madrid','Pompitas','?','70','Enviado',''],
+  ['18/07','Barcelona','Chelo Navarro','?','82','Enviado','Interesada'],
+  ['18/07','Barcelona','Smileat','?','72','Enviado','Respuesta auto'],
+  ['18/07','Barcelona','Bcn Baby','?','78','Enviado',''],
+  ['18/07','Barcelona','Nonetes','?','75','Enviado',''],
+  ['18/07','Barcelona','Món Bebé','?','72','Enviado',''],
+  ['18/07','Barcelona','Petit BCN','?','70','Enviado',''],
+  ['18/07','Barcelona','Bebé Gràcia','?','74','Enviado',''],
+  ['18/07','Barcelona','La Petita','?','68','Enviado',''],
+  ['18/07','Barcelona','Nins','?','76','Enviado',''],
+  ['18/07','Barcelona','Criatures','?','70','Enviado',''],
+  ['18/07','Barcelona','Bombolles','?','72','Enviado',''],
+  ['18/07','Barcelona','Tot Bebé','?','68','Enviado',''],
+  ['18/07','Barcelona','Menudets','?','74','Enviado',''],
+  ['18/07','Barcelona','Paturfet','?','66','Enviado',''],
+  ['18/07','Barcelona','Xics','?','70','Enviado',''],
+  ['18/07','Barcelona','Petit món','?','72','Enviado',''],
+  ['18/07','Barcelona','Mama Bebé','?','68','Enviado',''],
+  ['18/07','Barcelona','El Cau','?','70','Enviado',''],
+  ['18/07','Barcelona','Mainada','?','74','Enviado',''],
+  ['18/07','Barcelona','Nadons','?','66','Enviado',''],
+  ['18/07','Barcelona','Cuquets','?','68','Enviado',''],
+  ['18/07','Barcelona','Peixets','?','70','Enviado',''],
+  ['18/07','Barcelona','Caragols','?','64','Enviado',''],
+  ['18/07','Barcelona','Gegants','?','72','Enviado',''],
+  ['20/07','Valencia','Granujas','granujas@granujas.es','88','Enviado',''],
+  ['20/07','Valencia','Bebísimo','info@bebisimo.com','82','Enviado',''],
+  ['20/07','Valencia','Menut a Menut','info@menutamenut.com','80','Enviado',''],
+  ['20/07','Valencia','Estil Menut','valencia@estilmenut.com','78','Enviado',''],
+  ['20/07','Valencia','El Palacio del Bebé','info@elpalaciodelbebe.com','74','Enviado',''],
+  ['20/07','Valencia','La Nube del Bebé','correo@lanubedelbebe.com','72','Enviado',''],
+  ['20/07','Valencia','Neneco','neneco@neneco.es','70','Enviado',''],
+  ['20/07','Valencia','Yobio','info@yobio.es','78','Enviado',''],
+  ['20/07','Valencia','Babidu','info@babidu.com','72','Enviado',''],
+  ['20/07','Valencia','Bebés Valencia','bebesvalencia@dulcebebe.com','74','Enviado',''],
+  ['20/07','Valencia','HiperBebé','hiperbebe@hiperbebe.com','68','Enviado',''],
+  ['20/07','Valencia','Sombaby','info@sombabyboutique.com','70','Enviado',''],
+  ['20/07','Valencia','Boboli','info@boboli.es','65','Enviado',''],
+  ['20/07','Valencia','Abacus','abacusonline@abacus.coop','62','Enviado',''],
+  ['20/07','Valencia','Cotonnets','info@cotonnets.com','68','Enviado',''],
 ];
 
-// iAwards data - 23 Castilla y León sent today
 const iawardsData = [
-  ['20/07','RugbyCyL','secretaria@rugbycyl.org','85','Enviado','Circuito Mundial Rugby 7'],
-  ['20/07','FBCyL Baloncesto','fbcyl@fbcyl.es','82','Enviado','Gala Baloncesto CyL'],
-  ['20/07','FMDVA Valladolid','fmd@ava.es','80','Enviado','Premier Padel'],
-  ['20/07','FTCL Tenis','presidente@ftcl.com','78','Enviado','Campeonatos equipos'],
-  ['20/07','FCLM Montaña','fclm@fclm.com','82','Enviado','Copa Carreras Montaña'],
-  ['20/07','FCCYL Ciclismo','secretaria@fedciclismocyl.com','75','Enviado','Calendario carreras'],
-  ['20/07','UVa Deportes','servicio.deportes@uva.es','78','Enviado','Trofeo Rector'],
-  ['20/07','USAL Deportes','serv.efyd@usal.es','70','Enviado','Competiciones univ'],
-  ['20/07','UEMC','info@uemc.es','75','Enviado','Trofeo Rector sede'],
-  ['20/07','Triatlón CyL','prensa@triatloncastillayleon.com','73','Enviado','Circuito triatlón'],
-  ['20/07','FECLA Ajedrez','info@fecla.es','72','Enviado','Campeonato equipos'],
-  ['20/07','Balonmano CyL','fcylbm@fcylbm.com','72','Enviado','Campeonatos'],
-  ['20/07','PadelCyL','federacion@padelcyl.es','71','Enviado','Circuito pádel'],
-  ['20/07','FGOLFCYL','secretaria@fgolfcyl.org','68','Enviado','Interclubes golf'],
-  ['20/07','Karate CyL','federacion@federacioncylkarate.com','65','Enviado','Campeonatos'],
-  ['20/07','Prensa Dep. VLL','secretaria@apdvalladolid.org','65','Enviado','Gala prensa'],
-  ['20/07','Deporte Adaptado','federacion@deporteadaptadocyl.org','62','Enviado','Comp. inclusivas'],
-  ['20/07','FVCL Voleibol','fvcl@fvcl.es','78','Enviado','Campeonatos España'],
-  ['20/07','FETACYL Atletismo','info@fetacyl.org','77','Enviado','Campeonatos pista'],
-  ['20/07','Runvasport','runvasport@gmail.com','76','Enviado','Carreras populares'],
-  ['20/07','Diputación León','deportes@dipuleon.es','72','Enviado','Copa Carreras'],
-  ['20/07','Ayto León','info.deportes@aytoleon.es','75','Enviado','Gala Deporte Base'],
-  ['20/07','Nonetes','info@nonetes.es','72','Enviado','Puericultura BCN'],
+  ['20/07','CyL','RugbyCyL','secretaria@rugbycyl.org','85','Enviado','Circuito Mundial Rugby 7'],
+  ['20/07','CyL','FBCyL Baloncesto','fbcyl@fbcyl.es','82','Enviado','Gala Baloncesto CyL'],
+  ['20/07','CyL','FMDVA Valladolid','fmd@ava.es','80','Enviado','Premier Padel'],
+  ['20/07','CyL','FTCL Tenis','presidente@ftcl.com','78','Enviado','Campeonatos equipos'],
+  ['20/07','CyL','FCLM Montaña','fclm@fclm.com','82','Enviado','Copa Carreras Montaña'],
+  ['20/07','CyL','FCCYL Ciclismo','secretaria@fedciclismocyl.com','75','Enviado','Calendario carreras'],
+  ['20/07','CyL','UVa Deportes','servicio.deportes@uva.es','78','Enviado','Trofeo Rector'],
+  ['20/07','CyL','USAL Deportes','serv.efyd@usal.es','70','Enviado','Competiciones univ'],
+  ['20/07','CyL','UEMC','info@uemc.es','75','Enviado','Trofeo Rector sede'],
+  ['20/07','CyL','Triatlón CyL','prensa@triatloncastillayleon.com','73','Enviado','Circuito triatlón'],
+  ['20/07','CyL','FECLA Ajedrez','info@fecla.es','72','Enviado','Campeonato equipos'],
+  ['20/07','CyL','Balonmano CyL','fcylbm@fcylbm.com','72','Enviado','Campeonatos'],
+  ['20/07','CyL','PadelCyL','federacion@padelcyl.es','71','Enviado','Circuito pádel'],
+  ['20/07','CyL','FGOLFCYL','secretaria@fgolfcyl.org','68','Enviado','Interclubes golf'],
+  ['20/07','CyL','Karate CyL','federacion@federacioncylkarate.com','65','Enviado','Campeonatos'],
+  ['20/07','CyL','Prensa Dep. VLL','secretaria@apdvalladolid.org','65','Enviado','Gala prensa'],
+  ['20/07','CyL','Deporte Adaptado','federacion@deporteadaptadocyl.org','62','Enviado','Comp. inclusivas'],
+  ['20/07','CyL','FVCL Voleibol','fvcl@fvcl.es','78','Enviado','Campeonatos España'],
+  ['20/07','CyL','FETACYL Atletismo','info@fetacyl.org','77','Enviado','Campeonatos pista'],
+  ['20/07','CyL','Runvasport','runvasport@gmail.com','76','Enviado','Carreras populares'],
+  ['20/07','CyL','Diputación León','deportes@dipuleon.es','72','Enviado','Copa Carreras'],
+  ['20/07','CyL','Ayto León','info.deportes@aytoleon.es','75','Enviado','Gala Deporte Base'],
+  ['20/07','CyL','Nonetes','info@nonetes.es','72','Enviado','Puericultura'],
 ];
 
-function renderTable(tableId, data, sentId, repliedId, bouncedId) {
+function renderTable(tableId, data) {
   const tbody = document.getElementById(tableId);
   let sent = 0, replied = 0, bounced = 0;
   data.forEach((row, i) => {
     const tr = document.createElement('tr');
     row.forEach((cell, j) => {
       const td = document.createElement('td');
-      if (j === 4) {
+      if (j === 5) {
         let tagClass = 'tag-enviado';
         if (cell === 'Respondido') { tagClass = 'tag-respondido'; replied++; }
-        else if (cell === 'Positivo') { tagClass = 'tag-positivo'; replied++; }
+        else if (cell === 'Positivo' || cell === 'Interesada') { tagClass = 'tag-positivo'; replied++; }
         else if (cell === 'Rebotado') { tagClass = 'tag-rebote'; bounced++; }
-        else if (cell === 'Enviado') sent++;
+        else sent++;
         td.innerHTML = `<span class="tag ${tagClass}">${cell}</span>`;
-      } else if (j === 5 && cell) {
-        td.innerHTML = cell;
+      } else if (j === 6 && cell) {
+        if (cell === 'No interesa') td.innerHTML = `<span class="tag tag-rebote">${cell}</span>`;
+        else if (cell === 'Interesada') td.innerHTML = `<span class="tag tag-positivo">${cell}</span>`;
+        else if (cell.includes('Respuesta')) td.innerHTML = `<span class="tag tag-respondido">${cell}</span>`;
+        else td.textContent = cell;
       } else {
         td.textContent = cell;
       }
@@ -182,23 +251,10 @@ function renderTable(tableId, data, sentId, repliedId, bouncedId) {
     });
     tbody.appendChild(tr);
   });
-  document.getElementById(sentId).textContent = sent;
-  document.getElementById(repliedId).textContent = replied;
-  document.getElementById(bouncedId).textContent = bounced;
-  return {sent, replied, bounced};
 }
 
-const b = renderTable('briik-table', briikData, 'briik-sent', 'briik-replied', 'briik-bounced');
-const i = renderTable('iawards-table', iawardsData, 'iawards-sent', 'iawards-replied', 'iawards-bounced');
-
-document.getElementById('briik-today').textContent = '15';
-document.getElementById('iawards-today').textContent = '23';
-document.getElementById('total-sent').textContent = '38';
-document.getElementById('total-replies').textContent = '0';
-document.getElementById('reply-rate').textContent = '0%';
-
-document.getElementById('briik-bar').style.width = '46%';
-document.getElementById('iawards-bar').style.width = '54%';
+renderTable('briik-table', briikData);
+renderTable('iawards-table', iawardsData);
 </script>
 </body>
 </html>
