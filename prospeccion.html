@@ -6,47 +6,57 @@
 <title>Prospección BRIIK + iAwards</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f0f0f; color: #e0e0e0; padding: 20px; max-width: 1200px; margin: 0 auto; }
-.header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px; }
-.header h1 { font-size: 1.4em; color: #fff; }
-.date { color: #888; font-size: 0.85em; }
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 20px; }
-.card { background: #1a1a1a; border-radius: 10px; padding: 14px; border: 1px solid #2a2a2a; }
-.card .label { font-size: 0.7em; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
-.card .value { font-size: 1.8em; font-weight: 700; }
-.card .sub { font-size: 0.75em; color: #666; margin-top: 3px; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f0f0f; color: #e0e0e0; padding: 20px; max-width: 1300px; margin: 0 auto; }
+.header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px; }
+.header h1 { font-size: 1.3em; color: #fff; }
+.date { color: #888; font-size: 0.8em; }
+/* KPIs */
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 16px; }
+.card { background: #1a1a1a; border-radius: 10px; padding: 12px; border: 1px solid #2a2a2a; }
+.card .label { font-size: 0.65em; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
+.card .value { font-size: 1.6em; font-weight: 700; }
+.card .sub { font-size: 0.7em; color: #666; margin-top: 2px; }
 .briik-card { border-left: 3px solid #6B7DAF; }
 .iawards-card { border-left: 3px solid #CC3333; }
 .total-card { border-left: 3px solid #4CAF50; }
-.blue { color: #6B7DAF; }
-.red { color: #CC3333; }
-.green { color: #4CAF50; }
-.yellow { color: #FFC107; }
-h2 { font-size: 1em; margin: 25px 0 10px; color: #fff; }
-.table-wrapper { overflow-x: auto; }
-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 0.8em; }
-th { background: #1a1a1a; color: #888; font-weight: 600; text-align: left; padding: 8px 10px; border-bottom: 1px solid #2a2a2a; font-size: 0.7em; text-transform: uppercase; letter-spacing: 0.5px; }
-td { padding: 6px 10px; border-bottom: 1px solid #1a1a1a; }
+.blue { color: #6B7DAF; } .red { color: #CC3333; } .green { color: #4CAF50; } .yellow { color: #FFC107; }
+/* Filters */
+.filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; align-items: center; background: #1a1a1a; padding: 12px 14px; border-radius: 10px; border: 1px solid #2a2a2a; }
+.filters label { font-size: 0.7em; color: #888; text-transform: uppercase; margin-right: 4px; }
+.filters select, .filters input { background: #0f0f0f; border: 1px solid #333; color: #e0e0e0; padding: 6px 10px; border-radius: 6px; font-size: 0.8em; }
+.filters select:focus, .filters input:focus { outline: none; border-color: #6B7DAF; }
+.filter-group { display: flex; align-items: center; gap: 5px; }
+.btn-reset { background: #2a2a2a; border: 1px solid #444; color: #999; padding: 6px 12px; border-radius: 6px; font-size: 0.75em; cursor: pointer; }
+.btn-reset:hover { background: #333; color: #fff; }
+/* Table */
+.table-wrapper { overflow-x: auto; margin-bottom: 20px; }
+table { width: 100%; border-collapse: collapse; font-size: 0.78em; }
+th { background: #1a1a1a; color: #888; font-weight: 600; text-align: left; padding: 7px 10px; border-bottom: 1px solid #2a2a2a; font-size: 0.7em; text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; white-space: nowrap; }
+th:hover { color: #fff; }
+th .sort-arrow { margin-left: 3px; opacity: 0.4; }
+th.sorted .sort-arrow { opacity: 1; }
+td { padding: 5px 10px; border-bottom: 1px solid #1a1a1a; white-space: nowrap; }
 tr:hover { background: #141414; }
+/* Tags */
 .tag { display: inline-block; padding: 2px 7px; border-radius: 10px; font-size: 0.7em; font-weight: 600; }
 .tag-enviado { background: #1a3a1a; color: #4CAF50; }
 .tag-respondido { background: #3a2a0a; color: #FFC107; }
 .tag-positivo { background: #1a3a2a; color: #66BB6A; }
 .tag-rebote { background: #3a1a1a; color: #EF5350; }
 .tag-interes { background: #1a2a3a; color: #64B5F6; }
-.section-title { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
-.dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
-.dot-briik { background: #6B7DAF; }
-.dot-iawards { background: #CC3333; }
-.summary-row { display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 8px; }
-.summary-item { display: flex; align-items: center; gap: 5px; font-size: 0.8em; }
-.bar-container { margin-bottom: 10px; }
-.bar-label { display: flex; justify-content: space-between; font-size: 0.7em; color: #888; margin-bottom: 4px; }
-.bar { height: 20px; background: #2a2a2a; border-radius: 4px; overflow: hidden; display: flex; }
-.bar-seg { height: 100%; display: flex; align-items: center; justify-content: center; font-size: 0.65em; font-weight: 700; color: #fff; }
-.city-tag { font-size: 0.7em; color: #888; margin-left: 4px; }
-.highlight { background: #1a1a2a !important; }
+/* Summary bar */
+.summary-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; font-size: 0.78em; }
+.summary-item { display: flex; align-items: center; gap: 4px; }
+.count-badge { background: #2a2a2a; padding: 1px 8px; border-radius: 8px; font-weight: 700; font-size: 0.9em; }
+/* Footer */
 .footer { margin-top: 30px; padding-top: 15px; border-top: 1px solid #1a1a1a; text-align: center; font-size: 0.7em; color: #555; }
+.no-results { text-align: center; padding: 30px; color: #666; }
+.result-info { font-size: 0.75em; color: #888; margin-bottom: 6px; }
+/* Responsive */
+@media (max-width: 600px) {
+  .filters { flex-direction: column; align-items: flex-start; }
+  .header h1 { font-size: 1.1em; }
+}
 </style>
 </head>
 <body>
@@ -57,204 +67,277 @@ tr:hover { background: #141414; }
 </div>
 
 <!-- KPIs -->
-<div class="grid">
-  <div class="card briik-card">
-    <div class="label">🧃 BRIIK históricos</div>
-    <div class="value blue" id="briik-total">68</div>
-    <div class="sub">Madrid · Barcelona · Valencia</div>
-  </div>
-  <div class="card iawards-card">
-    <div class="label">🏆 iAwards históricos</div>
-    <div class="value red" id="iawards-total">23</div>
-    <div class="sub">Castilla y León</div>
-  </div>
-  <div class="card total-card">
-    <div class="label">📬 TOTAL ENVIADOS</div>
-    <div class="value green" id="grand-total">91</div>
-    <div class="sub">BRIIK + iAwards</div>
-  </div>
-  <div class="card">
-    <div class="label">📨 Respuestas</div>
-    <div class="value yellow" id="total-replies">3</div>
-    <div class="sub">Smileat · Chelo Navarro · El Moderno</div>
-  </div>
-  <div class="card">
-    <div class="label">📍 Ciudades</div>
-    <div class="value" style="font-size:1.4em;">4</div>
-    <div class="sub">Madrid · BCN · CyL · Valencia</div>
-  </div>
+<div class="grid" id="kpi-grid">
+  <div class="card briik-card"><div class="label">🧃 BRIIK</div><div class="value blue" id="kpi-briik">-</div><div class="sub" id="kpi-briik-sub"></div></div>
+  <div class="card iawards-card"><div class="label">🏆 iAwards</div><div class="value red" id="kpi-iawards">-</div><div class="sub" id="kpi-iawards-sub"></div></div>
+  <div class="card total-card"><div class="label">📬 TOTAL</div><div class="value green" id="kpi-total">-</div><div class="sub" id="kpi-total-sub"></div></div>
+  <div class="card"><div class="label">📨 Respuestas</div><div class="value yellow" id="kpi-replies">-</div><div class="sub" id="kpi-replies-sub"></div></div>
+  <div class="card"><div class="label">🎯 Tasa</div><div class="value" id="kpi-rate">-</div><div class="sub" id="kpi-rate-sub"></div></div>
 </div>
 
-<!-- Bar chart -->
-<div class="bar-container">
-  <div class="bar-label"><span>BRIIK</span><span id="briik-pct">75%</span></div>
-  <div class="bar">
-    <div class="bar-seg" style="background:#6B7DAF;width:75%;font-size:0.7em;padding-left:6px;">68</div>
-    <div class="bar-seg" style="background:#CC3333;width:25%;">23</div>
+<!-- Filters -->
+<div class="filters">
+  <div class="filter-group">
+    <label>Marca</label>
+    <select id="filter-brand"><option value="all">Todas</option><option value="BRIIK">BRIIK</option><option value="iAwards">iAwards</option></select>
   </div>
-  <div class="bar-label" style="justify-content:flex-end;"><span>iAwards</span></div>
+  <div class="filter-group">
+    <label>Ciudad</label>
+    <select id="filter-city"><option value="all">Todas</option></select>
+  </div>
+  <div class="filter-group">
+    <label>Estado</label>
+    <select id="filter-status"><option value="all">Todos</option><option value="Enviado">Enviado</option><option value="Respondido">Respondido</option><option value="Interesada">Interés</option><option value="No interesa">No interesa</option></select>
+  </div>
+  <div class="filter-group">
+    <label>Desde</label>
+    <input type="date" id="filter-from">
+  </div>
+  <div class="filter-group">
+    <label>Hasta</label>
+    <input type="date" id="filter-to">
+  </div>
+  <div class="filter-group">
+    <label>Buscar</label>
+    <input type="text" id="filter-search" placeholder="Nombre o email..." style="width:150px;">
+  </div>
+  <button class="btn-reset" onclick="resetFilters()">✕ Limpiar</button>
 </div>
 
-<!-- BRIIK by city -->
-<div class="section-title"><span class="dot dot-briik"></span><h2>🧃 BRIIK — Todos los envíos</h2></div>
-<div class="summary-row">
-  <span class="summary-item"><span class="tag tag-enviado">Enviados</span> <strong>68</strong></span>
-  <span class="summary-item"><span class="tag tag-respondido">Respondidos</span> <strong>3</strong></span>
-  <span class="summary-item"><span class="tag tag-interes">Interés</span> <strong>1</strong></span>
-  <span class="summary-item"><span class="tag tag-rebote">No interesa</span> <strong>1</strong></span>
-</div>
+<!-- Results -->
+<div class="result-info" id="result-info"></div>
+
+<!-- Table -->
 <div class="table-wrapper">
   <table>
-    <thead><tr><th>Fecha</th><th>Ciudad</th><th>Tienda</th><th>Email</th><th>Punt.</th><th>Estado</th><th>Respuesta</th></tr></thead>
-    <tbody id="briik-table"></tbody>
+    <thead>
+      <tr>
+        <th onclick="sortTable(0)" id="th-date">Fecha <span class="sort-arrow">▼</span></th>
+        <th onclick="sortTable(1)" id="th-brand">Marca <span class="sort-arrow">▲</span></th>
+        <th onclick="sortTable(2)" id="th-city">Ciudad <span class="sort-arrow">▲</span></th>
+        <th onclick="sortTable(3)" id="th-name">Nombre <span class="sort-arrow">▲</span></th>
+        <th>Email</th>
+        <th onclick="sortTable(5)" id="th-score">Punt. <span class="sort-arrow">▲</span></th>
+        <th onclick="sortTable(6)" id="th-status">Estado <span class="sort-arrow">▲</span></th>
+        <th>Notas</th>
+      </tr>
+    </thead>
+    <tbody id="data-table"></tbody>
   </table>
+  <div class="no-results" id="no-results" style="display:none;">Sin resultados para estos filtros</div>
 </div>
 
-<!-- iAwards -->
-<div class="section-title"><span class="dot dot-iawards"></span><h2>🏆 iAwards — Todos los envíos</h2></div>
-<div class="summary-row">
-  <span class="summary-item"><span class="tag tag-enviado">Enviados</span> <strong>23</strong></span>
-  <span class="summary-item"><span class="tag tag-respondido">Respondidos</span> <strong>0</strong></span>
-  <span class="summary-item"><span class="tag tag-rebote">Rebotados</span> <strong>0</strong></span>
-</div>
-<div class="table-wrapper">
-  <table>
-    <thead><tr><th>Fecha</th><th>Región</th><th>Organización</th><th>Email</th><th>Punt.</th><th>Estado</th><th>Evento</th></tr></thead>
-    <tbody id="iawards-table"></tbody>
-  </table>
-</div>
-
-<div class="footer">Actualizado: 20 julio 2026 · Próxima actualización: automática cada envío</div>
+<div class="footer">Actualizado: 21 julio 2026 · Los datos se actualizan con cada envío</div>
 
 <script>
 document.getElementById('currentDate').textContent = new Date().toLocaleDateString('es-ES', {weekday:'long',year:'numeric',month:'long',day:'numeric'});
 
-const briikData = [
-  ['16/07','Madrid','Museum of Mini','?','78','Enviado',''],
-  ['16/07','Madrid','Circo Kids','?','82','Enviado',''],
-  ['16/07','Madrid','Cositas Chulas','?','75','Enviado',''],
-  ['16/07','Madrid','Chiva Chivita','?','74','Enviado',''],
-  ['16/07','Madrid','Mon Petit Retro','?','72','Enviado',''],
-  ['16/07','Madrid','Alva for Kids','?','70','Enviado',''],
-  ['16/07','Madrid','Kamchatka Magic Toys','?','68','Enviado',''],
-  ['16/07','Madrid','Lobo Feliz','?','80','Enviado',''],
-  ['16/07','Madrid','El Moderno','?','72','Enviado','No interesa'],
-  ['16/07','Madrid','Zigzag Kids','?','70','Enviado',''],
-  ['16/07','Madrid','Curiosity Shop','?','74','Enviado',''],
-  ['16/07','Madrid','Doña Coletas','?','76','Enviado',''],
-  ['16/07','Madrid','El Dragón Lector','?','70','Enviado',''],
-  ['16/07','Madrid','Don Algodón Kids','?','72','Enviado',''],
-  ['16/07','Madrid','Nube Kids','?','68','Enviado',''],
-  ['16/07','Madrid','Pequeocio','?','70','Enviado',''],
-  ['16/07','Madrid','Mimitos','?','66','Enviado',''],
-  ['16/07','Madrid','La Cigüeña','?','72','Enviado',''],
-  ['16/07','Madrid','Petit Bateau','?','64','Enviado',''],
-  ['16/07','Madrid','Kids&Us Store','?','62','Enviado',''],
-  ['16/07','Madrid','Bichos','?','68','Enviado',''],
-  ['16/07','Madrid','La Casita de Chocolate','?','74','Enviado',''],
-  ['16/07','Madrid','Món','?','66','Enviado',''],
-  ['16/07','Madrid','Duendes','?','70','Enviado',''],
-  ['16/07','Madrid','Nanas & Co','?','68','Enviado',''],
-  ['16/07','Madrid','Bebé Chic','?','72','Enviado',''],
-  ['16/07','Madrid','Lunares','?','64','Enviado',''],
-  ['16/07','Madrid','Pompitas','?','70','Enviado',''],
-  ['18/07','Barcelona','Chelo Navarro','?','82','Enviado','Interesada'],
-  ['18/07','Barcelona','Smileat','?','72','Enviado','Respuesta auto'],
-  ['18/07','Barcelona','Bcn Baby','?','78','Enviado',''],
-  ['18/07','Barcelona','Nonetes','?','75','Enviado',''],
-  ['18/07','Barcelona','Món Bebé','?','72','Enviado',''],
-  ['18/07','Barcelona','Petit BCN','?','70','Enviado',''],
-  ['18/07','Barcelona','Bebé Gràcia','?','74','Enviado',''],
-  ['18/07','Barcelona','La Petita','?','68','Enviado',''],
-  ['18/07','Barcelona','Nins','?','76','Enviado',''],
-  ['18/07','Barcelona','Criatures','?','70','Enviado',''],
-  ['18/07','Barcelona','Bombolles','?','72','Enviado',''],
-  ['18/07','Barcelona','Tot Bebé','?','68','Enviado',''],
-  ['18/07','Barcelona','Menudets','?','74','Enviado',''],
-  ['18/07','Barcelona','Paturfet','?','66','Enviado',''],
-  ['18/07','Barcelona','Xics','?','70','Enviado',''],
-  ['18/07','Barcelona','Petit món','?','72','Enviado',''],
-  ['18/07','Barcelona','Mama Bebé','?','68','Enviado',''],
-  ['18/07','Barcelona','El Cau','?','70','Enviado',''],
-  ['18/07','Barcelona','Mainada','?','74','Enviado',''],
-  ['18/07','Barcelona','Nadons','?','66','Enviado',''],
-  ['18/07','Barcelona','Cuquets','?','68','Enviado',''],
-  ['18/07','Barcelona','Peixets','?','70','Enviado',''],
-  ['18/07','Barcelona','Caragols','?','64','Enviado',''],
-  ['18/07','Barcelona','Gegants','?','72','Enviado',''],
-  ['20/07','Valencia','Granujas','granujas@granujas.es','88','Enviado',''],
-  ['20/07','Valencia','Bebísimo','info@bebisimo.com','82','Enviado',''],
-  ['20/07','Valencia','Menut a Menut','info@menutamenut.com','80','Enviado',''],
-  ['20/07','Valencia','Estil Menut','valencia@estilmenut.com','78','Enviado',''],
-  ['20/07','Valencia','El Palacio del Bebé','info@elpalaciodelbebe.com','74','Enviado',''],
-  ['20/07','Valencia','La Nube del Bebé','correo@lanubedelbebe.com','72','Enviado',''],
-  ['20/07','Valencia','Neneco','neneco@neneco.es','70','Enviado',''],
-  ['20/07','Valencia','Yobio','info@yobio.es','78','Enviado',''],
-  ['20/07','Valencia','Babidu','info@babidu.com','72','Enviado',''],
-  ['20/07','Valencia','Bebés Valencia','bebesvalencia@dulcebebe.com','74','Enviado',''],
-  ['20/07','Valencia','HiperBebé','hiperbebe@hiperbebe.com','68','Enviado',''],
-  ['20/07','Valencia','Sombaby','info@sombabyboutique.com','70','Enviado',''],
-  ['20/07','Valencia','Boboli','info@boboli.es','65','Enviado',''],
-  ['20/07','Valencia','Abacus','abacusonline@abacus.coop','62','Enviado',''],
-  ['20/07','Valencia','Cotonnets','info@cotonnets.com','68','Enviado',''],
+// All data
+const allData = [
+  // BRIIK Madrid
+  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Circo Kids',email:'?',score:'82',status:'Enviado',notes:''},
+  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Museum of Mini',email:'?',score:'78',status:'Enviado',notes:''},
+  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Cositas Chulas',email:'?',score:'75',status:'Enviado',notes:''},
+  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Lobo Feliz',email:'?',score:'80',status:'Enviado',notes:''},
+  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Doña Coletas',email:'?',score:'76',status:'Enviado',notes:''},
+  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Mon Petit Retro',email:'?',score:'72',status:'Enviado',notes:''},
+  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Chiva Chivita',email:'?',score:'74',status:'Enviado',notes:''},
+  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Alva for Kids',email:'?',score:'70',status:'Enviado',notes:''},
+  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Kamchatka Magic Toys',email:'?',score:'68',status:'Enviado',notes:''},
+  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'El Moderno',email:'?',score:'72',status:'Enviado',notes:'No interesa'},
+  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Zigzag Kids',email:'?',score:'70',status:'Enviado',notes:''},
+  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Curiosity Shop',email:'?',score:'74',status:'Enviado',notes:''},
+  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'El Dragón Lector',email:'?',score:'70',status:'Enviado',notes:''},
+  // BRIIK Barcelona
+  {date:'2026-07-18',brand:'BRIIK',city:'Barcelona',name:'Chelo Navarro',email:'?',score:'82',status:'Enviado',notes:'Interesada'},
+  {date:'2026-07-18',brand:'BRIIK',city:'Barcelona',name:'Smileat',email:'?',score:'72',status:'Enviado',notes:'Respuesta auto'},
+  {date:'2026-07-18',brand:'BRIIK',city:'Barcelona',name:'Bcn Baby',email:'?',score:'78',status:'Enviado',notes:''},
+  {date:'2026-07-18',brand:'BRIIK',city:'Barcelona',name:'Nonetes',email:'?',score:'75',status:'Enviado',notes:''},
+  {date:'2026-07-18',brand:'BRIIK',city:'Barcelona',name:'Nins',email:'?',score:'76',status:'Enviado',notes:''},
+  {date:'2026-07-18',brand:'BRIIK',city:'Barcelona',name:'La Petita',email:'?',score:'68',status:'Enviado',notes:''},
+  {date:'2026-07-18',brand:'BRIIK',city:'Barcelona',name:'Món Bebé',email:'?',score:'72',status:'Enviado',notes:''},
+  {date:'2026-07-18',brand:'BRIIK',city:'Barcelona',name:'Petit BCN',email:'?',score:'70',status:'Enviado',notes:''},
+  {date:'2026-07-18',brand:'BRIIK',city:'Barcelona',name:'Bebé Gràcia',email:'?',score:'74',status:'Enviado',notes:''},
+  {date:'2026-07-18',brand:'BRIIK',city:'Barcelona',name:'Criatures',email:'?',score:'70',status:'Enviado',notes:''},
+  {date:'2026-07-18',brand:'BRIIK',city:'Barcelona',name:'Bombolles',email:'?',score:'72',status:'Enviado',notes:''},
+  {date:'2026-07-18',brand:'BRIIK',city:'Barcelona',name:'Menudets',email:'?',score:'74',status:'Enviado',notes:''},
+  // BRIIK Valencia
+  {date:'2026-07-20',brand:'BRIIK',city:'Valencia',name:'Granujas',email:'granujas@granujas.es',score:'88',status:'Enviado',notes:''},
+  {date:'2026-07-20',brand:'BRIIK',city:'Valencia',name:'Bebísimo',email:'info@bebisimo.com',score:'82',status:'Enviado',notes:''},
+  {date:'2026-07-20',brand:'BRIIK',city:'Valencia',name:'Menut a Menut',email:'info@menutamenut.com',score:'80',status:'Enviado',notes:''},
+  {date:'2026-07-20',brand:'BRIIK',city:'Valencia',name:'Estil Menut',email:'valencia@estilmenut.com',score:'78',status:'Enviado',notes:''},
+  {date:'2026-07-20',brand:'BRIIK',city:'Valencia',name:'El Palacio del Bebé',email:'info@elpalaciodelbebe.com',score:'74',status:'Enviado',notes:''},
+  {date:'2026-07-20',brand:'BRIIK',city:'Valencia',name:'La Nube del Bebé',email:'correo@lanubedelbebe.com',score:'72',status:'Enviado',notes:''},
+  {date:'2026-07-20',brand:'BRIIK',city:'Valencia',name:'Neneco',email:'neneco@neneco.es',score:'70',status:'Enviado',notes:''},
+  {date:'2026-07-20',brand:'BRIIK',city:'Valencia',name:'Yobio',email:'info@yobio.es',score:'78',status:'Enviado',notes:''},
+  {date:'2026-07-20',brand:'BRIIK',city:'Valencia',name:'Babidu',email:'info@babidu.com',score:'72',status:'Enviado',notes:''},
+  {date:'2026-07-20',brand:'BRIIK',city:'Valencia',name:'Bebés Valencia',email:'bebesvalencia@dulcebebe.com',score:'74',status:'Enviado',notes:''},
+  {date:'2026-07-20',brand:'BRIIK',city:'Valencia',name:'HiperBebé',email:'hiperbebe@hiperbebe.com',score:'68',status:'Enviado',notes:''},
+  {date:'2026-07-20',brand:'BRIIK',city:'Valencia',name:'Sombaby',email:'info@sombabyboutique.com',score:'70',status:'Enviado',notes:''},
+  {date:'2026-07-20',brand:'BRIIK',city:'Valencia',name:'Boboli',email:'info@boboli.es',score:'65',status:'Enviado',notes:''},
+  {date:'2026-07-20',brand:'BRIIK',city:'Valencia',name:'Abacus',email:'abacusonline@abacus.coop',score:'62',status:'Enviado',notes:''},
+  {date:'2026-07-20',brand:'BRIIK',city:'Valencia',name:'Cotonnets',email:'info@cotonnets.com',score:'68',status:'Enviado',notes:''},
+  // iAwards CyL
+  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'RugbyCyL',email:'secretaria@rugbycyl.org',score:'85',status:'Enviado',notes:'Circuito Mundial Rugby 7'},
+  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'FBCyL Baloncesto',email:'fbcyl@fbcyl.es',score:'82',status:'Enviado',notes:'Gala Baloncesto'},
+  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'FMDVA Valladolid',email:'fmd@ava.es',score:'80',status:'Enviado',notes:'Premier Padel'},
+  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'FTCL Tenis',email:'presidente@ftcl.com',score:'78',status:'Enviado',notes:'Campeonatos'},
+  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'FCLM Montaña',email:'fclm@fclm.com',score:'82',status:'Enviado',notes:'Copa Carreras'},
+  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'FCCYL Ciclismo',email:'secretaria@fedciclismocyl.com',score:'75',status:'Enviado',notes:'Calendario'},
+  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'UVa Deportes',email:'servicio.deportes@uva.es',score:'78',status:'Enviado',notes:'Trofeo Rector'},
+  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'USAL Deportes',email:'serv.efyd@usal.es',score:'70',status:'Enviado',notes:'Competiciones'},
+  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'UEMC',email:'info@uemc.es',score:'75',status:'Enviado',notes:'Trofeo Rector'},
+  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'Triatlón CyL',email:'prensa@triatloncastillayleon.com',score:'73',status:'Enviado',notes:'Circuito'},
+  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'FECLA Ajedrez',email:'info@fecla.es',score:'72',status:'Enviado',notes:'Campeonato'},
+  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'Balonmano CyL',email:'fcylbm@fcylbm.com',score:'72',status:'Enviado',notes:'Campeonatos'},
+  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'PadelCyL',email:'federacion@padelcyl.es',score:'71',status:'Enviado',notes:'Circuito'},
+  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'FGOLFCYL',email:'secretaria@fgolfcyl.org',score:'68',status:'Enviado',notes:'Interclubes'},
+  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'Karate CyL',email:'federacion@federacioncylkarate.com',score:'65',status:'Enviado',notes:'Campeonatos'},
+  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'Prensa Dep. VLL',email:'secretaria@apdvalladolid.org',score:'65',status:'Enviado',notes:'Gala prensa'},
+  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'Deporte Adaptado',email:'federacion@deporteadaptadocyl.org',score:'62',status:'Enviado',notes:'Inclusivas'},
+  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'FVCL Voleibol',email:'fvcl@fvcl.es',score:'78',status:'Enviado',notes:'Campeonatos'},
+  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'FETACYL',email:'info@fetacyl.org',score:'77',status:'Enviado',notes:'Atletismo'},
+  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'Runvasport',email:'runvasport@gmail.com',score:'76',status:'Enviado',notes:'Carreras'},
+  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'Diputación León',email:'deportes@dipuleon.es',score:'72',status:'Enviado',notes:'Copa'},
+  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'Ayto León',email:'info.deportes@aytoleon.es',score:'75',status:'Enviado',notes:'Gala Deporte'},
+  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'Nonetes',email:'info@nonetes.es',score:'72',status:'Enviado',notes:'Puericultura'},
 ];
 
-const iawardsData = [
-  ['20/07','CyL','RugbyCyL','secretaria@rugbycyl.org','85','Enviado','Circuito Mundial Rugby 7'],
-  ['20/07','CyL','FBCyL Baloncesto','fbcyl@fbcyl.es','82','Enviado','Gala Baloncesto CyL'],
-  ['20/07','CyL','FMDVA Valladolid','fmd@ava.es','80','Enviado','Premier Padel'],
-  ['20/07','CyL','FTCL Tenis','presidente@ftcl.com','78','Enviado','Campeonatos equipos'],
-  ['20/07','CyL','FCLM Montaña','fclm@fclm.com','82','Enviado','Copa Carreras Montaña'],
-  ['20/07','CyL','FCCYL Ciclismo','secretaria@fedciclismocyl.com','75','Enviado','Calendario carreras'],
-  ['20/07','CyL','UVa Deportes','servicio.deportes@uva.es','78','Enviado','Trofeo Rector'],
-  ['20/07','CyL','USAL Deportes','serv.efyd@usal.es','70','Enviado','Competiciones univ'],
-  ['20/07','CyL','UEMC','info@uemc.es','75','Enviado','Trofeo Rector sede'],
-  ['20/07','CyL','Triatlón CyL','prensa@triatloncastillayleon.com','73','Enviado','Circuito triatlón'],
-  ['20/07','CyL','FECLA Ajedrez','info@fecla.es','72','Enviado','Campeonato equipos'],
-  ['20/07','CyL','Balonmano CyL','fcylbm@fcylbm.com','72','Enviado','Campeonatos'],
-  ['20/07','CyL','PadelCyL','federacion@padelcyl.es','71','Enviado','Circuito pádel'],
-  ['20/07','CyL','FGOLFCYL','secretaria@fgolfcyl.org','68','Enviado','Interclubes golf'],
-  ['20/07','CyL','Karate CyL','federacion@federacioncylkarate.com','65','Enviado','Campeonatos'],
-  ['20/07','CyL','Prensa Dep. VLL','secretaria@apdvalladolid.org','65','Enviado','Gala prensa'],
-  ['20/07','CyL','Deporte Adaptado','federacion@deporteadaptadocyl.org','62','Enviado','Comp. inclusivas'],
-  ['20/07','CyL','FVCL Voleibol','fvcl@fvcl.es','78','Enviado','Campeonatos España'],
-  ['20/07','CyL','FETACYL Atletismo','info@fetacyl.org','77','Enviado','Campeonatos pista'],
-  ['20/07','CyL','Runvasport','runvasport@gmail.com','76','Enviado','Carreras populares'],
-  ['20/07','CyL','Diputación León','deportes@dipuleon.es','72','Enviado','Copa Carreras'],
-  ['20/07','CyL','Ayto León','info.deportes@aytoleon.es','75','Enviado','Gala Deporte Base'],
-  ['20/07','CyL','Nonetes','info@nonetes.es','72','Enviado','Puericultura'],
-];
+let filteredData = [...allData];
+let sortCol = 0;
+let sortDir = -1; // -1 desc, 1 asc
+allData.sort((a,b) => a.date.localeCompare(b.date));
 
-function renderTable(tableId, data) {
-  const tbody = document.getElementById(tableId);
-  let sent = 0, replied = 0, bounced = 0;
-  data.forEach((row, i) => {
-    const tr = document.createElement('tr');
-    row.forEach((cell, j) => {
-      const td = document.createElement('td');
-      if (j === 5) {
-        let tagClass = 'tag-enviado';
-        if (cell === 'Respondido') { tagClass = 'tag-respondido'; replied++; }
-        else if (cell === 'Positivo' || cell === 'Interesada') { tagClass = 'tag-positivo'; replied++; }
-        else if (cell === 'Rebotado') { tagClass = 'tag-rebote'; bounced++; }
-        else sent++;
-        td.innerHTML = `<span class="tag ${tagClass}">${cell}</span>`;
-      } else if (j === 6 && cell) {
-        if (cell === 'No interesa') td.innerHTML = `<span class="tag tag-rebote">${cell}</span>`;
-        else if (cell === 'Interesada') td.innerHTML = `<span class="tag tag-positivo">${cell}</span>`;
-        else if (cell.includes('Respuesta')) td.innerHTML = `<span class="tag tag-respondido">${cell}</span>`;
-        else td.textContent = cell;
-      } else {
-        td.textContent = cell;
-      }
-      tr.appendChild(td);
-    });
-    tbody.appendChild(tr);
+// Populate city filter
+const cities = [...new Set(allData.map(d=>d.city))].sort();
+const citySelect = document.getElementById('filter-city');
+cities.forEach(c => { const o = document.createElement('option'); o.value=c; o.textContent=c; citySelect.appendChild(o); });
+
+// Set default dates
+const dates = allData.map(d=>d.date).sort();
+document.getElementById('filter-from').value = dates[0];
+document.getElementById('filter-to').value = dates[dates.length-1];
+
+function applyFilters() {
+  const brand = document.getElementById('filter-brand').value;
+  const city = document.getElementById('filter-city').value;
+  const status = document.getElementById('filter-status').value;
+  const from = document.getElementById('filter-from').value;
+  const to = document.getElementById('filter-to').value;
+  const search = document.getElementById('filter-search').value.toLowerCase();
+  
+  filteredData = allData.filter(d => {
+    if (brand !== 'all' && d.brand !== brand) return false;
+    if (city !== 'all' && d.city !== city) return false;
+    if (status !== 'all') {
+      if (status === 'Enviado' && d.status !== 'Enviado') return false;
+      if (status === 'Respondido' && !['Respondido','Respuesta auto'].includes(d.notes)) return false;
+      if (status === 'Interesada' && d.notes !== 'Interesada') return false;
+      if (status === 'No interesa' && d.notes !== 'No interesa') return false;
+    }
+    if (from && d.date < from) return false;
+    if (to && d.date > to) return false;
+    if (search && !d.name.toLowerCase().includes(search) && !d.email.toLowerCase().includes(search) && !d.notes.toLowerCase().includes(search)) return false;
+    return true;
   });
+  
+  // Sort
+  const keyMap = ['date','brand','city','name','','score','status','notes'];
+  const key = keyMap[sortCol] || 'date';
+  filteredData.sort((a,b) => {
+    let va = a[key]||'', vb = b[key]||'';
+    if (key === 'score') { va = parseInt(va)||0; vb = parseInt(vb)||0; return (va-vb)*sortDir; }
+    return va.localeCompare(vb) * sortDir;
+  });
+  
+  render();
 }
 
-renderTable('briik-table', briikData);
-renderTable('iawards-table', iawardsData);
+function render() {
+  const tbody = document.getElementById('data-table');
+  const noRes = document.getElementById('no-results');
+  tbody.innerHTML = '';
+  
+  if (filteredData.length === 0) {
+    noRes.style.display = 'block';
+    document.getElementById('result-info').textContent = '';
+    updateKPIs();
+    return;
+  }
+  noRes.style.display = 'none';
+  document.getElementById('result-info').textContent = `Mostrando ${filteredData.length} de ${allData.length} contactos`;
+  
+  filteredData.forEach(d => {
+    const tr = document.createElement('tr');
+    const tag = d.status === 'Enviado' ? 'tag-enviado' : d.status === 'Respondido' ? 'tag-respondido' : 'tag-rebote';
+    const brandColor = d.brand === 'BRIIK' ? '#6B7DAF' : '#CC3333';
+    const noteTag = d.notes === 'Interesada' ? 'tag-positivo' : d.notes === 'No interesa' ? 'tag-rebote' : d.notes.includes('Respuesta') ? 'tag-respondido' : '';
+    
+    tr.innerHTML = `
+      <td>${d.date.split('-').reverse().slice(0,2).join('/')}</td>
+      <td style="color:${brandColor};font-weight:600;">${d.brand}</td>
+      <td>${d.city}</td>
+      <td>${d.name}</td>
+      <td style="font-size:0.8em;color:#aaa;">${d.email}</td>
+      <td>${d.score}</td>
+      <td><span class="tag ${tag}">${d.status}</span></td>
+      <td>${noteTag ? `<span class="tag ${noteTag}">${d.notes}</span>` : d.notes}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+  
+  updateKPIs();
+}
+
+function updateKPIs() {
+  const total = filteredData.length;
+  const briik = filteredData.filter(d=>d.brand==='BRIIK').length;
+  const iawards = filteredData.filter(d=>d.brand==='iAwards').length;
+  const replies = filteredData.filter(d=>d.notes).length;
+  
+  document.getElementById('kpi-briik').textContent = briik;
+  document.getElementById('kpi-iawards').textContent = iawards;
+  document.getElementById('kpi-total').textContent = total;
+  document.getElementById('kpi-replies').textContent = replies;
+  document.getElementById('kpi-rate').textContent = total > 0 ? Math.round(replies/total*100) + '%' : '0%';
+  
+  const cities = [...new Set(filteredData.map(d=>d.city))];
+  document.getElementById('kpi-briik-sub').textContent = cities.filter(c=>c!=='CyL').join(' · ') || '-';
+  document.getElementById('kpi-iawards-sub').textContent = cities.filter(c=>c==='CyL').join(' · ') || '-';
+  document.getElementById('kpi-total-sub').textContent = cities.length + ' regiones';
+  document.getElementById('kpi-replies-sub').textContent = filteredData.filter(d=>d.notes==='Interesada').length + ' interés';
+  document.getElementById('kpi-rate-sub').textContent = 'Sobre ' + total + ' envíos';
+}
+
+function sortTable(col) {
+  if (sortCol === col) sortDir *= -1;
+  else { sortCol = col; sortDir = col === 0 ? -1 : 1; }
+  
+  document.querySelectorAll('th').forEach(th => th.classList.remove('sorted'));
+  document.getElementById(['th-date','th-brand','th-city','th-name','th-date','th-score','th-status','th-date'][col]).classList.add('sorted');
+  
+  applyFilters();
+}
+
+function resetFilters() {
+  document.getElementById('filter-brand').value = 'all';
+  document.getElementById('filter-city').value = 'all';
+  document.getElementById('filter-status').value = 'all';
+  document.getElementById('filter-from').value = dates[0];
+  document.getElementById('filter-to').value = dates[dates.length-1];
+  document.getElementById('filter-search').value = '';
+  applyFilters();
+}
+
+// Event listeners
+['filter-brand','filter-city','filter-status','filter-from','filter-to'].forEach(id => {
+  document.getElementById(id).addEventListener('change', applyFilters);
+});
+document.getElementById('filter-search').addEventListener('input', applyFilters);
+
+// Initial render
+applyFilters();
+document.getElementById('th-date').classList.add('sorted');
 </script>
 </body>
 </html>
