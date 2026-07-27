@@ -1,0 +1,29 @@
+{
+  "brand": "briik",
+  "contacts": [
+    {"email":"peandclo@gmail.com","name":"Pe and Clo","city":"Palma","score":85,"segment":"A1","context":"Concept store infantil sostenible, selección cuidada, dueña directa"},
+    {"email":"clientes@genovevabebe.es","name":"Genoveva Bebé","city":"Palma","score":88,"segment":"A2","context":"Puericultura clásica, 29 años en Palma, sección alimentación infantil"},
+    {"email":"hola@bebeplanet.com","name":"Bebeplanet","city":"Palma","score":80,"segment":"A2","context":"Tienda de puericultura online y física en Palma, accesorios alimentación"},
+    {"email":"info@bebedreams.com","name":"Bebedreams","city":"Palma","score":78,"segment":"A2","context":"Tienda de bebés en Palma, puericultura y accesorios"},
+    {"email":"info@babytarta.es","name":"BABY TARTA","city":"Palma","score":82,"segment":"A2","context":"Tienda de puericultura y bebés en Palma"},
+    {"email":"info@tititnins.com","name":"TititNins","city":"Palma","score":70,"segment":"A3","context":"Tienda infantil con regalos personalizados"},
+    {"email":"info@mimitosbebe.com","name":"Mimitos Boutique Infantil","city":"Palma","score":68,"segment":"A1","context":"Boutique infantil con selección cuidada"},
+    {"email":"csalommoll@gmail.com","name":"Guinyol","city":"Palma","score":65,"segment":"A1","context":"Tienda infantil, dueña directa (Gmail)"},
+    {"email":"hola@momkidstore.com","name":"MOM Kids Concept Store","city":"Menorca","score":90,"segment":"A1","context":"Concept store en Ciutadella, ya venden botellas y arneses ASOBU, 5.6K seguidores IG"},
+    {"email":"reservas@carussa.es","name":"Carussa","city":"Menorca","score":85,"segment":"A2","context":"Mayor tienda de bebés de Menorca, puericultura"},
+    {"email":"lunamoda@gmail.com","name":"Luna Puericultura","city":"Menorca","score":70,"segment":"A2","context":"Tienda de puericultura e infantil, dueña directa"},
+    {"email":"a.cliente@momsandbabies.es","name":"Moms, dads & babies","city":"Ibiza","score":75,"segment":"A2","context":"Única tienda independiente de puericultura en Ibiza con email verificado"},
+    {"email":"contacto@mamaacontramarcha.com","name":"Mamá #AContramarcha","city":"Cuenca","score":85,"segment":"A2","context":"Tienda especializada en seguridad infantil y puericultura"},
+    {"email":"info@elositoverde.es","name":"El Osito Verde","city":"Talavera","score":82,"segment":"A2","context":"Tienda de puericultura en Talavera de la Reina"},
+    {"email":"hola@laboutiquedelbebe.es","name":"La Boutique del BEBE","city":"La Roda","score":80,"segment":"A2","context":"Tienda de bebés en La Roda (Albacete)"},
+    {"email":"info@niditobaby.com","name":"Nidito Baby","city":"Cuenca","score":78,"segment":"A2","context":"Tienda de bebés con presencia en Instagram"},
+    {"email":"galandrines@telefonica.net","name":"Galandrines","city":"Valdepeñas","score":75,"segment":"A2","context":"Tienda de puericultura en Valdepeñas (Ciudad Real)"},
+    {"email":"modadiver@latitaali.com","name":"La Tita Ali","city":"Cáceres","score":82,"segment":"A1","context":"Concept store infantil, tienda física + web, selección cuidada"},
+    {"email":"bebe@elbuendescanso.com","name":"El Buen Descanso","city":"Plasencia","score":80,"segment":"A2","context":"Tienda de puericultura en Plasencia"},
+    {"email":"ventaonline@elmundodelbebeytu.es","name":"Cosas de Bebés","city":"Badajoz","score":78,"segment":"A2","context":"Tienda de puericultura en Badajoz, venta online"},
+    {"email":"bebesmerida@bebesmerida.es","name":"Bebes Mérida","city":"Mérida","score":72,"segment":"A2","context":"Tienda de puericultura en Mérida"},
+    {"email":"crioh@crioh.com","name":"CRiOH!","city":"Almendralejo","score":70,"segment":"A2","context":"Tienda de puericultura en Almendralejo (Badajoz)"},
+    {"email":"shopmipequenatienda@gmail.com","name":"Mi Pequeña Tienda","city":"Badajoz","score":68,"segment":"A1","context":"Tienda infantil, dueña directa (Gmail)"},
+    {"email":"central@littlekings.es","name":"Little Kings","city":"Badajoz","score":62,"segment":"A1","context":"Tienda infantil de diseño en Badajoz"}
+  ]
+}

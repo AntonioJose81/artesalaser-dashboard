@@ -1,0 +1,242 @@
+[
+  {
+    "email": "clubtenisburgos@gmail.com",
+    "name": "Club Tenis de Burgos",
+    "type": "Tenis",
+    "subject": "Trofeos con identidad propia para vuestros torneos en Burgos",
+    "status": "ok",
+    "message": "Enviado a clubtenisburgos@gmail.com"
+  },
+  {
+    "email": "hello@ctcampeador.es",
+    "name": "Club de Tenis Campeador",
+    "type": "Tenis",
+    "subject": "Trofeos que cuentan historias — para el Club de Tenis Campeador",
+    "status": "ok",
+    "message": "Enviado a hello@ctcampeador.es"
+  },
+  {
+    "email": "deportes@aytoburgos.es",
+    "name": "Ayto. Burgos - Deportes",
+    "type": "Ayuntamiento",
+    "subject": "Trofeos con contenido digital para eventos deportivos en Burgos",
+    "status": "ok",
+    "message": "Enviado a deportes@aytoburgos.es"
+  },
+  {
+    "email": "clubnauticodeleon@gmail.com",
+    "name": "CD Náutico León",
+    "type": "Náutico",
+    "subject": "Trofeos con alma náutica para el CD Náutico León",
+    "status": "ok",
+    "message": "Enviado a clubnauticodeleon@gmail.com"
+  },
+  {
+    "email": "clubnauticoriano@gmail.com",
+    "name": "Club Náutico Riaño",
+    "type": "Náutico",
+    "subject": "Trofeos que navegan más allá del podio — Club Náutico Riaño",
+    "status": "ok",
+    "message": "Enviado a clubnauticoriano@gmail.com"
+  },
+  {
+    "email": "golfdelbierzo@gmail.com",
+    "name": "Bierzo Club de Golf",
+    "type": "Golf",
+    "subject": "Trofeos con carácter para los torneos del Bierzo Club de Golf",
+    "status": "ok",
+    "message": "Enviado a golfdelbierzo@gmail.com"
+  },
+  {
+    "email": "info@tenissalamanca.org",
+    "name": "CD Tenis Salamanca",
+    "type": "Tenis",
+    "subject": "Reconocimientos con carácter para el CD Tenis Salamanca",
+    "status": "ok",
+    "message": "Enviado a info@tenissalamanca.org"
+  },
+  {
+    "email": "info@cesalamanca.com",
+    "name": "Centro Ecuestre de Salamanca",
+    "type": "Hípica",
+    "subject": "Trofeos con identidad para los concursos hípicos de Salamanca",
+    "status": "ok",
+    "message": "Enviado a info@cesalamanca.com"
+  },
+  {
+    "email": "info@campotiro.es",
+    "name": "Campo de Tiro de Salamanca",
+    "type": "Tiro",
+    "subject": "Trofeos a medida para las competiciones de tiro en Salamanca",
+    "status": "ok",
+    "message": "Enviado a info@campotiro.es"
+  },
+  {
+    "email": "escuelatrisalmantina@gmail.com",
+    "name": "Escuela de Triatlón Salmantina",
+    "type": "Triatlón",
+    "subject": "Trofeos que hablan — para la Escuela de Triatlón Salmantina",
+    "status": "ok",
+    "message": "Enviado a escuelatrisalmantina@gmail.com"
+  },
+  {
+    "email": "zarapicos@salamancagolf.com",
+    "name": "Campo de Golf de Salamanca",
+    "type": "Golf",
+    "subject": "Reconocimientos a medida para el Campo de Golf de Salamanca",
+    "status": "ok",
+    "message": "Enviado a zarapicos@salamancagolf.com"
+  },
+  {
+    "email": "deportes@aytosalamanca.es",
+    "name": "Ayto. Salamanca - Deportes",
+    "type": "Ayuntamiento",
+    "subject": "Trofeos que cuentan historias — para eventos deportivos en Salamanca",
+    "status": "ok",
+    "message": "Enviado a deportes@aytosalamanca.es"
+  },
+  {
+    "email": "deportes@imdsg.es",
+    "name": "IMD Segovia",
+    "type": "Ayuntamiento",
+    "subject": "Trofeos con identidad para el deporte municipal en Segovia",
+    "status": "ok",
+    "message": "Enviado a deportes@imdsg.es"
+  },
+  {
+    "email": "clubatletismovalladolid@gmail.com",
+    "name": "Club Atletismo Valladolid",
+    "type": "Atletismo",
+    "subject": "Reconocimientos con alma para el Club Atletismo Valladolid",
+    "status": "ok",
+    "message": "Enviado a clubatletismovalladolid@gmail.com"
+  },
+  {
+    "email": "hipica@hipicavalladolid.es",
+    "name": "Real Sociedad Hípica Valladolid",
+    "type": "Hípica",
+    "subject": "Trofeos a la altura de la historia de la Hípica Valladolid",
+    "status": "ok",
+    "message": "Enviado a hipica@hipicavalladolid.es"
+  },
+  {
+    "email": "info@sotoocio.com",
+    "name": "Centro Hípico SotoOcio",
+    "type": "Hípica",
+    "subject": "Trofeos con personalidad para el Centro Hípico SotoOcio",
+    "status": "ok",
+    "message": "Enviado a info@sotoocio.com"
+  },
+  {
+    "email": "ctz@hotmail.es",
+    "name": "Club de Tenis y Pádel Zamora",
+    "type": "Tenis/Pádel",
+    "subject": "Trofeos diferentes para tenis y pádel en Zamora",
+    "status": "ok",
+    "message": "Enviado a ctz@hotmail.es"
+  },
+  {
+    "email": "clubmontanacapra@gmail.com",
+    "name": "Club de Montaña Capra",
+    "type": "Montaña",
+    "subject": "Trofeos con identidad para las competiciones de montaña",
+    "status": "ok",
+    "message": "Enviado a clubmontanacapra@gmail.com"
+  },
+  {
+    "email": "info@fcciclismo.com",
+    "name": "Fed. Cántabra de Ciclismo",
+    "type": "Federación",
+    "subject": "Trofeos que pedalean más allá del podio — ciclismo cántabro",
+    "status": "ok",
+    "message": "Enviado a info@fcciclismo.com"
+  },
+  {
+    "email": "oficina@federacioncantabradegolf.com",
+    "name": "Fed. Cántabra de Golf",
+    "type": "Federación",
+    "subject": "Reconocimientos con personalidad para el golf cántabro",
+    "status": "ok",
+    "message": "Enviado a oficina@federacioncantabradegolf.com"
+  },
+  {
+    "email": "fchockey@fcanthockey.com",
+    "name": "Fed. Cántabra de Hockey",
+    "type": "Federación",
+    "subject": "Trofeos que cuentan historias — hockey cántabro",
+    "status": "ok",
+    "message": "Enviado a fchockey@fcanthockey.com"
+  },
+  {
+    "email": "info@fcnat.net",
+    "name": "Fed. Cántabra de Natación",
+    "type": "Federación",
+    "subject": "Trofeos diferentes para la natación cántabra",
+    "status": "ok",
+    "message": "Enviado a info@fcnat.net"
+  },
+  {
+    "email": "fcatle@fcatle.com",
+    "name": "Fed. Cántabra de Atletismo",
+    "type": "Federación",
+    "subject": "Reconocimientos con alma para el atletismo cántabro",
+    "status": "ok",
+    "message": "Enviado a fcatle@fcatle.com"
+  },
+  {
+    "email": "secretario@federacioncantabradejudo.com",
+    "name": "Fed. Cántabra de Judo",
+    "type": "Federación",
+    "subject": "Trofeos con identidad para el judo cántabro",
+    "status": "ok",
+    "message": "Enviado a secretario@federacioncantabradejudo.com"
+  },
+  {
+    "email": "info@federacioncantabradepadel.com",
+    "name": "Fed. Cántabra de Pádel",
+    "type": "Federación",
+    "subject": "Trofeos que hablan — pádel cántabro",
+    "status": "ok",
+    "message": "Enviado a info@federacioncantabradepadel.com"
+  },
+  {
+    "email": "fecantenis@gmail.com",
+    "name": "Fed. Cántabra de Tenis",
+    "type": "Federación",
+    "subject": "Reconocimientos diferentes para el tenis cántabro",
+    "status": "ok",
+    "message": "Enviado a fecantenis@gmail.com"
+  },
+  {
+    "email": "fcbaloncesto@gmail.com",
+    "name": "Fed. Cántabra de Baloncesto",
+    "type": "Federación",
+    "subject": "Trofeos con carácter para el baloncesto cántabro",
+    "status": "ok",
+    "message": "Enviado a fcbaloncesto@gmail.com"
+  },
+  {
+    "email": "federacion@fcantabrabm.es",
+    "name": "Fed. Cántabra de Balonmano",
+    "type": "Federación",
+    "subject": "Trofeos que cuentan historias — balonmano cántabro",
+    "status": "ok",
+    "message": "Enviado a federacion@fcantabrabm.es"
+  },
+  {
+    "email": "deportes@unican.es",
+    "name": "Universidad de Cantabria - Deportes",
+    "type": "Universidad",
+    "subject": "Trofeos con contenido digital para las competiciones universitarias",
+    "status": "ok",
+    "message": "Enviado a deportes@unican.es"
+  },
+  {
+    "email": "reservasdeportes@aytotorrelavega.es",
+    "name": "Ayto. Torrelavega - Deportes",
+    "type": "Ayuntamiento",
+    "subject": "Trofeos diferentes para los eventos deportivos de Torrelavega",
+    "status": "ok",
+    "message": "Enviado a reservasdeportes@aytotorrelavega.es"
+  }
+]
