@@ -100,8 +100,7 @@ tr:hover { background: #141414; }
 <script>
 document.getElementById('currentDate').textContent = new Date().toLocaleDateString('es-ES', {weekday:'long',year:'numeric',month:'long',day:'numeric'});
 
-const allData = [
-  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Museum of Mini',email:'info@museumofmini.com',score:'78',status:'Enviado',notes:''},
+const allData = [  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Museum of Mini',email:'info@museumofmini.com',score:'78',status:'Enviado',notes:''},
   {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Circo Kids',email:'info@circokids.es',score:'82',status:'Enviado',notes:''},
   {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Cositas Chulas',email:'info@cositaschulas.com',score:'75',status:'Enviado',notes:''},
   {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Chiva Chivita',email:'info@chivachivita.com',score:'74',status:'Enviado',notes:''},
@@ -245,7 +244,7 @@ const allData = [
   {date:'2026-07-23',brand:'BRIIK',city:'Lugo',name:'Chupete Shop',email:'chupetelugo@yahoo.es',score:'70',status:'Enviado',notes:''},
   {date:'2026-07-23',brand:'BRIIK',city:'Lugo',name:'Bicos de mami',email:'bicosdemami.lugo@hotmail.com',score:'72',status:'Enviado',notes:''},
   {date:'2026-07-23',brand:'BRIIK',city:'Oviedo',name:'Ñácaru Puericultura',email:'nacaru@nacaru.es',score:'75',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'BRIIK',city:'Gijón',name:'Baby\'s House Puericultura',email:'info@babyshouse.es',score:'74',status:'Enviado',notes:''},
+  {date:'2026-07-23',brand:'BRIIK',city:'Gijón',name:'Baby\\\'s House Puericultura',email:'info@babyshouse.es',score:'74',status:'Enviado',notes:''},
   {date:'2026-07-23',brand:'BRIIK',city:'Avilés',name:'Kekos Bebés',email:'kekos@kekosbebes.com',score:'72',status:'Enviado',notes:''},
   {date:'2026-07-23',brand:'BRIIK',city:'Vigo',name:'Nenel Shop',email:'hola@nenelshop.es',score:'80',status:'Enviado',notes:''},
   {date:'2026-07-23',brand:'BRIIK',city:'Oviedo',name:'La Cesta Mágica',email:'info@lacestamagica.com',score:'78',status:'Enviado',notes:''},
@@ -324,7 +323,6 @@ const allData = [
   {date:'2026-07-24',brand:'BRIIK',city:'Alicante-Castellón',name:'El Baúl de Brianda',email:'info@elbauldebrianda.com',score:'65',status:'Enviado',notes:''},
   {date:'2026-07-24',brand:'BRIIK',city:'Alicante-Castellón',name:'Pistatxo Roba Infantil',email:'pistatxorobainfantil@yahoo.es',score:'65',status:'Enviado',notes:''},
   {date:'2026-07-24',brand:'BRIIK',city:'Alicante-Castellón',name:'Cristis Baby',email:'info@cristisbaby.es',score:'60',status:'Enviado',notes:''},
-,
   {date:'2026-07-27',brand:'BRIIK',city:'Palma',name:'Pe and Clo',email:'peandclo@gmail.com',score:'85',status:'Enviado',notes:''},
   {date:'2026-07-27',brand:'BRIIK',city:'Palma',name:'Genoveva Bebé',email:'clientes@genovevabebe.es',score:'88',status:'Enviado',notes:''},
   {date:'2026-07-27',brand:'BRIIK',city:'Palma',name:'Bebeplanet',email:'hola@bebeplanet.com',score:'80',status:'Enviado',notes:''},
@@ -381,7 +379,7 @@ const allData = [
   {date:'2026-07-27',brand:'iAwards',city:'Torrelavega',name:'Ayto. Torrelavega - Deportes',email:'reservasdeportes@aytotorrelavega.es',score:'70',status:'Enviado',notes:''},
   {date:'2026-07-28',brand:'BRIIK',city:'Salamanca',name:'El Rincón de Mi Bebé',email:'info@elrincondemibebe.com',score:'88',status:'Enviado',notes:''},
   {date:'2026-07-28',brand:'BRIIK',city:'Salamanca',name:'BabyCucadas',email:'info@babycucadas.com',score:'75',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'BRIIK',city:'Ciudad Rodrigo',name:'D\'ANNA Moda Infantil',email:'d.annamodainfantil@gmail.com',score:'65',status:'Enviado',notes:''},
+  {date:'2026-07-28',brand:'BRIIK',city:'Ciudad Rodrigo',name:'D\\\'ANNA Moda Infantil',email:'d.annamodainfantil@gmail.com',score:'65',status:'Enviado',notes:''},
   {date:'2026-07-28',brand:'BRIIK',city:'Ciudad Rodrigo',name:'A. de la Nava',email:'adelanavaciudadrodrigo@gmail.com',score:'62',status:'Enviado',notes:''},
   {date:'2026-07-28',brand:'BRIIK',city:'Salamanca',name:'Conny-Land',email:'contacto@connyland.es',score:'60',status:'Enviado',notes:''},
   {date:'2026-07-28',brand:'BRIIK',city:'Salamanca',name:'Laura & Carla',email:'info@lauraycarla.com',score:'58',status:'Enviado',notes:''},
@@ -428,7 +426,7 @@ const allData = [
   {date:'2026-07-28',brand:'iAwards',city:'Talavera',name:'Fed. Pesca CLM',email:'fpclm@fedpescaclm.com',score:'60',status:'Enviado',notes:''},
   {date:'2026-07-28',brand:'iAwards',city:'Toledo',name:'Fed. Automovilismo CLM',email:'info@facm.es',score:'55',status:'Enviado',notes:''},
   {date:'2026-07-28',brand:'iAwards',city:'Toledo',name:'Fed. Motociclismo CLM',email:'fcmm@fcmm.net',score:'55',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'iAwards',city:'Albacete',name:'Fed. Colombicultura CLM',email:'presidencia@colombiculturamanchega.es',score:'50',status:'Enviado',notes:''}
+  {date:'2026-07-28',brand:'iAwards',city:'Albacete',name:'Fed. Colombicultura CLM',email:'presidencia@colombiculturamanchega.es',score:'50',status:'Enviado',notes:''},
   {date:'2026-07-29',brand:'iAwards',city:'Barcelona',name:'Real Club de Polo de Barcelona',email:'info@rcpolo.com',score:'87',status:'Enviado',notes:''},
   {date:'2026-07-29',brand:'iAwards',city:'Barcelona',name:'Real Club Náutico de Barcelona',email:'info@rcnb.com',score:'85',status:'Enviado',notes:''},
   {date:'2026-07-29',brand:'iAwards',city:'Tarragona',name:'Real Club Náutico de Tarragona',email:'info@rcntarragona.org',score:'84',status:'Enviado',notes:''},
