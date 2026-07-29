@@ -1,6 +1,6 @@
 {
   "run_id": "PROS-20260729-LEON",
-  "generated_at": "2026-07-29T14:09:20.343663",
+  "generated_at": "2026-07-29T14:12:43.386734",
   "dashboard_url": "https://antoniojose81.github.io/artesalaser-dashboard/prospeccion.html",
   "regions": {
     "briik": "León"
@@ -27,7 +27,7 @@
       "subject": "Un accesorio práctico para completar vuestro catálogo",
       "body": "Hola,\n\nHe visto que en Mimos Bebé tenéis de todo para el bebé —sillas, cochecitos, puericultura, canastilla— y que os tomáis el tiempo de asesorar a cada familia sin prisas. Ese mimo encaja con BRIIK.\n\nEs un soporte con dos asas para bricks de 200 ml que evita derrames y ayuda a los peques a beber solos. Fabricado en España y personalizable con el nombre.\n\n¿Os envío las condiciones para tienda?",
       "draft_hash": "85fcaada0c6c",
-      "status": "drafted",
+      "status": "approved",
       "review_issue": "",
       "attachment": "infografia_briik.pdf"
     },
@@ -71,7 +71,7 @@
       "subject": "Un complemento para vuestra tienda de León",
       "body": "Hola,\n\nHe visto que Babydin tiene tienda en León y sé que trabajáis puericultura con buena selección de productos. BRIIK puede sumar a vuestro catálogo algo diferente.\n\nUn soporte para bricks de 200 ml con asas antiderrame, fabricado en España y personalizable. Ligero, práctico y reutilizable.\n\n¿Os envío las condiciones para tienda?",
       "draft_hash": "d201db41cbbe",
-      "status": "drafted",
+      "status": "approved",
       "review_issue": "",
       "attachment": "infografia_briik.pdf"
     },
@@ -98,5 +98,5 @@
       "attachment": "infografia_briik.pdf"
     }
   ],
-  "cache_buster": "26244090"
+  "cache_buster": "66028718"
 }
