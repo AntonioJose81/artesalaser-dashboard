@@ -10,6 +10,16 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px; }
 .header h1 { font-size: 1.3em; color: #fff; }
 .date { color: #888; font-size: 0.8em; }
+
+/* Tabs */
+.tabs { display: flex; gap: 0; margin-bottom: 16px; border-bottom: 1px solid #2a2a2a; }
+.tab { padding: 8px 20px; background: none; border: none; color: #888; cursor: pointer; font-size: 0.85em; font-family: inherit; border-bottom: 2px solid transparent; transition: all 0.2s; }
+.tab:hover { color: #ccc; }
+.tab.active { color: #fff; border-bottom-color: #6B7DAF; }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* KPIs */
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 16px; }
 .card { background: #1a1a1a; border-radius: 10px; padding: 12px; border: 1px solid #2a2a2a; }
 .card .label { font-size: 0.65em; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
@@ -18,7 +28,9 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 .briik-card { border-left: 3px solid #6B7DAF; }
 .iawards-card { border-left: 3px solid #CC3333; }
 .total-card { border-left: 3px solid #4CAF50; }
-.blue { color: #6B7DAF; } .red { color: #CC3333; } .green { color: #4CAF50; } .yellow { color: #FFC107; }
+.blue { color: #6B7DAF; } .red { color: #CC3333; } .green { color: #4CAF50; } .yellow { color: #FFC107; } .orange { color: #FF9800; }
+
+/* Filters */
 .filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; align-items: center; background: #1a1a1a; padding: 12px 14px; border-radius: 10px; border: 1px solid #2a2a2a; }
 .filters label { font-size: 0.7em; color: #888; text-transform: uppercase; margin-right: 4px; }
 .filters select, .filters input { background: #0f0f0f; border: 1px solid #333; color: #e0e0e0; padding: 6px 10px; border-radius: 6px; font-size: 0.8em; }
@@ -26,276 +38,291 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 .filter-group { display: flex; align-items: center; gap: 5px; }
 .btn-reset { background: #2a2a2a; border: 1px solid #444; color: #999; padding: 6px 12px; border-radius: 6px; font-size: 0.75em; cursor: pointer; }
 .btn-reset:hover { background: #333; color: #fff; }
+
+/* Batch actions */
+.batch-actions { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; align-items: center; }
+.batch-actions span { font-size: 0.75em; color: #888; margin-right: 8px; }
+.btn-action { background: #1a1a1a; border: 1px solid #333; color: #ccc; padding: 5px 12px; border-radius: 6px; font-size: 0.75em; cursor: pointer; font-family: inherit; transition: all 0.15s; }
+.btn-action:hover { background: #2a2a2a; border-color: #555; color: #fff; }
+.btn-approve { border-color: #4CAF50; color: #4CAF50; }
+.btn-approve:hover { background: #1a2a1a; }
+.btn-reject { border-color: #EF5350; color: #EF5350; }
+.btn-reject:hover { background: #2a1a1a; }
+.btn-modify { border-color: #FF9800; color: #FF9800; }
+.btn-modify:hover { background: #2a2a1a; }
+.btn-view { border-color: #6B7DAF; color: #6B7DAF; }
+.btn-view:hover { background: #1a1a2a; }
+.btn-copied { background: #1a3a1a !important; border-color: #4CAF50 !important; color: #4CAF50 !important; }
+
+/* Table */
 .table-wrapper { overflow-x: auto; margin-bottom: 20px; }
 table { width: 100%; border-collapse: collapse; font-size: 0.78em; }
 th { background: #1a1a1a; color: #888; font-weight: 600; text-align: left; padding: 7px 10px; border-bottom: 1px solid #2a2a2a; font-size: 0.7em; text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; white-space: nowrap; }
 th:hover { color: #fff; }
-th .sort-arrow { margin-left: 3px; opacity: 0.4; }
-th.sorted .sort-arrow { opacity: 1; }
 td { padding: 5px 10px; border-bottom: 1px solid #1a1a1a; white-space: nowrap; }
 tr:hover { background: #141414; }
+tr.selected { background: #1a1a2a; }
+tr.expandable { cursor: pointer; }
+tr.expandable:hover { background: #181818; }
+
+/* Expand */
+.expand-row { display: none; }
+.expand-row.open { display: table-row; }
+.expand-row td { padding: 0; }
+.expand-content { background: #141414; border: 1px solid #2a2a2a; border-radius: 6px; margin: 8px 12px; padding: 14px; }
+.expand-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.expand-grid .field { margin-bottom: 6px; }
+.expand-grid .field-label { font-size: 0.65em; color: #666; text-transform: uppercase; letter-spacing: 0.5px; }
+.expand-grid .field-value { font-size: 0.8em; color: #ccc; word-break: break-word; }
+.expand-full { grid-column: 1 / -1; }
+.expand-body { background: #0f0f0f; border: 1px solid #1a1a1a; border-radius: 4px; padding: 12px; font-size: 0.85em; color: #ccc; white-space: pre-wrap; line-height: 1.5; margin-top: 4px; }
+.expand-actions { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
+
+/* Tags */
 .tag { display: inline-block; padding: 2px 7px; border-radius: 10px; font-size: 0.7em; font-weight: 600; }
-.tag-enviado { background: #1a3a1a; color: #4CAF50; }
-.tag-respondido { background: #3a2a0a; color: #FFC107; }
-.tag-positivo { background: #1a3a2a; color: #66BB6A; }
-.tag-rebote { background: #3a1a1a; color: #EF5350; }
-.summary-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; font-size: 0.78em; }
-.summary-item { display: flex; align-items: center; gap: 4px; }
-.count-badge { background: #2a2a2a; padding: 1px 8px; border-radius: 8px; font-weight: 700; font-size: 0.9em; }
-.footer { margin-top: 30px; padding-top: 15px; border-top: 1px solid #1a1a1a; text-align: center; font-size: 0.7em; color: #555; }
+.tag-drafted { background: #1a1a2a; color: #6B7DAF; }
+.tag-needs_review { background: #2a2a1a; color: #FF9800; }
+.tag-approved { background: #1a3a1a; color: #4CAF50; }
+.tag-rejected { background: #3a1a1a; color: #EF5350; }
+.tag-sent { background: #1a3a1a; color: #4CAF50; }
+.tag-replied { background: #3a2a0a; color: #FFC107; }
+.tag-bounced { background: #3a1a1a; color: #EF5350; }
+.tag-blocked { background: #2a2a2a; color: #888; }
+.tag-error { background: #3a0000; color: #FF5252; }
+.tag-verification-official { background: #1a3a1a; color: #4CAF50; }
+.tag-verification-directory { background: #1a2a3a; color: #6B7DAF; }
+
 .no-results { text-align: center; padding: 30px; color: #666; display: none; }
 .result-info { font-size: 0.75em; color: #888; margin-bottom: 6px; }
+.check-col { width: 30px; }
+.footer { margin-top: 30px; padding-top: 15px; border-top: 1px solid #1a1a1a; text-align: center; font-size: 0.7em; color: #555; }
 @media (max-width: 600px) {
   .filters { flex-direction: column; align-items: flex-start; }
   .header h1 { font-size: 1.1em; }
+  .expand-grid { grid-template-columns: 1fr; }
+  .batch-actions { flex-direction: column; }
 }
 </style>
 </head>
 <body>
 
 <div class="header">
-  <h1>📊 Prospección Comercial</h1>
-  <span class="date" id="currentDate"></span>
+  <div>
+    <h1>📊 Prospección Comercial</h1>
+    <div class="date" id="update-date">Actualizado: 29 julio 2026</div>
+  </div>
 </div>
 
-<div class="grid" id="kpi-grid">
-  <div class="card briik-card"><div class="label">🧃 BRIIK</div><div class="value blue" id="kpi-briik">-</div><div class="sub" id="kpi-briik-sub"></div></div>
-  <div class="card iawards-card"><div class="label">🏆 iAwards</div><div class="value red" id="kpi-iawards">-</div><div class="sub" id="kpi-iawards-sub"></div></div>
-  <div class="card total-card"><div class="label">📬 TOTAL</div><div class="value green" id="kpi-total">-</div><div class="sub" id="kpi-total-sub"></div></div>
-  <div class="card"><div class="label">📨 Respuestas</div><div class="value yellow" id="kpi-replies">-</div><div class="sub" id="kpi-replies-sub"></div></div>
-  <div class="card"><div class="label">🎯 Tasa</div><div class="value" id="kpi-rate">-</div><div class="sub" id="kpi-rate-sub"></div></div>
+<div class="tabs">
+  <button class="tab active" onclick="switchTab('revisar')">🔍 Por revisar</button>
+  <button class="tab" onclick="switchTab('enviados')">📨 Enviados</button>
 </div>
 
-<div class="filters">
-  <div class="filter-group"><label>Marca</label><select id="filter-brand"><option value="all">Todas</option><option value="BRIIK">BRIIK</option><option value="iAwards">iAwards</option></select></div>
-  <div class="filter-group"><label>Ciudad</label><select id="filter-city"><option value="all">Todas</option></select></div>
-  <div class="filter-group"><label>Estado</label><select id="filter-status"><option value="all">Todos</option><option value="Enviado">Enviado</option><option value="Interesada">Interesadas</option><option value="No interesa">No interesa</option></select></div>
-  <div class="filter-group"><label>Desde</label><input type="date" id="filter-from"></div>
-  <div class="filter-group"><label>Hasta</label><input type="date" id="filter-to"></div>
-  <div class="filter-group"><label>Buscar</label><input type="text" id="filter-search" placeholder="Nombre o email..." style="width:150px;"></div>
-  <button class="btn-reset" onclick="resetFilters()">✕ Limpiar</button>
+<!-- POR REVISAR -->
+<div id="tab-revisar" class="tab-content active">
+  <div class="grid" id="kpi-review"></div>
+
+  <div class="filters" id="filters-review"></div>
+
+  <div class="batch-actions">
+    <span>Selección:</span>
+    <button class="btn-action" onclick="selectAll()">Todos</button>
+    <button class="btn-action" onclick="selectNone()">Ninguno</button>
+    <button class="btn-action btn-approve" onclick="copyCommand('APROBAR_TODO')">📋 Copiar APROBAR tanda</button>
+  </div>
+
+  <div class="result-info" id="result-info-review"></div>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th class="check-col"><input type="checkbox" id="select-all-check" onchange="toggleAllCheck(this)" title="Seleccionar todo"></th>
+          <th>ID</th>
+          <th>MARCA</th>
+          <th>ENTIDAD</th>
+          <th>CIUDAD</th>
+          <th>SEGMENTO</th>
+          <th>PUNT.</th>
+          <th>VERIF.</th>
+          <th>ESTADO</th>
+        </tr>
+      </thead>
+      <tbody id="review-table"></tbody>
+    </table>
+  </div>
+  <div class="no-results" id="no-results-review">No hay borradores pendientes</div>
 </div>
 
-<div class="result-info" id="result-info"></div>
+<!-- ENVIADOS -->
+<div id="tab-enviados" class="tab-content">
+  <div class="grid" id="kpi-sent"></div>
 
-<div class="table-wrapper">
-  <table>
-    <thead><tr>
-      <th onclick="sortTable(0)" id="th-date">Fecha <span class="sort-arrow">▼</span></th>
-      <th onclick="sortTable(1)">Marca</th>
-      <th onclick="sortTable(2)">Ciudad</th>
-      <th onclick="sortTable(3)">Nombre</th>
-      <th>Email</th>
-      <th onclick="sortTable(5)">Punt.</th>
-      <th onclick="sortTable(6)">Estado</th>
-      <th>Notas</th>
-    </tr></thead>
-    <tbody id="data-table"></tbody>
-  </table>
-  <div class="no-results" id="no-results">Sin resultados para estos filtros</div>
+  <div class="filters">
+    <div class="filter-group">
+      <label>Marca</label>
+      <select id="filter-brand"><option value="all">Todas</option><option value="BRIIK">BRIIK</option><option value="iAwards">iAwards</option></select>
+    </div>
+    <div class="filter-group">
+      <label>Ciudad</label>
+      <select id="filter-city"><option value="all">Todas</option></select>
+    </div>
+    <div class="filter-group">
+      <label>Estado</label>
+      <select id="filter-status"><option value="all">Todos</option><option value="Enviado">Enviado</option><option value="Interesada">Interesadas</option><option value="No interesa">No interesa</option></select>
+    </div>
+    <div class="filter-group">
+      <label>Desde</label>
+      <input type="date" id="filter-from">
+    </div>
+    <div class="filter-group">
+      <label>Hasta</label>
+      <input type="date" id="filter-to">
+    </div>
+    <div class="filter-group">
+      <label>Buscar</label>
+      <input type="text" id="filter-search" placeholder="Nombre o email...">
+    </div>
+    <button class="btn-reset" onclick="resetFilters()">✕ Limpiar</button>
+  </div>
+
+  <div class="result-info" id="result-info-sent"></div>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th onclick="sortSent(0)">FECHA</th>
+          <th onclick="sortSent(1)">MARCA</th>
+          <th onclick="sortSent(2)">CIUDAD</th>
+          <th onclick="sortSent(3)">NOMBRE</th>
+          <th>EMAIL</th>
+          <th onclick="sortSent(5)">PUNT.</th>
+          <th onclick="sortSent(6)">ESTADO</th>
+          <th>NOTAS</th>
+        </tr>
+      </thead>
+      <tbody id="sent-table"></tbody>
+    </table>
+  </div>
+  <div class="no-results" id="no-results-sent">No se encontraron resultados</div>
 </div>
 
-<div class="footer">Actualizado: 28 julio 2026 · Los datos se actualizan con cada envío</div>
+<div class="footer">ARTESALASER · BRIIK + iAwards · Prospección comercial</div>
 
 <script>
-document.getElementById('currentDate').textContent = new Date().toLocaleDateString('es-ES', {weekday:'long',year:'numeric',month:'long',day:'numeric'});
+// ============================================================
+// DATA: Drafts (from prospeccion_drafts.json)
+// ============================================================
+let draftsData = [];
+let draftRuns = [];
 
-const allData = [  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Museum of Mini',email:'info@museumofmini.com',score:'78',status:'Enviado',notes:''},
-  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Circo Kids',email:'info@circokids.es',score:'82',status:'Enviado',notes:''},
+async function loadDrafts() {
+  try {
+    const resp = await fetch('prospeccion_drafts.json?' + Date.now());
+    const json = await resp.json();
+    draftsData = json.contacts || [];
+    draftRuns = [json];
+    renderReview();
+  } catch(e) {
+    console.log('Drafts not loaded:', e.message);
+    document.getElementById('no-results-review').style.display = 'block';
+    document.getElementById('no-results-review').textContent = 'No se pudo cargar prospeccion_drafts.json';
+    updateReviewKPIs();
+  }
+}
+
+// ============================================================
+// DATA: Sent (historical, embedded)
+// ============================================================
+const allData = [
+  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Museum of Mini',email:'info@museumofmini.com',score:'80',status:'Enviado',notes:''},
   {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Cositas Chulas',email:'info@cositaschulas.com',score:'75',status:'Enviado',notes:''},
   {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Chiva Chivita',email:'info@chivachivita.com',score:'74',status:'Enviado',notes:''},
   {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Mon Petit Retro',email:'info@monpetitretro.com',score:'72',status:'Enviado',notes:''},
   {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Alva for Kids',email:'info@alvaforkids.com',score:'70',status:'Enviado',notes:''},
   {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Kamchatka Magic Toys',email:'info@kamchatkatoys.com',score:'68',status:'Enviado',notes:''},
-  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Lobo Feliz',email:'info@lobofeliz.com',score:'80',status:'Enviado',notes:''},
-  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'El Moderno',email:'info@elmoderno.com',score:'72',status:'Enviado',notes:'No trabaja briks, solo juguetes de madera'},
-  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Zigzag Kids',email:'info@zigzagkids.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Curiosity Shop',email:'info@curiosityshop.es',score:'74',status:'Enviado',notes:''},
-  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Doña Coletas',email:'info@donacoletas.com',score:'76',status:'Enviado',notes:''},
-  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'El Dragón Lector',email:'info@eldragonlector.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-18',brand:'BRIIK',city:'Barcelona',name:'Smileat',email:'info@smileat.com',score:'72',status:'Enviado',notes:'Auto-respuesta: email recibido, contestarán'},
-  {date:'2026-07-18',brand:'BRIIK',city:'Barcelona',name:'Chelo Navarro',email:'cheloteimport@gmail.com',score:'82',status:'Enviado',notes:'INTERESADA: Pidió info del Pack Mostrador, quiere ver muestras'},
-  {date:'2026-07-18',brand:'BRIIK',city:'Barcelona',name:'Bcn Baby',email:'info@bcnbaby.es',score:'78',status:'Enviado',notes:''},
-  {date:'2026-07-18',brand:'BRIIK',city:'Barcelona',name:'Nonetes',email:'info@nonetes.es',score:'75',status:'Enviado',notes:''},
-  {date:'2026-07-18',brand:'BRIIK',city:'Barcelona',name:'Món Bebé',email:'info@monbebe.cat',score:'72',status:'Enviado',notes:''},
-  {date:'2026-07-18',brand:'BRIIK',city:'Barcelona',name:'Petit BCN',email:'info@petitbcn.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-18',brand:'BRIIK',city:'Barcelona',name:'Bebé Gràcia',email:'info@bebegracia.com',score:'74',status:'Enviado',notes:''},
-  {date:'2026-07-18',brand:'BRIIK',city:'Barcelona',name:'La Petita',email:'info@lapetita.cat',score:'68',status:'Enviado',notes:''},
-  {date:'2026-07-18',brand:'BRIIK',city:'Barcelona',name:'Nins',email:'info@nins.cat',score:'76',status:'Enviado',notes:''},
-  {date:'2026-07-18',brand:'BRIIK',city:'Barcelona',name:'Criatures',email:'info@criatures.cat',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-18',brand:'BRIIK',city:'Barcelona',name:'Bombolles',email:'info@bombolles.cat',score:'72',status:'Enviado',notes:''},
-  {date:'2026-07-18',brand:'BRIIK',city:'Barcelona',name:'Menudets',email:'info@menudets.cat',score:'74',status:'Enviado',notes:''},
-  {date:'2026-07-20',brand:'BRIIK',city:'Valencia',name:'Granujas',email:'granujas@granujas.es',score:'88',status:'Enviado',notes:''},
-  {date:'2026-07-20',brand:'BRIIK',city:'Valencia',name:'Bebísimo',email:'info@bebisimo.com',score:'82',status:'Enviado',notes:''},
-  {date:'2026-07-20',brand:'BRIIK',city:'Valencia',name:'Menut a Menut',email:'info@menutamenut.com',score:'80',status:'Enviado',notes:''},
-  {date:'2026-07-20',brand:'BRIIK',city:'Valencia',name:'Estil Menut',email:'valencia@estilmenut.com',score:'78',status:'Enviado',notes:''},
-  {date:'2026-07-20',brand:'BRIIK',city:'Valencia',name:'El Palacio del Bebé',email:'info@elpalaciodelbebe.com',score:'74',status:'Enviado',notes:''},
-  {date:'2026-07-20',brand:'BRIIK',city:'Valencia',name:'La Nube del Bebé',email:'correo@lanubedelbebe.com',score:'72',status:'Enviado',notes:''},
-  {date:'2026-07-20',brand:'BRIIK',city:'Valencia',name:'Neneco',email:'neneco@neneco.es',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-20',brand:'BRIIK',city:'Valencia',name:'Yobio',email:'info@yobio.es',score:'78',status:'Enviado',notes:''},
-  {date:'2026-07-20',brand:'BRIIK',city:'Valencia',name:'Babidu',email:'info@babidu.com',score:'72',status:'Enviado',notes:''},
-  {date:'2026-07-20',brand:'BRIIK',city:'Valencia',name:'Bebés Valencia',email:'bebesvalencia@dulcebebe.com',score:'74',status:'Enviado',notes:''},
-  {date:'2026-07-20',brand:'BRIIK',city:'Valencia',name:'HiperBebé',email:'hiperbebe@hiperbebe.com',score:'68',status:'Enviado',notes:''},
-  {date:'2026-07-20',brand:'BRIIK',city:'Valencia',name:'Sombaby',email:'info@sombabyboutique.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-20',brand:'BRIIK',city:'Valencia',name:'Boboli',email:'info@boboli.es',score:'65',status:'Enviado',notes:''},
-  {date:'2026-07-20',brand:'BRIIK',city:'Valencia',name:'Abacus',email:'abacusonline@abacus.coop',score:'62',status:'Enviado',notes:''},
-  {date:'2026-07-20',brand:'BRIIK',city:'Valencia',name:'Cotonnets',email:'info@cotonnets.com',score:'68',status:'Enviado',notes:''},
-  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'RugbyCyL',email:'secretaria@rugbycyl.org',score:'85',status:'Enviado',notes:'Circuito Mundial Rugby 7'},
-  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'FBCyL Baloncesto',email:'fbcyl@fbcyl.es',score:'82',status:'Enviado',notes:'Gala Baloncesto CyL'},
-  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'FMDVA Valladolid',email:'fmd@ava.es',score:'80',status:'Enviado',notes:'Premier Padel'},
-  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'FTCL Tenis',email:'presidente@ftcl.com',score:'78',status:'Enviado',notes:'Campeonatos equipos'},
-  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'FCLM Montaña',email:'fclm@fclm.com',score:'82',status:'Enviado',notes:'Copa Carreras Montaña'},
-  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'FCCYL Ciclismo',email:'secretaria@fedciclismocyl.com',score:'75',status:'Enviado',notes:'Calendario carreras'},
-  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'UVa Deportes',email:'servicio.deportes@uva.es',score:'78',status:'Enviado',notes:'Trofeo Rector'},
-  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'USAL Deportes',email:'serv.efyd@usal.es',score:'70',status:'Enviado',notes:'Competiciones univ'},
-  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'UEMC',email:'info@uemc.es',score:'75',status:'Enviado',notes:'Trofeo Rector sede'},
-  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'Triatlón CyL',email:'prensa@triatloncastillayleon.com',score:'73',status:'Enviado',notes:'Circuito triatlón'},
-  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'FECLA Ajedrez',email:'info@fecla.es',score:'72',status:'Enviado',notes:'Campeonato equipos'},
-  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'Balonmano CyL',email:'fcylbm@fcylbm.com',score:'72',status:'Enviado',notes:'Campeonatos'},
-  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'PadelCyL',email:'federacion@padelcyl.es',score:'71',status:'Enviado',notes:'Circuito pádel'},
-  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'FGOLFCYL',email:'secretaria@fgolfcyl.org',score:'68',status:'Enviado',notes:'Interclubes golf'},
-  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'Karate CyL',email:'federacion@federacioncylkarate.com',score:'65',status:'Enviado',notes:'Campeonatos'},
-  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'Prensa Dep. VLL',email:'secretaria@apdvalladolid.org',score:'65',status:'Enviado',notes:'Gala prensa'},
-  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'Deporte Adaptado',email:'federacion@deporteadaptadocyl.org',score:'62',status:'Enviado',notes:'Comp. inclusivas'},
-  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'FVCL Voleibol',email:'fvcl@fvcl.es',score:'78',status:'Enviado',notes:'Campeonatos España'},
-  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'FETACYL',email:'info@fetacyl.org',score:'77',status:'Enviado',notes:'Atletismo'},
-  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'Runvasport',email:'runvasport@gmail.com',score:'76',status:'Enviado',notes:'Carreras populares'},
-  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'Diputación León',email:'deportes@dipuleon.es',score:'72',status:'Enviado',notes:'Copa Carreras'},
-  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'Ayto León',email:'info.deportes@aytoleon.es',score:'75',status:'Enviado',notes:'Gala Deporte Base'},
-  {date:'2026-07-22',brand:'BRIIK',city:'Bilbao',name:'Kaboo',email:'kaboo@kaboobilbao.com',score:'90',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'BRIIK',city:'Pamplona',name:'Mimmos',email:'info@mimmos.net',score:'86',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'BRIIK',city:'Getxo',name:'NENES',email:'info@beclementine.es',score:'85',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'BRIIK',city:'Donostia',name:'Bizcocho de Yogur',email:'nataliaog@bizcochodeyogurshop.com',score:'85',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'BRIIK',city:'Pamplona',name:'El Rincón del Duende',email:'rincondelduende.eps@gmail.com',score:'85',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'BRIIK',city:'País Vasco',name:'En Palmitas',email:'hola@enpalmitas.es',score:'84',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'BRIIK',city:'País Vasco',name:'Pepones',email:'elenapepones@hotmail.com',score:'82',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'BRIIK',city:'País Vasco',name:'Palopalú',email:'info@palopalu.com',score:'80',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'BRIIK',city:'País Vasco',name:'Amatriuska',email:'info@amatriuska.com',score:'80',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'BRIIK',city:'Pamplona',name:'Tatapañal',email:'info@tatapanal.com',score:'80',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'BRIIK',city:'País Vasco',name:'Cestaland',email:'info@cestaland.com',score:'80',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'BRIIK',city:'País Vasco',name:'Baby Mundua',email:'babymundua_zuremundua@yahoo.es',score:'80',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'BRIIK',city:'País Vasco',name:'Maman Bébé',email:'info@mamanbebe.es',score:'80',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'BRIIK',city:'País Vasco',name:'Maxibebé',email:'info@maxibebe.org',score:'78',status:'Enviado',notes:''},
+  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Pontegorri',email:'hola@pontegorri.com',score:'65',status:'Enviado',notes:''},
+  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'La Oca Loca',email:'info@laocaloca.com',score:'62',status:'Enviado',notes:''},
+  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Circus Kids',email:'info@circuskids.es',score:'60',status:'Enviado',notes:''},
+  {date:'2026-07-16',brand:'iAwards',city:'CyL',name:'RugbyCyL',email:'secretaria@rugbycyl.org',score:'85',status:'Enviado',notes:''},
+  {date:'2026-07-16',brand:'iAwards',city:'CyL',name:'FBCyL Baloncesto',email:'fbcyl@fbcyl.es',score:'82',status:'Enviado',notes:''},
+  {date:'2026-07-16',brand:'iAwards',city:'CyL',name:'FMDVA Valladolid',email:'fmd@ava.es',score:'80',status:'Enviado',notes:'Premier Padel'},
+  {date:'2026-07-16',brand:'iAwards',city:'CyL',name:'PadelCyL',email:'federacion@padelcyl.es',score:'71',status:'Enviado',notes:'Circuito pádel'},
+  {date:'2026-07-16',brand:'iAwards',city:'CyL',name:'Ayto Leon',email:'info.deportes@aytoleon.es',score:'75',status:'Enviado',notes:''},
+  {date:'2026-07-16',brand:'iAwards',city:'CyL',name:'FGOLFCYL',email:'secretaria@fgolfcyl.org',score:'68',status:'Enviado',notes:''},
+  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'FTCL Tenis',email:'presidente@ftcl.com',score:'78',status:'Enviado',notes:''},
+  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'FCLM Montana',email:'fclm@fclm.com',score:'82',status:'Enviado',notes:''},
+  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'Triatlon CyL',email:'prensa@triatloncastillayleon.com',score:'73',status:'Enviado',notes:''},
+  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'FECLA Ajedrez',email:'info@fecla.es',score:'72',status:'Enviado',notes:''},
+  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'Balonmano CyL',email:'fcylbm@fcylbm.com',score:'72',status:'Enviado',notes:''},
+  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'UVa Deportes',email:'servicio.deportes@uva.es',score:'78',status:'Enviado',notes:''},
+  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'USAL Deportes',email:'serv.efyd@usal.es',score:'70',status:'Enviado',notes:''},
+  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'Karate CyL',email:'federacion@federacioncylkarate.com',score:'65',status:'Enviado',notes:''},
+  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'Prensa Dep VLL',email:'secretaria@apdvalladolid.org',score:'65',status:'Enviado',notes:''},
+  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'Diputacion Leon',email:'deportes@dipuleon.es',score:'72',status:'Enviado',notes:''},
+  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'Runvasport',email:'runvasport@gmail.com',score:'76',status:'Enviado',notes:''},
+  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'Deporte Adaptado',email:'federacion@deporteadaptadocyl.org',score:'62',status:'Enviado',notes:''},
+  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'FVCL Voleibol',email:'fvcl@fvcl.es',score:'78',status:'Enviado',notes:''},
+  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'FETACYL',email:'info@fetacyl.org',score:'77',status:'Enviado',notes:''},
+  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'Nonetes',email:'info@nonetes.es',score:'72',status:'Enviado',notes:'Puericultura BCN'},
   {date:'2026-07-22',brand:'BRIIK',city:'Santander',name:'Kekos Bebés',email:'kekos@kekosbebes.com',score:'78',status:'Enviado',notes:''},
   {date:'2026-07-22',brand:'BRIIK',city:'Donostia',name:'Jostamendi Ttikiak',email:'info@jostamendittikiak.com',score:'75',status:'Enviado',notes:''},
+  {date:'2026-07-22',brand:'BRIIK',city:'Bilbao',name:'Abracadabra',email:'contigo@juguetesabracadabra.es',score:'70',status:'Enviado',notes:''},
   {date:'2026-07-22',brand:'BRIIK',city:'País Vasco',name:'Amatxu Denda',email:'info@amatxudenda.com',score:'75',status:'Enviado',notes:''},
   {date:'2026-07-22',brand:'BRIIK',city:'País Vasco',name:'Bitxo Bola',email:'info@bitxobola.com',score:'75',status:'Enviado',notes:''},
   {date:'2026-07-22',brand:'BRIIK',city:'País Vasco',name:'La Casa del Peque',email:'info@lacasadelpeque.com',score:'72',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'BRIIK',city:'Bilbao',name:'Abracadabra',email:'contigo@juguetesabracadabra.es',score:'70',status:'Enviado',notes:''},
   {date:'2026-07-22',brand:'BRIIK',city:'País Vasco',name:'Cochecitos Pérez',email:'amaya@cochecitosperez.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'BRIIK',city:'País Vasco',name:'Kurmi Kids',email:'info@kurmikids.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'BRIIK',city:'País Vasco',name:'Aurora Kids',email:'info@aurorakids.es',score:'68',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'BRIIK',city:'País Vasco',name:'Canela Shop',email:'info@canelashop.com',score:'65',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'BRIIK',city:'País Vasco',name:'Salabe',email:'salabe@salabe.com',score:'65',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'BRIIK',city:'País Vasco',name:'Pinocchio Bilbao',email:'info@jugueteriapinochio.com',score:'65',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'BRIIK',city:'País Vasco',name:'Mamalu Bebés',email:'info@mamalubebes.com',score:'65',status:'Enviado',notes:''},
   {date:'2026-07-22',brand:'BRIIK',city:'Vitoria',name:'Colchonería Elejalde',email:'info@colchoneriaelejalde.com',score:'60',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'BRIIK',city:'Santander',name:'Doña Carmen',email:'info@donacarmen.es',score:'60',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'BRIIK',city:'País Vasco',name:'Nenuca',email:'nenuca@nenuca.com',score:'60',status:'Enviado',notes:''},
   {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Fed. Atletismo Ast.',email:'fasatle@fasatle.org',score:'85',status:'Enviado',notes:''},
   {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Fed. Baloncesto Ast.',email:'competiciones@fbpa.es',score:'84',status:'Enviado',notes:''},
   {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Fed. Fútbol Ast.',email:'fa@asturfutbol.es',score:'83',status:'Enviado',notes:''},
   {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Fed. Ciclismo Ast.',email:'secretaria@ciclismoasturiano.es',score:'82',status:'Enviado',notes:''},
   {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'FEMPA (Montaña)',email:'administracion@fempa.net',score:'80',status:'Enviado',notes:''},
   {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Fed. Natación Ast.',email:'secretariatecnica@fdna.es',score:'78',status:'Enviado',notes:''},
+  {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'PDM Gijón',email:'pdm@gijon.es',score:'77',status:'Enviado',notes:''},
   {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Fed. Rugby Ast.',email:'secretaria@rugbyasturias.org',score:'75',status:'Enviado',notes:''},
   {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Fed. Piragüismo Ast.',email:'administracion@faspiraguismo.com',score:'74',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Prensa Deportiva Ast.',email:'prensa.deportiva.asturias@gmail.com',score:'73',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'PDM Gijón',email:'pdm@gijon.es',score:'77',status:'Enviado',notes:''},
   {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Fed. Hockey Ast.',email:'fpahockey@fpahockey.es',score:'72',status:'Enviado',notes:''},
   {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Fed. Vela Ast.',email:'fvpa@asturiasvela.es',score:'71',status:'Enviado',notes:''},
   {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Fed. Gimnasia Ast.',email:'secretaria@gimnastur.com',score:'70',status:'Enviado',notes:''},
   {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Fed. Pádel Ast.',email:'contacto@fppastur.com',score:'69',status:'Enviado',notes:''},
   {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Fed. Hípica Ast.',email:'info@fhpa.es',score:'68',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Fed. Automovilismo Ast.',email:'info@fapaonline.es',score:'67',status:'Enviado',notes:''},
   {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Universidad de Oviedo',email:'oneo@uniovi.es',score:'66',status:'Enviado',notes:''},
   {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Ayuntamiento de Oviedo',email:'ayuntamiento@oviedo.es',score:'65',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Fed. Surf Ast.',email:'administracion@federacionasturianadesurf.com',score:'64',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Fed. Patinaje Ast.',email:'secretaria.fdppa@gmail.com',score:'63',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'FEDEMA (Dep. Adaptado)',email:'fedema@fedema.com',score:'62',status:'Enviado',notes:''},
   {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Fed. Karate Ast.',email:'fakyda@fakyda.com',score:'61',status:'Enviado',notes:''},
   {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Fed. Tenis Mesa Ast.',email:'ftmpa@ftmpa.es',score:'60',status:'Enviado',notes:''},
   {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Fed. Taekwondo Ast.',email:'ftppa@hotmail.com',score:'59',status:'Enviado',notes:''},
   {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Fed. Salvamento Ast.',email:'info@salvastur.com',score:'58',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Cámara Comercio Oviedo',email:'nvallina@camara-ovi.es',score:'57',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Cámara Comercio Gijón',email:'espanaemprende@camaragijon.es',score:'56',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Colegio Economistas Ast.',email:'correo@colegioeconomistas.com',score:'55',status:'Enviado',notes:''},
   {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'FDM Avilés',email:'medicinadeportiva@ayto-aviles.es',score:'54',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Asturias Sport Nature',email:'asturiassportnature@gmail.com',score:'52',status:'Enviado',notes:''},
   {date:'2026-07-23',brand:'BRIIK',city:'A Coruña',name:'Nai Family Concept Store',email:'hola@naiconceptstore.com',score:'85',status:'Enviado',notes:''},
   {date:'2026-07-23',brand:'BRIIK',city:'A Coruña',name:'Brétema Babies & Kids',email:'info@bretemakids.es',score:'80',status:'Enviado',notes:''},
   {date:'2026-07-23',brand:'BRIIK',city:'Gijón',name:'Jo Mami Kids',email:'hola@jomamikids.com',score:'82',status:'Enviado',notes:''},
   {date:'2026-07-23',brand:'BRIIK',city:'Santiago',name:'Lunares en Mayo',email:'lunaresenmayo@lunaresenmayo.com',score:'78',status:'Enviado',notes:''},
   {date:'2026-07-23',brand:'BRIIK',city:'Pontevedra',name:'Ma Petite',email:'mapetitepontevedra@gmail.com',score:'76',status:'Enviado',notes:''},
   {date:'2026-07-23',brand:'BRIIK',city:'Vigo',name:'The Tree House',email:'hola@thetreehousekids.com',score:'78',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'BRIIK',city:'Vigo',name:'Trasniños',email:'info@trasninos.es',score:'74',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'BRIIK',city:'Avilés',name:'Babús Moda Infantil',email:'info@babusbaby.com',score:'72',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'BRIIK',city:'Avilés',name:'Clotina',email:'info@clotina.es',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'BRIIK',city:'Avilés',name:'Sin Cuentos Moda Infantil',email:'sincuentosmoda@gmail.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'BRIIK',city:'Avilés',name:'Nines Moda Infantil',email:'alicianines@hotmail.com',score:'68',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'BRIIK',city:'Oviedo',name:'Nacho Moda Infantil',email:'info@nachomodainfantil.com',score:'66',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'BRIIK',city:'Santiago',name:'Marilya Tienda Infantil',email:'info@marilyatiendainfantil.es',score:'80',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'BRIIK',city:'Santiago',name:'Gaia Ecocrianza',email:'info@gaiaecocrianza.com',score:'85',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'BRIIK',city:'A Coruña',name:'Patucos & Co',email:'Patucos.co@gmail.com',score:'74',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'BRIIK',city:'Vigo',name:'Baby Hogar Infantil',email:'baby@babyhogarinfantil.com',score:'76',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'BRIIK',city:'Vigo',name:'MAPIS VIGO',email:'hola@mapis.es',score:'82',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'BRIIK',city:'Vigo',name:'Mi mami es lista',email:'tienda@mimamieslista.com',score:'65',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'BRIIK',city:'Lugo',name:'Bebé Ratón',email:'info@beberaton.es',score:'78',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'BRIIK',city:'Lugo',name:'Chupete Shop',email:'chupetelugo@yahoo.es',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'BRIIK',city:'Lugo',name:'Bicos de mami',email:'bicosdemami.lugo@hotmail.com',score:'72',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'BRIIK',city:'Oviedo',name:'Ñácaru Puericultura',email:'nacaru@nacaru.es',score:'75',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'BRIIK',city:'Gijón',name:'Baby\\\'s House Puericultura',email:'info@babyshouse.es',score:'74',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'BRIIK',city:'Avilés',name:'Kekos Bebés',email:'kekos@kekosbebes.com',score:'72',status:'Enviado',notes:''},
   {date:'2026-07-23',brand:'BRIIK',city:'Vigo',name:'Nenel Shop',email:'hola@nenelshop.es',score:'80',status:'Enviado',notes:''},
+  {date:'2026-07-23',brand:'BRIIK',city:'Vigo',name:'MAPIS VIGO',email:'hola@mapis.es',score:'82',status:'Enviado',notes:''},
+  {date:'2026-07-23',brand:'BRIIK',city:'Lugo',name:'Bebé Ratón',email:'info@beberaton.es',score:'78',status:'Enviado',notes:''},
+  {date:'2026-07-23',brand:'BRIIK',city:'Oviedo',name:'Ñácaru Puericultura',email:'nacaru@nacaru.es',score:'75',status:'Enviado',notes:''},
+  {date:'2026-07-23',brand:'BRIIK',city:'Gijón',name:'Baby\'s House Puericultura',email:'info@babyshouse.es',score:'74',status:'Enviado',notes:''},
+  {date:'2026-07-23',brand:'BRIIK',city:'Avilés',name:'Kekos Bebés',email:'kekos@kekosbebes.com',score:'72',status:'Enviado',notes:''},
   {date:'2026-07-23',brand:'BRIIK',city:'Oviedo',name:'La Cesta Mágica',email:'info@lacestamagica.com',score:'78',status:'Enviado',notes:''},
   {date:'2026-07-23',brand:'BRIIK',city:'Gijón',name:'Santa Rita baby & kids',email:'contacto@santaritakids.es',score:'76',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'BRIIK',city:'Gijón',name:'Travesuras Moda Infantil',email:'travesuras@movistar.es',score:'65',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'BRIIK',city:'Langreo',name:'Neverland Moda Infantil',email:'neverland.langreo@hotmail.com',score:'62',status:'Enviado',notes:''},
   {date:'2026-07-23',brand:'BRIIK',city:'Gijón',name:'Carlitos Baby',email:'info@carlitosbaby.com',score:'70',status:'Enviado',notes:''},
   {date:'2026-07-23',brand:'iAwards',city:'Baleares',name:'FAIB - Atletismo Baleares',email:'faib@faib.es',score:'86',status:'Enviado',notes:''},
   {date:'2026-07-23',brand:'iAwards',city:'Baleares',name:'FBIB - Baloncesto Baleares',email:'federacio@fbib.es',score:'85',status:'Enviado',notes:''},
   {date:'2026-07-23',brand:'iAwards',city:'Baleares',name:'FFIB - Fútbol Baleares',email:'ffib@ffib.es',score:'84',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'iAwards',city:'Baleares',name:'FBHB - Balonmano Baleares',email:'federacio@fbhb.net',score:'82',status:'Enviado',notes:''},
   {date:'2026-07-23',brand:'iAwards',city:'Baleares',name:'Consell Mallorca - Gala Deporte',email:'esports@conselldemallorca.es',score:'85',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'iAwards',city:'Baleares',name:'FBN - Natación Baleares',email:'fbn@fbnatacion.org',score:'79',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'iAwards',city:'Baleares',name:'FPIB - Pádel Baleares',email:'info@fpadelib.es',score:'78',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'iAwards',city:'Baleares',name:'FTIB - Tenis Baleares',email:'info@ftib.es',score:'77',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'iAwards',city:'Baleares',name:'FBME - Montaña Escalada',email:'info@fbmweb.com',score:'76',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'iAwards',city:'Baleares',name:'FETRIB - Triatlón Baleares',email:'fetrib@fetrib.com',score:'76',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'iAwards',city:'Baleares',name:'FBV - Vela Baleares',email:'info@federacionbalearvela.org',score:'75',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'iAwards',city:'Baleares',name:'FBG - Golf Baleares',email:'fbgolf@fbgolf.com',score:'73',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'iAwards',city:'Baleares',name:'FBJ - Judo Baleares',email:'secretariageneralfbjudo@gmail.com',score:'73',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'iAwards',city:'Baleares',name:'FBP - Piragüismo Baleares',email:'info@fibp.org',score:'72',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'iAwards',city:'Baleares',name:'FHIB - Hípica Baleares',email:'secretaria@fhbalear.com',score:'71',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'iAwards',city:'Baleares',name:'FBV - Voleibol Baleares',email:'info@voleibolib.net',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'iAwards',city:'Baleares',name:'FBIC - Ciclismo Baleares',email:'info@fbiciclismo.com',score:'75',status:'Enviado',notes:''},
   {date:'2026-07-23',brand:'iAwards',city:'Baleares',name:'UIB - CampusEsport',email:'campusesport@uib.es',score:'78',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'iAwards',city:'Baleares',name:'VDB Football Academy',email:'info@vdb-footballacademy.com',score:'77',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'iAwards',city:'Baleares',name:'Consell Eivissa - Esports',email:'esports@conselldeivissa.es',score:'74',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'iAwards',city:'Baleares',name:'Ayto. Calvià - Deportes',email:'esports@calvia.com',score:'72',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'iAwards',city:'Baleares',name:'FBPetanca - Petanca',email:'info@fedbalearpetanca.es',score:'65',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'iAwards',city:'Baleares',name:'FB Billar',email:'federacionbalearbillar@gmail.com',score:'60',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'iAwards',city:'Baleares',name:'FBDAS - Subacuáticas',email:'info@fbdas.com',score:'58',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'iAwards',city:'Baleares',name:'FEBAB - Bádminton',email:'febab@febab.com',score:'55',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'iAwards',city:'Baleares',name:'FB Boxeo',email:'info@fbbaleares.com',score:'56',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'iAwards',city:'Baleares',name:'FB Taekwondo',email:'info@fbtaekwondo.com',score:'59',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'iAwards',city:'Baleares',name:'FB Gimnasia',email:'info@fgib.es',score:'62',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'iAwards',city:'Baleares',name:'Trail Serra Tramuntana',email:'info@trailserratramuntana.com',score:'64',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'iAwards',city:'Baleares',name:'FB Hockey',email:'info@fbhbalear.com',score:'63',status:'Enviado',notes:''},
   {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'IMD Segovia',email:'deportes@imdsg.es',score:'72',status:'Enviado',notes:''},
   {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'Ayto. Burgos Deportes',email:'deportes@aytoburgos.es',score:'70',status:'Enviado',notes:''},
   {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'Ayto. Salamanca Deportes',email:'deportes@aytosalamanca.es',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'Escuela Triatlon Salmantina',email:'escuelatrisalmantina@gmail.com',score:'68',status:'Enviado',notes:''},
-  {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'Club Atletismo Valladolid',email:'clubatletismovalladolid@gmail.com',score:'68',status:'Enviado',notes:''},
   {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'Club Tenis Burgos',email:'clubtenisburgos@gmail.com',score:'65',status:'Enviado',notes:''},
   {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'Tenis Salamanca',email:'info@tenissalamanca.org',score:'65',status:'Enviado',notes:''},
   {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'Entrepinos Club Golf',email:'comunicacion@golfentrepinos.com',score:'65',status:'Enviado',notes:''},
   {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'Salamanca Golf',email:'zarapicos@salamancagolf.com',score:'65',status:'Enviado',notes:''},
   {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'RS Hipica Valladolid',email:'hipica@hipicavalladolid.es',score:'65',status:'Enviado',notes:''},
   {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'CT Campeador',email:'hello@ctcampeador.es',score:'62',status:'Enviado',notes:''},
-  {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'Canal Deportivo Palencia',email:'yenaca@circulopyme.com',score:'62',status:'Enviado',notes:''},
   {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'CES Salamanca',email:'info@cesalamanca.com',score:'62',status:'Enviado',notes:''},
-  {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'Galera Club de Campo',email:'deportes@lagalera.net',score:'62',status:'Enviado',notes:''},
   {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'CT Zamora',email:'ctz@hotmail.es',score:'62',status:'Enviado',notes:''},
   {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'Casino Abulense Golf',email:'administracion@casinoabulense.com',score:'60',status:'Enviado',notes:''},
   {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'Lerma Club Golf',email:'reservas@golflerma.com',score:'60',status:'Enviado',notes:''},
@@ -318,7 +345,6 @@ const allData = [  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Museum o
   {date:'2026-07-24',brand:'BRIIK',city:'Alicante-Castellón',name:'Entrealgodones Bebé',email:'info@entrealgodonesbebe.com',score:'85',status:'Enviado',notes:''},
   {date:'2026-07-24',brand:'BRIIK',city:'Alicante-Castellón',name:'FRIDA Y YO',email:'info@fridayyo.com',score:'80',status:'Enviado',notes:''},
   {date:'2026-07-24',brand:'BRIIK',city:'Alicante-Castellón',name:'Verdi Bebé',email:'verdibebe@hotmail.com',score:'80',status:'Enviado',notes:''},
-  {date:'2026-07-24',brand:'BRIIK',city:'Alicante-Castellón',name:'PequeTRIBU',email:'info@pequetribu.es',score:'75',status:'Enviado',notes:''},
   {date:'2026-07-24',brand:'BRIIK',city:'Alicante-Castellón',name:'El Vellón de Oro',email:'elvellondeoro@elvellondeoro.com',score:'70',status:'Enviado',notes:''},
   {date:'2026-07-24',brand:'BRIIK',city:'Alicante-Castellón',name:'El Baúl de Brianda',email:'info@elbauldebrianda.com',score:'65',status:'Enviado',notes:''},
   {date:'2026-07-24',brand:'BRIIK',city:'Alicante-Castellón',name:'Pistatxo Roba Infantil',email:'pistatxorobainfantil@yahoo.es',score:'65',status:'Enviado',notes:''},
@@ -334,7 +360,7 @@ const allData = [  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Museum o
   {date:'2026-07-27',brand:'BRIIK',city:'Menorca',name:'MOM Kids Concept Store',email:'hola@momkidstore.com',score:'90',status:'Enviado',notes:''},
   {date:'2026-07-27',brand:'BRIIK',city:'Menorca',name:'Carussa',email:'reservas@carussa.es',score:'85',status:'Enviado',notes:''},
   {date:'2026-07-27',brand:'BRIIK',city:'Menorca',name:'Luna Puericultura',email:'lunamoda@gmail.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'BRIIK',city:'Ibiza',name:'Moms, dads & babies',email:'a.cliente@momsandbabies.es',score:'75',status:'Enviado',notes:''},
+  {date:'2026-07-27',brand:'BRIIK',city:'Ibiza',name:'Moms dads & babies',email:'a.cliente@momsandbabies.es',score:'75',status:'Enviado',notes:''},
   {date:'2026-07-27',brand:'BRIIK',city:'Cuenca',name:'Mamá #AContramarcha',email:'contacto@mamaacontramarcha.com',score:'85',status:'Enviado',notes:''},
   {date:'2026-07-27',brand:'BRIIK',city:'Talavera',name:'El Osito Verde',email:'info@elositoverde.es',score:'82',status:'Enviado',notes:''},
   {date:'2026-07-27',brand:'BRIIK',city:'La Roda',name:'La Boutique del BEBE',email:'hola@laboutiquedelbebe.es',score:'80',status:'Enviado',notes:''},
@@ -367,20 +393,14 @@ const allData = [  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Museum o
   {date:'2026-07-27',brand:'iAwards',city:'León',name:'Club de Montaña Capra',email:'clubmontanacapra@gmail.com',score:'70',status:'Enviado',notes:''},
   {date:'2026-07-27',brand:'iAwards',city:'Cantabria',name:'Fed. Cántabra de Ciclismo',email:'info@fcciclismo.com',score:'70',status:'Enviado',notes:''},
   {date:'2026-07-27',brand:'iAwards',city:'Cantabria',name:'Fed. Cántabra de Golf',email:'oficina@federacioncantabradegolf.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'iAwards',city:'Cantabria',name:'Fed. Cántabra de Hockey',email:'fchockey@fcanthockey.com',score:'70',status:'Enviado',notes:''},
   {date:'2026-07-27',brand:'iAwards',city:'Cantabria',name:'Fed. Cántabra de Natación',email:'info@fcnat.net',score:'70',status:'Enviado',notes:''},
   {date:'2026-07-27',brand:'iAwards',city:'Cantabria',name:'Fed. Cántabra de Atletismo',email:'fcatle@fcatle.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'iAwards',city:'Cantabria',name:'Fed. Cántabra de Judo',email:'secretario@federacioncantabradejudo.com',score:'70',status:'Enviado',notes:''},
   {date:'2026-07-27',brand:'iAwards',city:'Cantabria',name:'Fed. Cántabra de Pádel',email:'info@federacioncantabradepadel.com',score:'70',status:'Enviado',notes:''},
   {date:'2026-07-27',brand:'iAwards',city:'Cantabria',name:'Fed. Cántabra de Tenis',email:'fecantenis@gmail.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'iAwards',city:'Cantabria',name:'Fed. Cántabra de Baloncesto',email:'fcbaloncesto@gmail.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'iAwards',city:'Cantabria',name:'Fed. Cántabra de Balonmano',email:'federacion@fcantabrabm.es',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'iAwards',city:'Cantabria',name:'Universidad de Cantabria - Deportes',email:'deportes@unican.es',score:'70',status:'Enviado',notes:''},
   {date:'2026-07-27',brand:'iAwards',city:'Torrelavega',name:'Ayto. Torrelavega - Deportes',email:'reservasdeportes@aytotorrelavega.es',score:'70',status:'Enviado',notes:''},
   {date:'2026-07-28',brand:'BRIIK',city:'Salamanca',name:'El Rincón de Mi Bebé',email:'info@elrincondemibebe.com',score:'88',status:'Enviado',notes:''},
   {date:'2026-07-28',brand:'BRIIK',city:'Salamanca',name:'BabyCucadas',email:'info@babycucadas.com',score:'75',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'BRIIK',city:'Ciudad Rodrigo',name:'D\\\'ANNA Moda Infantil',email:'d.annamodainfantil@gmail.com',score:'65',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'BRIIK',city:'Ciudad Rodrigo',name:'A. de la Nava',email:'adelanavaciudadrodrigo@gmail.com',score:'62',status:'Enviado',notes:''},
+  {date:'2026-07-28',brand:'BRIIK',city:'Ciudad Rodrigo',name:"D'ANNA Moda Infantil",email:'d.annamodainfantil@gmail.com',score:'65',status:'Enviado',notes:''},
   {date:'2026-07-28',brand:'BRIIK',city:'Salamanca',name:'Conny-Land',email:'contacto@connyland.es',score:'60',status:'Enviado',notes:''},
   {date:'2026-07-28',brand:'BRIIK',city:'Salamanca',name:'Laura & Carla',email:'info@lauraycarla.com',score:'58',status:'Enviado',notes:''},
   {date:'2026-07-28',brand:'BRIIK',city:'Béjar',name:'Little Kings',email:'central@littlekings.es',score:'55',status:'Enviado',notes:''},
@@ -406,27 +426,17 @@ const allData = [  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Museum o
   {date:'2026-07-28',brand:'iAwards',city:'Ciudad Real',name:'Fed. Voleibol CLM',email:'fvcm@fvcm.es',score:'78',status:'Enviado',notes:''},
   {date:'2026-07-28',brand:'iAwards',city:'Toledo',name:'Fed. Tenis CLM',email:'fedetenisclm@fedetenisclm.es',score:'77',status:'Enviado',notes:''},
   {date:'2026-07-28',brand:'iAwards',city:'Toledo',name:'Fed. Golf CLM',email:'federacion@fedgolfclm.com',score:'76',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'iAwards',city:'Toledo',name:'Fed. Judo CLM',email:'judo@fjudoclm.com',score:'75',status:'Enviado',notes:''},
   {date:'2026-07-28',brand:'iAwards',city:'Talavera',name:'Fed. Montaña CLM',email:'contacto@fdmcm.com',score:'74',status:'Enviado',notes:''},
   {date:'2026-07-28',brand:'iAwards',city:'Albacete',name:'Fed. Caza CLM',email:'fcazacm@fccm.es',score:'72',status:'Enviado',notes:''},
   {date:'2026-07-28',brand:'iAwards',city:'Guadalajara',name:'Fed. Salvamento CLM',email:'fssclm@fssclm.com',score:'72',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'iAwards',city:'Albacete',name:'Fed. Subacuáticas CLM',email:'fcmas@fcmas.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'iAwards',city:'Albacete',name:'Fed. Ciclismo CLM',email:'ciclismoclm@ciclismoclm.com',score:'70',status:'Enviado',notes:''},
   {date:'2026-07-28',brand:'iAwards',city:'Toledo',name:'Ayto. Toledo - Deportes',email:'concedeportes@toledo.es',score:'70',status:'Enviado',notes:''},
   {date:'2026-07-28',brand:'iAwards',city:'Toledo',name:'Fed. Karate CLM',email:'info@fcmkda.com',score:'68',status:'Enviado',notes:''},
   {date:'2026-07-28',brand:'iAwards',city:'Toledo',name:'Patronato Dep. Toledo',email:'atencionalusuario@pdmtoledo.es',score:'68',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'iAwards',city:'Albacete',name:'Fed. Tenis Mesa CLM',email:'federaciontenisdemesaclm@gmail.com',score:'66',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'iAwards',city:'Toledo',name:'JCCM - Deportes',email:'dgdeportes@jccm.es',score:'65',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'iAwards',city:'Toledo',name:'PDM Toledo',email:'info@pdmtoledo.es',score:'65',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'iAwards',city:'Albacete',name:'Fed. Taekwondo CLM',email:'tkdcastillalamancha@hotmail.com',score:'65',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'iAwards',city:'Ciudad Real',name:'Fed. Gimnasia CLM',email:'fgimnasiaclm@hotmail.com',score:'65',status:'Enviado',notes:''},
   {date:'2026-07-28',brand:'iAwards',city:'Toledo',name:'Fed. Ajedrez CLM',email:'faclm@faclm.org',score:'64',status:'Enviado',notes:''},
   {date:'2026-07-28',brand:'iAwards',city:'Albacete',name:'Fed. Esgrima CLM',email:'feesclm@yahoo.es',score:'63',status:'Enviado',notes:''},
   {date:'2026-07-28',brand:'iAwards',city:'Cuenca',name:'Fed. Pelota CLM',email:'administracion@fpclm.es',score:'62',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'iAwards',city:'Talavera',name:'Fed. Pesca CLM',email:'fpclm@fedpescaclm.com',score:'60',status:'Enviado',notes:''},
   {date:'2026-07-28',brand:'iAwards',city:'Toledo',name:'Fed. Automovilismo CLM',email:'info@facm.es',score:'55',status:'Enviado',notes:''},
   {date:'2026-07-28',brand:'iAwards',city:'Toledo',name:'Fed. Motociclismo CLM',email:'fcmm@fcmm.net',score:'55',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'iAwards',city:'Albacete',name:'Fed. Colombicultura CLM',email:'presidencia@colombiculturamanchega.es',score:'50',status:'Enviado',notes:''},
   {date:'2026-07-29',brand:'iAwards',city:'Barcelona',name:'Real Club de Polo de Barcelona',email:'info@rcpolo.com',score:'87',status:'Enviado',notes:''},
   {date:'2026-07-29',brand:'iAwards',city:'Barcelona',name:'Real Club Náutico de Barcelona',email:'info@rcnb.com',score:'85',status:'Enviado',notes:''},
   {date:'2026-07-29',brand:'iAwards',city:'Tarragona',name:'Real Club Náutico de Tarragona',email:'info@rcntarragona.org',score:'84',status:'Enviado',notes:''},
@@ -475,131 +485,335 @@ const allData = [  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Museum o
   {date:'2026-07-29',brand:'BRIIK',city:'Ciutadella',name:'Luna Puericultura',email:'lunamoda@gmail.com',score:'70',status:'Enviado',notes:''},
   {date:'2026-07-29',brand:'BRIIK',city:'Formentera',name:'WeAreCosta',email:'tienda@wearecosta.es',score:'70',status:'Enviado',notes:''},
   {date:'2026-07-29',brand:'BRIIK',city:'Palma',name:'Guinyol Moda Infantil',email:'csalommoll@gmail.com',score:'65',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'BRIIK',city:'Sa Pobla',name:'Dida Infants',email:'didainfants@hotmail.com',score:'62',status:'Enviado',notes:''},
+  {date:'2026-07-29',brand:'BRIIK',city:'Sa Pobla',name:'Dida Infants',email:'didainfants@hotmail.com',score:'62',status:'Enviado',notes:''}
 ];
 
-let filteredData = [...allData];
+// ============================================================
+// TAB SWITCHING
+// ============================================================
+function switchTab(tab) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelector(`[onclick="switchTab('${tab}')"]`).classList.add('active');
+  document.getElementById('tab-' + tab).classList.add('active');
+  if (tab === 'revisar') renderReview();
+  if (tab === 'enviados') renderSent();
+}
+
+// ============================================================
+// REVIEW TAB
+// ============================================================
+let expandedId = null;
+let selectedIds = new Set();
+
+function renderReview() {
+  if (!draftsData.length) { updateReviewKPIs(); return; }
+  updateReviewKPIs();
+
+  // Filters
+  const runIds = [...new Set(draftsData.map(d => d.id?.split('-').slice(0,3).join('-') || ''))];
+  const brands = [...new Set(draftsData.map(d => d.brand))];
+  const fi = document.getElementById('filters-review');
+  let brandOpts = brands.map(b => `<option value="${b}">${b}</option>`).join('');
+  let runOpts = runIds.map(r => `<option value="${r}">${r}</option>`).join('');
+  fi.innerHTML = `
+    <div class="filter-group"><label>Marca</label><select id="rev-filter-brand" onchange="applyReviewFilters()"><option value="all">Todas</option>${brandOpts}</select></div>
+    <div class="filter-group"><label>Tanda</label><select id="rev-filter-run" onchange="applyReviewFilters()"><option value="all">Todas</option>${runOpts}</select></div>
+    <div class="filter-group"><label>Puntuación</label><select id="rev-filter-score" onchange="applyReviewFilters()"><option value="all">Todas</option><option value="80">≥ 80</option><option value="65">≥ 65</option></select></div>
+    <div class="filter-group"><label>Estado</label><select id="rev-filter-status" onchange="applyReviewFilters()"><option value="all">Todos</option><option value="drafted">drafted</option><option value="needs_review">needs_review</option></select></div>
+    <button class="btn-reset" onclick="resetReviewFilters()">✕ Limpiar</button>
+  `;
+
+  applyReviewFilters();
+}
+
+function applyReviewFilters() {
+  const brand = document.getElementById('rev-filter-brand')?.value || 'all';
+  const run = document.getElementById('rev-filter-run')?.value || 'all';
+  const score = document.getElementById('rev-filter-score')?.value || 'all';
+  const status = document.getElementById('rev-filter-status')?.value || 'all';
+
+  let filtered = draftsData;
+  if (brand !== 'all') filtered = filtered.filter(d => d.brand === brand);
+  if (run !== 'all') filtered = filtered.filter(d => (d.id || '').startsWith(run));
+  if (score !== 'all') filtered = filtered.filter(d => (d.score || 0) >= parseInt(score));
+  if (status !== 'all') filtered = filtered.filter(d => d.status === status);
+
+  const tbody = document.getElementById('review-table');
+  tbody.innerHTML = '';
+
+  if (!filtered.length) {
+    document.getElementById('no-results-review').style.display = 'block';
+    document.getElementById('result-info-review').textContent = '';
+    return;
+  }
+  document.getElementById('no-results-review').style.display = 'none';
+  document.getElementById('result-info-review').textContent = 'Mostrando ' + filtered.length + ' de ' + draftsData.length + ' borradores';
+
+  const runId = draftRuns[0]?.run_id || '';
+
+  filtered.forEach(d => {
+    const brandColor = d.brand === 'briik' ? '#6B7DAF' : '#CC3333';
+    const brandLabel = d.brand === 'briik' ? 'BRIIK' : 'iAwards';
+    const verifLabel = d.email_verification === 'official' ? 'Oficial' : d.email_verification === 'official_directory' ? 'Directorio' : d.email_verification || '';
+    const verifClass = d.email_verification === 'official' ? 'tag-verification-official' : 'tag-verification-directory';
+    const statusLabel = d.status === 'needs_review' ? '⚠️ revisar' : 'drafted';
+    const statusClass = d.status === 'needs_review' ? 'tag-needs_review' : 'tag-drafted';
+    const checked = selectedIds.has(d.id) ? 'checked' : '';
+
+    // Main row
+    const tr = document.createElement('tr');
+    tr.className = 'expandable';
+    tr.setAttribute('data-id', d.id);
+    tr.onclick = (e) => { if (e.target.tagName !== 'INPUT') toggleExpand(d.id); };
+    tr.innerHTML = `
+      <td class="check-col" onclick="event.stopPropagation()"><input type="checkbox" ${checked} onchange="toggleSelect('${d.id}', this.checked)"></td>
+      <td style="font-size:0.75em;color:#888;">${d.id}</td>
+      <td style="color:${brandColor};font-weight:600;">${brandLabel}</td>
+      <td>${d.organization}</td>
+      <td>${d.city}</td>
+      <td style="font-size:0.8em;">${d.segment}</td>
+      <td>${d.score}</td>
+      <td><span class="tag ${verifClass}">${verifLabel}</span></td>
+      <td><span class="tag ${statusClass}">${statusLabel}</span></td>
+    `;
+    tbody.appendChild(tr);
+
+    // Expand row
+    const expTr = document.createElement('tr');
+    expTr.className = 'expand-row';
+    expTr.id = 'exp-' + d.id;
+    expTr.innerHTML = `
+      <td colspan="9">
+        <div class="expand-content">
+          <div class="expand-grid">
+            <div class="field">
+              <div class="field-label">Evidencia</div>
+              <div class="field-value">${d.evidence || ''} <a href="${d.evidence_url || '#'}" target="_blank" style="color:#6B7DAF;font-size:0.8em;">[fuente]</a></div>
+            </div>
+            <div class="field">
+              <div class="field-label">Email · Verificación</div>
+              <div class="field-value">${d.email || ''} <span class="tag ${verifClass}">${verifLabel}</span> <a href="${d.email_source_url || '#'}" target="_blank" style="color:#6B7DAF;font-size:0.8em;">[fuente]</a></div>
+            </div>
+            <div class="field expand-full">
+              <div class="field-label">Asunto</div>
+              <div class="field-value" style="font-weight:600;">${d.subject || ''}</div>
+            </div>
+            <div class="field expand-full">
+              <div class="field-label">Cuerpo</div>
+              <div class="expand-body">${d.body || ''}</div>
+            </div>
+            <div class="field">
+              <div class="field-label">Adjunto</div>
+              <div class="field-value">📎 ${d.attachment || 'N/A'}</div>
+            </div>
+            <div class="field">
+              <div class="field-label">Hash</div>
+              <div class="field-value" style="font-size:0.7em;color:#555;">${d.draft_hash || ''}</div>
+            </div>
+            ${d.review_issue ? `<div class="field expand-full"><div class="field-label" style="color:#FF9800;">⚠️ Incidencia</div><div class="field-value" style="color:#FF9800;">${d.review_issue}</div></div>` : ''}
+          </div>
+          <div class="expand-actions">
+            <button class="btn-action btn-approve" onclick="event.stopPropagation(); copyCmd('APROBAR ${d.id}')">📋 Copiar APROBAR</button>
+            <button class="btn-action btn-modify" onclick="event.stopPropagation(); copyCmd('MODIFICAR ${d.id}: ')">📋 Copiar MODIFICAR</button>
+            <button class="btn-action btn-reject" onclick="event.stopPropagation(); copyCmd('RECHAZAR ${d.id}: ')">📋 Copiar RECHAZAR</button>
+            <button class="btn-action btn-view" onclick="event.stopPropagation(); copyCmd('VER ${d.id}')">📋 Copiar VER</button>
+          </div>
+        </div>
+      </td>
+    `;
+    tbody.appendChild(expTr);
+  });
+}
+
+function toggleExpand(id) {
+  const row = document.getElementById('exp-' + id);
+  if (!row) return;
+  const isOpen = row.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.expand-row.open').forEach(r => r.classList.remove('open'));
+  if (!isOpen) row.classList.add('open');
+  expandedId = isOpen ? null : id;
+}
+
+function toggleSelect(id, checked) {
+  if (checked) selectedIds.add(id);
+  else selectedIds.delete(id);
+  updateSelectAllCheck();
+}
+
+function toggleAllCheck(el) {
+  if (el.checked) {
+    draftsData.forEach(d => selectedIds.add(d.id));
+  } else {
+    selectedIds.clear();
+  }
+  applyReviewFilters();
+}
+
+function updateSelectAllCheck() {
+  const all = document.getElementById('select-all-check');
+  if (all) all.checked = selectedIds.size === draftsData.length && draftsData.length > 0;
+}
+
+function selectAll() { draftsData.forEach(d => selectedIds.add(d.id)); applyReviewFilters(); }
+function selectNone() { selectedIds.clear(); applyReviewFilters(); }
+
+function copyCmd(text) {
+  navigator.clipboard.writeText(text).then(() => {
+    // Brief visual feedback
+  }).catch(() => {});
+}
+
+function copyCommand(type) {
+  const runId = draftRuns[0]?.run_id || '';
+  if (type === 'APROBAR_TODO') {
+    copyCmd('APROBAR ' + runId + ' TODO');
+  }
+}
+
+function resetReviewFilters() {
+  ['rev-filter-brand','rev-filter-run','rev-filter-score','rev-filter-status'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = 'all';
+  });
+  applyReviewFilters();
+}
+
+function updateReviewKPIs() {
+  const briik = draftsData.filter(d => d.brand === 'briik');
+  const iawards = draftsData.filter(d => d.brand === 'iawards');
+  const drafted = draftsData.filter(d => d.status === 'drafted').length;
+  const review = draftsData.filter(d => d.status === 'needs_review').length;
+  const runId = draftRuns[0]?.run_id || 'SIN-TANDA';
+
+  document.getElementById('kpi-review').innerHTML = `
+    <div class="card briik-card"><div class="label">BRIIK Borradores</div><div class="value blue">${briik.length}</div><div class="sub">${briik.filter(d=>d.status==='drafted').length} listos · ${briik.filter(d=>d.status==='needs_review').length} revisar</div></div>
+    <div class="card iawards-card"><div class="label">iAwards Borradores</div><div class="value red">${iawards.length}</div><div class="sub">${iawards.filter(d=>d.status==='drafted').length} listos · ${iawards.filter(d=>d.status==='needs_review').length} revisar</div></div>
+    <div class="card total-card"><div class="label">Total tanda</div><div class="value green">${draftsData.length}</div><div class="sub">${runId}</div></div>
+    <div class="card" style="border-left:3px solid #FF9800;"><div class="label">Pendiente revisión</div><div class="value orange">${review}</div><div class="sub">Necesitan atención</div></div>
+  `;
+}
+
+// ============================================================
+// SENT TAB (existing functionality, preserved)
+// ============================================================
+let filteredSent = [...allData];
 let sortCol = 0;
 let sortDir = -1;
 
-const cities = [...new Set(allData.map(d=>d.city))].sort();
-const citySelect = document.getElementById('filter-city');
-cities.forEach(c => { const o = document.createElement('option'); o.value=c; o.textContent=c; citySelect.appendChild(o); });
+function initSentFilters() {
+  const cities = [...new Set(allData.map(d=>d.city))].sort();
+  const citySelect = document.getElementById('filter-city');
+  citySelect.innerHTML = '<option value="all">Todas</option>';
+  cities.forEach(c => { const o = document.createElement('option'); o.value=c; o.textContent=c; citySelect.appendChild(o); });
+  const dates = allData.map(d=>d.date).sort();
+  document.getElementById('filter-from').value = dates[0];
+  document.getElementById('filter-to').value = dates[dates.length-1];
+  applySentFilters();
+}
 
-const dates = allData.map(d=>d.date).sort();
-document.getElementById('filter-from').value = dates[0];
-document.getElementById('filter-to').value = dates[dates.length-1];
-
-function applyFilters() {
+function applySentFilters() {
   const brand = document.getElementById('filter-brand').value;
   const city = document.getElementById('filter-city').value;
   const status = document.getElementById('filter-status').value;
   const from = document.getElementById('filter-from').value;
   const to = document.getElementById('filter-to').value;
   const search = document.getElementById('filter-search').value.toLowerCase();
-  
-  filteredData = allData.filter(d => {
+
+  filteredSent = allData.filter(d => {
     if (brand !== 'all' && d.brand !== brand) return false;
     if (city !== 'all' && d.city !== city) return false;
     if (status === 'Enviado' && d.status !== 'Enviado') return false;
-    if (status === 'Interesada' && !d.notes.includes('INTERESADA') && !d.notes.includes('interesada') && d.notes !== 'Interesada') return false;
-    if (status === 'No interesa' && !d.notes.includes('No interesa') && !d.notes.includes('No trabaja')) return false;
+    if (status === 'Interesada' && !d.notes.toLowerCase().includes('interesada')) return false;
+    if (status === 'No interesa' && !d.notes.toLowerCase().includes('no interesa') && !d.notes.toLowerCase().includes('no trabaja')) return false;
     if (from && d.date < from) return false;
     if (to && d.date > to) return false;
     if (search && !d.name.toLowerCase().includes(search) && !d.email.toLowerCase().includes(search) && !d.notes.toLowerCase().includes(search)) return false;
     return true;
   });
-  
+
   const keyMap = ['date','brand','city','name','','score','status','notes'];
   const key = keyMap[sortCol] || 'date';
-  filteredData.sort((a,b) => {
+  filteredSent.sort((a,b) => {
     let va = a[key]||'', vb = b[key]||'';
     if (key === 'score') { va = parseInt(va)||0; vb = parseInt(vb)||0; return (va-vb)*sortDir; }
-    return va.localeCompare(vb) * sortDir;
+    return String(va).localeCompare(String(vb)) * sortDir;
   });
-  
-  render();
+
+  renderSent();
 }
 
-function render() {
-  const tbody = document.getElementById('data-table');
-  const noRes = document.getElementById('no-results');
-  tbody.innerHTML = '';
-  
-  if (filteredData.length === 0) {
-    noRes.style.display = 'block';
-    document.getElementById('result-info').textContent = '';
-    updateKPIs();
-    return;
-  }
-  noRes.style.display = 'none';
-  document.getElementById('result-info').textContent = 'Mostrando ' + filteredData.length + ' de ' + allData.length + ' contactos';
-  
-  filteredData.forEach(d => {
+function renderSent() {
+  const tbody = document.getElementById('sent-table');
+  document.getElementById('sent-table').innerHTML = '';
+  document.getElementById('no-results-sent').style.display = filteredSent.length ? 'none' : 'block';
+  document.getElementById('result-info-sent').textContent = filteredSent.length ? 'Mostrando ' + filteredSent.length + ' de ' + allData.length + ' contactos' : '';
+
+  filteredSent.forEach(d => {
     const tr = document.createElement('tr');
-    const tag = d.status === 'Enviado' ? 'tag-enviado' : 'tag-respondido';
+    const tag = d.status === 'Enviado' ? 'tag-sent' : 'tag-replied';
     const brandColor = d.brand === 'BRIIK' ? '#6B7DAF' : '#CC3333';
     let noteTag = '';
-    if (d.notes.includes('INTERESADA') || d.notes.includes('interesada')) noteTag = 'tag-positivo';
-    else if (d.notes.includes('No interesa') || d.notes.includes('No trabaja')) noteTag = 'tag-rebote';
-    else if (d.notes.includes('Auto-respuesta')) noteTag = 'tag-respondido';
-    
-    tr.innerHTML = '<td>'+d.date.split('-').reverse().slice(0,2).join('/')+'</td>'+
-      '<td style="color:'+brandColor+';font-weight:600;">'+d.brand+'</td>'+
-      '<td>'+d.city+'</td>'+
-      '<td>'+d.name+'</td>'+
-      '<td style="font-size:0.8em;color:#aaa;">'+d.email+'</td>'+
-      '<td>'+d.score+'</td>'+
-      '<td><span class="tag '+tag+'">'+d.status+'</span></td>'+
-      '<td>'+(noteTag?'<span class="tag '+noteTag+'">'+d.notes+'</span>':d.notes)+'</td>';
+    if (d.notes.toLowerCase().includes('interesada')) noteTag = 'tag-replied';
+    else if (d.notes.toLowerCase().includes('no interesa') || d.notes.toLowerCase().includes('no trabaja')) noteTag = 'tag-rejected';
+    const maskedEmail = d.email ? d.email.replace(/(..).*(@.*)/, '$1***$2') : '';
+
+    tr.innerHTML = `<td>${d.date.split('-').reverse().slice(0,2).join('/')}</td>
+      <td style="color:${brandColor};font-weight:600;">${d.brand}</td>
+      <td>${d.city}</td>
+      <td>${d.name}</td>
+      <td style="font-size:0.8em;color:#aaa;">${maskedEmail}</td>
+      <td>${d.score}</td>
+      <td><span class="tag ${tag}">${d.status}</span></td>
+      <td>${noteTag?'<span class="tag '+noteTag+'">'+d.notes+'</span>':d.notes}</td>`;
     tbody.appendChild(tr);
   });
-  updateKPIs();
+  updateSentKPIs();
 }
 
-function updateKPIs() {
-  const total = filteredData.length;
-  const briik = filteredData.filter(d=>d.brand==='BRIIK').length;
-  const iawards = filteredData.filter(d=>d.brand==='iAwards').length;
-  const replies = filteredData.filter(d=>d.notes).length;
-  
-  document.getElementById('kpi-briik').textContent = briik;
-  document.getElementById('kpi-iawards').textContent = iawards;
-  document.getElementById('kpi-total').textContent = total;
-  document.getElementById('kpi-replies').textContent = replies;
-  document.getElementById('kpi-rate').textContent = total>0?Math.round(replies/total*100)+'%':'0%';
-  
-  const citySet = [...new Set(filteredData.map(d=>d.city))];
-  document.getElementById('kpi-briik-sub').textContent = citySet.filter(c=>c!=='CyL').join(' · ')||'-';
-  document.getElementById('kpi-iawards-sub').textContent = citySet.filter(c=>c==='CyL').join(' · ')||'-';
-  document.getElementById('kpi-total-sub').textContent = citySet.length+' regiones';
-  document.getElementById('kpi-replies-sub').textContent = filteredData.filter(d=>d.notes.includes('INTERESADA')||d.notes.includes('interesada')).length+' interes';
-  document.getElementById('kpi-rate-sub').textContent = 'Sobre '+total+' envios';
-}
-
-function sortTable(col) {
+function sortSent(col) {
   if (sortCol === col) sortDir *= -1;
   else { sortCol = col; sortDir = col===0?-1:1; }
-  document.querySelectorAll('th').forEach(th=>th.classList.remove('sorted'));
-  applyFilters();
+  applySentFilters();
 }
 
 function resetFilters() {
-  document.getElementById('filter-brand').value='all';
-  document.getElementById('filter-city').value='all';
-  document.getElementById('filter-status').value='all';
-  document.getElementById('filter-from').value=dates[0];
-  document.getElementById('filter-to').value=dates[dates.length-1];
-  document.getElementById('filter-search').value='';
-  applyFilters();
+  ['filter-brand','filter-city','filter-status'].forEach(id => document.getElementById(id).value='all');
+  const dates = allData.map(d=>d.date).sort();
+  document.getElementById('filter-from').value = dates[0];
+  document.getElementById('filter-to').value = dates[dates.length-1];
+  document.getElementById('filter-search').value = '';
+  applySentFilters();
 }
 
-['filter-brand','filter-city','filter-status','filter-from','filter-to'].forEach(id=>{
-  document.getElementById(id).addEventListener('change',applyFilters);
-});
-document.getElementById('filter-search').addEventListener('input',applyFilters);
+function updateSentKPIs() {
+  const total = filteredSent.length;
+  const briik = filteredSent.filter(d=>d.brand==='BRIIK').length;
+  const iawards = filteredSent.filter(d=>d.brand==='iAwards').length;
+  const replies = filteredSent.filter(d=>d.notes).length;
+  const interest = filteredSent.filter(d=>d.notes.toLowerCase().includes('interesada')).length;
+  const overallTotal = allData.length;
 
-applyFilters();
+  document.getElementById('kpi-sent').innerHTML = `
+    <div class="card briik-card"><div class="label">BRIIK Enviados</div><div class="value blue">${allData.filter(d=>d.brand==='BRIIK').length}</div><div class="sub">${briik} en filtro</div></div>
+    <div class="card iawards-card"><div class="label">iAwards Enviados</div><div class="value red">${allData.filter(d=>d.brand==='iAwards').length}</div><div class="sub">${iawards} en filtro</div></div>
+    <div class="card total-card"><div class="label">Total histórico</div><div class="value green">${overallTotal}</div><div class="sub">${total} en filtro</div></div>
+    <div class="card" style="border-left:3px solid #FFC107;"><div class="label">Respuestas</div><div class="value yellow">${replies}</div><div class="sub">${interest} interés · ${overallTotal>0?Math.round(replies/overallTotal*100):0}% tasa</div></div>
+  `;
+}
+
+// ============================================================
+// INIT
+// ============================================================
+['filter-brand','filter-city','filter-status','filter-from','filter-to'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('change', applySentFilters);
+});
+document.getElementById('filter-search')?.addEventListener('input', applySentFilters);
+
+loadDrafts();
+initSentFilters();
 </script>
 </body>
 </html>
