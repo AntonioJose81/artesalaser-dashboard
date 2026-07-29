@@ -1,6 +1,6 @@
 {
   "run_id": "PROS-20260729-1130",
-  "generated_at": "2026-07-29T12:33:07.029803",
+  "generated_at": "2026-07-29T12:34:32.955283",
   "dashboard_url": "https://antoniojose81.github.io/artesalaser-dashboard/prospeccion.html",
   "regions": {
     "briik": "Comunidad Valenciana",
@@ -29,7 +29,7 @@
       "subject": "Un accesorio antiderrame para vuestra sección infantil",
       "body": "Hola,\n\nHe visto que en Bebé Polita tenéis una sección de alimentación con vajillas y vasos de aprendizaje BLW. BRIIK encaja justo en ese momento: cuando el niño empieza a beber solo.\n\nEs un soporte para bricks de 200 ml con dos asas que evita derrames y ayuda a que no aplasten el envase. Lo fabricamos en España y puede personalizarse con el nombre.\n\n¿Os envío las condiciones para tienda?",
       "draft_hash": "35c18d858d2d",
-      "status": "approved",
+      "status": "sent",
       "review_issue": "",
       "attachment": "infografia_briik.pdf"
     },
@@ -51,7 +51,7 @@
       "subject": "Una idea para completar vuestra línea de accesorios",
       "body": "Hola,\n\nHe visto vuestra selección de accesorios de alimentación en Nenena: baberos, platos, vasos de diseño. BRIIK suma a esa línea con algo diferente.\n\nUn soporte reutilizable para bricks de 200 ml, con dos asas para que el niño beba solo sin derrames. Fabricado en España, 8 modelos y se puede personalizar con el nombre.\n\n¿Os envío las condiciones para tienda?",
       "draft_hash": "0d105fa59c4d",
-      "status": "approved",
+      "status": "sent",
       "review_issue": "",
       "attachment": "infografia_briik.pdf"
     },
@@ -95,7 +95,7 @@
       "subject": "Trofeos para el Trofeo de Verano 2026",
       "body": "Hola,\n\nHe visto que el Club de Tenis Valencia organiza el Trofeo de Verano en las próximas semanas, con varias categorías y entrega de premios. Más de 100 años de historia merecen trofeos a la altura.\n\nEn iAwards diseñamos cada trofeo para que refleje la identidad del torneo, sin catálogos genéricos. Trabajamos con madera, aluminio y biomateriales. Y si encaja, el NFC permite que el premiado acceda a contenido digital al acercar el móvil.\n\nSi os interesa, os hacemos una propuesta de diseño sin compromiso.",
       "draft_hash": "75115f00b182",
-      "status": "approved",
+      "status": "sent",
       "review_issue": "",
       "attachment": "catalogo_iawards.pdf"
     },
@@ -117,7 +117,7 @@
       "subject": "Trofeos para las regatas del RCN Valencia",
       "body": "Hola,\n\nHe visto que el RCN Valencia organiza regatas durante toda la temporada y es sede de la Copa del Rey de Vela. Las entregas de premios de esas competiciones merecen un trofeo que refleje la tradición del club.\n\nEn iAwards diseñamos piezas personalizadas que comparten la identidad de cada regata. Madera, aluminio, combinaciones. Si os interesa, os hacemos una propuesta de diseño sin compromiso.",
       "draft_hash": "1a676031663b",
-      "status": "approved",
+      "status": "sent",
       "review_issue": "",
       "attachment": "catalogo_iawards.pdf"
     },
@@ -139,10 +139,10 @@
       "subject": "Trofeos para el Campeonato Social de Golf Escorpión",
       "body": "Hola,\n\nHe visto que en Golf Escorpión organizáis el Campeonato Social con torneos mensuales y entrega de premios durante todo el año. Un campo de 18 hoyos merece trofeos con personalidad.\n\nEn iAwards diseñamos cada pieza para que refleje la identidad del club y del torneo. Sin catálogos, con materiales seleccionados. Si os interesa, os hacemos una propuesta de diseño sin compromiso.",
       "draft_hash": "229a8b53b59a",
-      "status": "approved",
+      "status": "sent",
       "review_issue": "",
       "attachment": "catalogo_iawards.pdf"
     }
   ],
-  "cache_buster": "31684012"
+  "cache_buster": "74611499"
 }
