@@ -6,43 +6,41 @@
 <title>Prospección BRIIK + iAwards</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f0f0f; color: #e0e0e0; padding: 20px; max-width: 1300px; margin: 0 auto; }
-.header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px; }
-.header h1 { font-size: 1.3em; color: #fff; }
-.date { color: #888; font-size: 0.8em; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f0f0f; color: #e0e0e0; padding: 12px; max-width: 1300px; margin: 0 auto; }
+.header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px; }
+.header h1 { font-size: 1.15em; color: #fff; }
+.date { color: #888; font-size: 0.7em; }
+.update-info { font-size: 0.65em; color: #555; margin-left: 8px; }
 
-/* Tabs */
-.tabs { display: flex; gap: 0; margin-bottom: 16px; border-bottom: 1px solid #2a2a2a; }
-.tab { padding: 8px 20px; background: none; border: none; color: #888; cursor: pointer; font-size: 0.85em; font-family: inherit; border-bottom: 2px solid transparent; transition: all 0.2s; }
+.tabs { display: flex; gap: 0; margin-bottom: 12px; border-bottom: 1px solid #2a2a2a; }
+.tab { padding: 7px 14px; background: none; border: none; color: #888; cursor: pointer; font-size: 0.8em; font-family: inherit; border-bottom: 2px solid transparent; transition: all 0.2s; }
 .tab:hover { color: #ccc; }
 .tab.active { color: #fff; border-bottom-color: #6B7DAF; }
 .tab-content { display: none; }
 .tab-content.active { display: block; }
 
-/* KPIs */
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 16px; }
-.card { background: #1a1a1a; border-radius: 10px; padding: 12px; border: 1px solid #2a2a2a; }
-.card .label { font-size: 0.65em; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
-.card .value { font-size: 1.6em; font-weight: 700; }
-.card .sub { font-size: 0.7em; color: #666; margin-top: 2px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; margin-bottom: 12px; }
+.card { background: #1a1a1a; border-radius: 8px; padding: 10px; border: 1px solid #2a2a2a; }
+.card .label { font-size: 0.6em; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+.card .value { font-size: 1.3em; font-weight: 700; }
+.card .sub { font-size: 0.65em; color: #666; margin-top: 2px; }
 .briik-card { border-left: 3px solid #6B7DAF; }
 .iawards-card { border-left: 3px solid #CC3333; }
 .total-card { border-left: 3px solid #4CAF50; }
+.warn-card { border-left: 3px solid #FF9800; }
 .blue { color: #6B7DAF; } .red { color: #CC3333; } .green { color: #4CAF50; } .yellow { color: #FFC107; } .orange { color: #FF9800; }
 
-/* Filters */
-.filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; align-items: center; background: #1a1a1a; padding: 12px 14px; border-radius: 10px; border: 1px solid #2a2a2a; }
-.filters label { font-size: 0.7em; color: #888; text-transform: uppercase; margin-right: 4px; }
-.filters select, .filters input { background: #0f0f0f; border: 1px solid #333; color: #e0e0e0; padding: 6px 10px; border-radius: 6px; font-size: 0.8em; }
-.filters select:focus, .filters input:focus { outline: none; border-color: #6B7DAF; }
-.filter-group { display: flex; align-items: center; gap: 5px; }
-.btn-reset { background: #2a2a2a; border: 1px solid #444; color: #999; padding: 6px 12px; border-radius: 6px; font-size: 0.75em; cursor: pointer; }
+.filters { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; align-items: center; background: #1a1a1a; padding: 10px 12px; border-radius: 8px; border: 1px solid #2a2a2a; }
+.filters label { font-size: 0.65em; color: #888; text-transform: uppercase; margin-right: 3px; }
+.filters select, .filters input { background: #0f0f0f; border: 1px solid #333; color: #e0e0e0; padding: 5px 8px; border-radius: 5px; font-size: 0.75em; max-width: 140px; }
+.filters select:focus { outline: none; border-color: #6B7DAF; }
+.filter-group { display: flex; align-items: center; gap: 4px; }
+.btn-reset { background: #2a2a2a; border: 1px solid #444; color: #999; padding: 5px 10px; border-radius: 5px; font-size: 0.7em; cursor: pointer; }
 .btn-reset:hover { background: #333; color: #fff; }
 
-/* Batch actions */
-.batch-actions { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; align-items: center; }
-.batch-actions span { font-size: 0.75em; color: #888; margin-right: 8px; }
-.btn-action { background: #1a1a1a; border: 1px solid #333; color: #ccc; padding: 5px 12px; border-radius: 6px; font-size: 0.75em; cursor: pointer; font-family: inherit; transition: all 0.15s; }
+.batch-actions { display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; align-items: center; }
+.batch-actions span { font-size: 0.7em; color: #888; margin-right: 4px; }
+.btn-action { background: #1a1a1a; border: 1px solid #333; color: #ccc; padding: 4px 10px; border-radius: 5px; font-size: 0.7em; cursor: pointer; font-family: inherit; transition: all 0.15s; }
 .btn-action:hover { background: #2a2a2a; border-color: #555; color: #fff; }
 .btn-approve { border-color: #4CAF50; color: #4CAF50; }
 .btn-approve:hover { background: #1a2a1a; }
@@ -52,55 +50,68 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 .btn-modify:hover { background: #2a2a1a; }
 .btn-view { border-color: #6B7DAF; color: #6B7DAF; }
 .btn-view:hover { background: #1a1a2a; }
-.btn-copied { background: #1a3a1a !important; border-color: #4CAF50 !important; color: #4CAF50 !important; }
+.btn-send { border-color: #4CAF50; color: #4CAF50; font-weight: 700; }
+.btn-send:hover { background: #1a3a1a; }
+.btn-copied { background: #1a3a1a !important; border-color: #4CAF50 !important; }
 
-/* Table */
-.table-wrapper { overflow-x: auto; margin-bottom: 20px; }
-table { width: 100%; border-collapse: collapse; font-size: 0.78em; }
-th { background: #1a1a1a; color: #888; font-weight: 600; text-align: left; padding: 7px 10px; border-bottom: 1px solid #2a2a2a; font-size: 0.7em; text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; white-space: nowrap; }
+.table-wrapper { overflow-x: auto; margin-bottom: 16px; -webkit-overflow-scrolling: touch; }
+table { width: 100%; border-collapse: collapse; font-size: 0.72em; min-width: 600px; }
+th { background: #1a1a1a; color: #888; font-weight: 600; text-align: left; padding: 6px 8px; border-bottom: 1px solid #2a2a2a; font-size: 0.68em; text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; white-space: nowrap; position: sticky; top: 0; }
 th:hover { color: #fff; }
-td { padding: 5px 10px; border-bottom: 1px solid #1a1a1a; white-space: nowrap; }
+td { padding: 4px 8px; border-bottom: 1px solid #1a1a1a; white-space: nowrap; }
 tr:hover { background: #141414; }
 tr.selected { background: #1a1a2a; }
 tr.expandable { cursor: pointer; }
-tr.expandable:hover { background: #181818; }
 
-/* Expand */
 .expand-row { display: none; }
 .expand-row.open { display: table-row; }
 .expand-row td { padding: 0; }
-.expand-content { background: #141414; border: 1px solid #2a2a2a; border-radius: 6px; margin: 8px 12px; padding: 14px; }
-.expand-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.expand-grid .field { margin-bottom: 6px; }
-.expand-grid .field-label { font-size: 0.65em; color: #666; text-transform: uppercase; letter-spacing: 0.5px; }
-.expand-grid .field-value { font-size: 0.8em; color: #ccc; word-break: break-word; }
+.expand-content { background: #141414; border: 1px solid #2a2a2a; border-radius: 5px; margin: 6px 8px; padding: 10px; }
+.expand-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.expand-grid .field { margin-bottom: 4px; }
+.expand-grid .field-label { font-size: 0.62em; color: #666; text-transform: uppercase; letter-spacing: 0.5px; }
+.expand-grid .field-value { font-size: 0.75em; color: #ccc; word-break: break-word; }
 .expand-full { grid-column: 1 / -1; }
-.expand-body { background: #0f0f0f; border: 1px solid #1a1a1a; border-radius: 4px; padding: 12px; font-size: 0.85em; color: #ccc; white-space: pre-wrap; line-height: 1.5; margin-top: 4px; }
-.expand-actions { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
+.expand-body { background: #0f0f0f; border: 1px solid #1a1a1a; border-radius: 4px; padding: 10px; font-size: 0.78em; color: #ccc; white-space: pre-wrap; line-height: 1.45; margin-top: 3px; max-height: 200px; overflow-y: auto; }
+.expand-actions { display: flex; gap: 4px; margin-top: 8px; flex-wrap: wrap; }
 
-/* Tags */
-.tag { display: inline-block; padding: 2px 7px; border-radius: 10px; font-size: 0.7em; font-weight: 600; }
+.tag { display: inline-block; padding: 2px 6px; border-radius: 8px; font-size: 0.65em; font-weight: 600; }
 .tag-drafted { background: #1a1a2a; color: #6B7DAF; }
 .tag-needs_review { background: #2a2a1a; color: #FF9800; }
 .tag-approved { background: #1a3a1a; color: #4CAF50; }
 .tag-rejected { background: #3a1a1a; color: #EF5350; }
 .tag-sent { background: #1a3a1a; color: #4CAF50; }
-.tag-replied { background: #3a2a0a; color: #FFC107; }
-.tag-bounced { background: #3a1a1a; color: #EF5350; }
-.tag-blocked { background: #2a2a2a; color: #888; }
 .tag-error { background: #3a0000; color: #FF5252; }
+.tag-replied { background: #3a2a0a; color: #FFC107; }
 .tag-verification-official { background: #1a3a1a; color: #4CAF50; }
 .tag-verification-directory { background: #1a2a3a; color: #6B7DAF; }
+.tag-hash-changed { background: #3a1a1a; color: #EF5350; font-size:0.6em; }
+.no-results { text-align: center; padding: 25px; color: #666; display: none; font-size: 0.8em; }
+.result-info { font-size: 0.7em; color: #888; margin-bottom: 6px; }
+.check-col { width: 28px; }
+.footer { margin-top: 20px; padding-top: 10px; border-top: 1px solid #1a1a1a; text-align: center; font-size: 0.65em; color: #555; }
 
-.no-results { text-align: center; padding: 30px; color: #666; display: none; }
-.result-info { font-size: 0.75em; color: #888; margin-bottom: 6px; }
-.check-col { width: 30px; }
-.footer { margin-top: 30px; padding-top: 15px; border-top: 1px solid #1a1a1a; text-align: center; font-size: 0.7em; color: #555; }
-@media (max-width: 600px) {
-  .filters { flex-direction: column; align-items: flex-start; }
-  .header h1 { font-size: 1.1em; }
+/* MOBILE */
+@media (max-width: 500px) {
+  body { padding: 8px; }
+  .header h1 { font-size: 1em; }
+  .grid { grid-template-columns: 1fr 1fr; }
+  .card { padding: 8px; }
+  .card .value { font-size: 1.1em; }
+  .filters { flex-direction: column; align-items: stretch; padding: 8px; }
+  .filters select, .filters input { max-width: none; width: 100%; }
+  .batch-actions { flex-wrap: wrap; gap: 4px; }
+  .btn-action { padding: 4px 8px; font-size: 0.68em; }
   .expand-grid { grid-template-columns: 1fr; }
-  .batch-actions { flex-direction: column; }
+  .expand-actions { flex-direction: column; }
+  .expand-actions .btn-action { width: 100%; text-align: center; }
+  th { font-size: 0.62em; padding: 4px 5px; }
+  td { font-size: 0.68em; padding: 3px 5px; }
+}
+@media (max-width: 390px) {
+  .grid { grid-template-columns: 1fr; }
+  .tabs { gap: 0; }
+  .tab { padding: 6px 8px; font-size: 0.7em; }
 }
 </style>
 </head>
@@ -109,7 +120,8 @@ tr.expandable:hover { background: #181818; }
 <div class="header">
   <div>
     <h1>📊 Prospección Comercial</h1>
-    <div class="date" id="update-date">Actualizado: 29 julio 2026</div>
+    <span class="date" id="update-date">Actualizado: --</span>
+    <span class="update-info" id="cache-info"></span>
   </div>
 </div>
 
@@ -121,14 +133,16 @@ tr.expandable:hover { background: #181818; }
 <!-- POR REVISAR -->
 <div id="tab-revisar" class="tab-content active">
   <div class="grid" id="kpi-review"></div>
-
   <div class="filters" id="filters-review"></div>
 
   <div class="batch-actions">
-    <span>Selección:</span>
+    <span>Sel:</span>
     <button class="btn-action" onclick="selectAll()">Todos</button>
     <button class="btn-action" onclick="selectNone()">Ninguno</button>
-    <button class="btn-action btn-approve" onclick="copyCommand('APROBAR_TODO')">📋 Copiar APROBAR tanda</button>
+    <button class="btn-action btn-approve" id="btn-approve-sel" onclick="copySelected()">📋 Copiar APROBAR seleccionados (0)</button>
+    <button class="btn-action btn-approve" onclick="copyCmd('APROBAR ' + getRunId() + ' BRI')">📋 BRI tanda</button>
+    <button class="btn-action btn-approve" onclick="copyCmd('APROBAR ' + getRunId() + ' IAW')">📋 IAW tanda</button>
+    <button class="btn-action btn-approve" onclick="copyCmd('APROBAR ' + getRunId() + ' TODO')">📋 Copiar APROBAR toda la tanda</button>
   </div>
 
   <div class="result-info" id="result-info-review"></div>
@@ -136,14 +150,14 @@ tr.expandable:hover { background: #181818; }
     <table>
       <thead>
         <tr>
-          <th class="check-col"><input type="checkbox" id="select-all-check" onchange="toggleAllCheck(this)" title="Seleccionar todo"></th>
+          <th class="check-col"><input type="checkbox" id="select-all-check" onchange="toggleAllCheck(this)" title="Todo"></th>
           <th>ID</th>
           <th>MARCA</th>
           <th>ENTIDAD</th>
           <th>CIUDAD</th>
           <th>SEGMENTO</th>
-          <th>PUNT.</th>
-          <th>VERIF.</th>
+          <th>PUNT</th>
+          <th>VERIF</th>
           <th>ESTADO</th>
         </tr>
       </thead>
@@ -158,31 +172,13 @@ tr.expandable:hover { background: #181818; }
   <div class="grid" id="kpi-sent"></div>
 
   <div class="filters">
-    <div class="filter-group">
-      <label>Marca</label>
-      <select id="filter-brand"><option value="all">Todas</option><option value="BRIIK">BRIIK</option><option value="iAwards">iAwards</option></select>
-    </div>
-    <div class="filter-group">
-      <label>Ciudad</label>
-      <select id="filter-city"><option value="all">Todas</option></select>
-    </div>
-    <div class="filter-group">
-      <label>Estado</label>
-      <select id="filter-status"><option value="all">Todos</option><option value="Enviado">Enviado</option><option value="Interesada">Interesadas</option><option value="No interesa">No interesa</option></select>
-    </div>
-    <div class="filter-group">
-      <label>Desde</label>
-      <input type="date" id="filter-from">
-    </div>
-    <div class="filter-group">
-      <label>Hasta</label>
-      <input type="date" id="filter-to">
-    </div>
-    <div class="filter-group">
-      <label>Buscar</label>
-      <input type="text" id="filter-search" placeholder="Nombre o email...">
-    </div>
-    <button class="btn-reset" onclick="resetFilters()">✕ Limpiar</button>
+    <div class="filter-group"><label>Marca</label><select id="filter-brand"><option value="all">Todas</option><option value="BRIIK">BRIIK</option><option value="iAwards">iAwards</option></select></div>
+    <div class="filter-group"><label>Ciudad</label><select id="filter-city"><option value="all">Todas</option></select></div>
+    <div class="filter-group"><label>Estado</label><select id="filter-status"><option value="all">Todos</option><option value="Enviado">Enviado</option><option value="Interesada">Interesada</option><option value="NoInteresa">No interesa</option></select></div>
+    <div class="filter-group"><label>Desde</label><input type="date" id="filter-from"></div>
+    <div class="filter-group"><label>Hasta</label><input type="date" id="filter-to"></div>
+    <div class="filter-group"><label>Buscar</label><input type="text" id="filter-search" placeholder="Nombre o email..." style="max-width:120px"></div>
+    <button class="btn-reset" onclick="resetFilters()">✕</button>
   </div>
 
   <div class="result-info" id="result-info-sent"></div>
@@ -195,8 +191,8 @@ tr.expandable:hover { background: #181818; }
           <th onclick="sortSent(2)">CIUDAD</th>
           <th onclick="sortSent(3)">NOMBRE</th>
           <th>EMAIL</th>
-          <th onclick="sortSent(5)">PUNT.</th>
-          <th onclick="sortSent(6)">ESTADO</th>
+          <th onclick="sortSent(5)">PUNT</th>
+          <th>ESTADO</th>
           <th>NOTAS</th>
         </tr>
       </thead>
@@ -206,286 +202,70 @@ tr.expandable:hover { background: #181818; }
   <div class="no-results" id="no-results-sent">No se encontraron resultados</div>
 </div>
 
-<div class="footer">ARTESALASER · BRIIK + iAwards · Prospección comercial</div>
+<div class="footer">ARTESALASER · BRIIK + iAwards</div>
 
 <script>
 // ============================================================
-// DATA: Drafts (from prospeccion_drafts.json)
+// DRAFTS from masked JSON
 // ============================================================
 let draftsData = [];
-let draftRuns = [];
+let draftMeta = { run_id: '', generated_at: '', cache_buster: '' };
+let selectedIds = new Set();
 
 async function loadDrafts() {
   try {
-    const resp = await fetch('prospeccion_drafts.json?' + Date.now());
+    const resp = await fetch('prospeccion_drafts_masked.json?t=' + Date.now());
     const json = await resp.json();
+    draftMeta.run_id = json.run_id || '';
+    draftMeta.generated_at = json.generated_at || '';
+    draftMeta.cache_buster = json.cache_buster || '';
     draftsData = json.contacts || [];
-    draftRuns = [json];
+
+    document.getElementById('update-date').textContent =
+      'Generado: ' + (draftMeta.generated_at ? new Date(draftMeta.generated_at).toLocaleString('es-ES') : '--');
+    document.getElementById('cache-info').textContent =
+      '#' + draftMeta.cache_buster;
+
     renderReview();
   } catch(e) {
-    console.log('Drafts not loaded:', e.message);
     document.getElementById('no-results-review').style.display = 'block';
-    document.getElementById('no-results-review').textContent = 'No se pudo cargar prospeccion_drafts.json';
+    document.getElementById('no-results-review').textContent = 'No se pudo cargar borradores. ¿JSON no disponible?';
     updateReviewKPIs();
   }
 }
 
+function getRunId() { return draftMeta.run_id; }
+
 // ============================================================
-// DATA: Sent (historical, embedded)
+// SENT DATA
 // ============================================================
 const allData = [
-  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Museum of Mini',email:'info@museumofmini.com',score:'80',status:'Enviado',notes:''},
-  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Cositas Chulas',email:'info@cositaschulas.com',score:'75',status:'Enviado',notes:''},
-  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Chiva Chivita',email:'info@chivachivita.com',score:'74',status:'Enviado',notes:''},
-  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Mon Petit Retro',email:'info@monpetitretro.com',score:'72',status:'Enviado',notes:''},
-  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Alva for Kids',email:'info@alvaforkids.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Kamchatka Magic Toys',email:'info@kamchatkatoys.com',score:'68',status:'Enviado',notes:''},
-  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Pontegorri',email:'hola@pontegorri.com',score:'65',status:'Enviado',notes:''},
-  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'La Oca Loca',email:'info@laocaloca.com',score:'62',status:'Enviado',notes:''},
-  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Circus Kids',email:'info@circuskids.es',score:'60',status:'Enviado',notes:''},
-  {date:'2026-07-16',brand:'iAwards',city:'CyL',name:'RugbyCyL',email:'secretaria@rugbycyl.org',score:'85',status:'Enviado',notes:''},
-  {date:'2026-07-16',brand:'iAwards',city:'CyL',name:'FBCyL Baloncesto',email:'fbcyl@fbcyl.es',score:'82',status:'Enviado',notes:''},
-  {date:'2026-07-16',brand:'iAwards',city:'CyL',name:'FMDVA Valladolid',email:'fmd@ava.es',score:'80',status:'Enviado',notes:'Premier Padel'},
-  {date:'2026-07-16',brand:'iAwards',city:'CyL',name:'PadelCyL',email:'federacion@padelcyl.es',score:'71',status:'Enviado',notes:'Circuito pádel'},
-  {date:'2026-07-16',brand:'iAwards',city:'CyL',name:'Ayto Leon',email:'info.deportes@aytoleon.es',score:'75',status:'Enviado',notes:''},
-  {date:'2026-07-16',brand:'iAwards',city:'CyL',name:'FGOLFCYL',email:'secretaria@fgolfcyl.org',score:'68',status:'Enviado',notes:''},
-  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'FTCL Tenis',email:'presidente@ftcl.com',score:'78',status:'Enviado',notes:''},
-  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'FCLM Montana',email:'fclm@fclm.com',score:'82',status:'Enviado',notes:''},
-  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'Triatlon CyL',email:'prensa@triatloncastillayleon.com',score:'73',status:'Enviado',notes:''},
-  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'FECLA Ajedrez',email:'info@fecla.es',score:'72',status:'Enviado',notes:''},
-  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'Balonmano CyL',email:'fcylbm@fcylbm.com',score:'72',status:'Enviado',notes:''},
-  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'UVa Deportes',email:'servicio.deportes@uva.es',score:'78',status:'Enviado',notes:''},
-  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'USAL Deportes',email:'serv.efyd@usal.es',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'Karate CyL',email:'federacion@federacioncylkarate.com',score:'65',status:'Enviado',notes:''},
-  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'Prensa Dep VLL',email:'secretaria@apdvalladolid.org',score:'65',status:'Enviado',notes:''},
-  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'Diputacion Leon',email:'deportes@dipuleon.es',score:'72',status:'Enviado',notes:''},
-  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'Runvasport',email:'runvasport@gmail.com',score:'76',status:'Enviado',notes:''},
-  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'Deporte Adaptado',email:'federacion@deporteadaptadocyl.org',score:'62',status:'Enviado',notes:''},
-  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'FVCL Voleibol',email:'fvcl@fvcl.es',score:'78',status:'Enviado',notes:''},
-  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'FETACYL',email:'info@fetacyl.org',score:'77',status:'Enviado',notes:''},
-  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'Nonetes',email:'info@nonetes.es',score:'72',status:'Enviado',notes:'Puericultura BCN'},
-  {date:'2026-07-22',brand:'BRIIK',city:'Santander',name:'Kekos Bebés',email:'kekos@kekosbebes.com',score:'78',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'BRIIK',city:'Donostia',name:'Jostamendi Ttikiak',email:'info@jostamendittikiak.com',score:'75',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'BRIIK',city:'Bilbao',name:'Abracadabra',email:'contigo@juguetesabracadabra.es',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'BRIIK',city:'País Vasco',name:'Amatxu Denda',email:'info@amatxudenda.com',score:'75',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'BRIIK',city:'País Vasco',name:'Bitxo Bola',email:'info@bitxobola.com',score:'75',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'BRIIK',city:'País Vasco',name:'La Casa del Peque',email:'info@lacasadelpeque.com',score:'72',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'BRIIK',city:'País Vasco',name:'Cochecitos Pérez',email:'amaya@cochecitosperez.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'BRIIK',city:'Vitoria',name:'Colchonería Elejalde',email:'info@colchoneriaelejalde.com',score:'60',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Fed. Atletismo Ast.',email:'fasatle@fasatle.org',score:'85',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Fed. Baloncesto Ast.',email:'competiciones@fbpa.es',score:'84',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Fed. Fútbol Ast.',email:'fa@asturfutbol.es',score:'83',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Fed. Ciclismo Ast.',email:'secretaria@ciclismoasturiano.es',score:'82',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'FEMPA (Montaña)',email:'administracion@fempa.net',score:'80',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Fed. Natación Ast.',email:'secretariatecnica@fdna.es',score:'78',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'PDM Gijón',email:'pdm@gijon.es',score:'77',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Fed. Rugby Ast.',email:'secretaria@rugbyasturias.org',score:'75',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Fed. Piragüismo Ast.',email:'administracion@faspiraguismo.com',score:'74',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Fed. Hockey Ast.',email:'fpahockey@fpahockey.es',score:'72',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Fed. Vela Ast.',email:'fvpa@asturiasvela.es',score:'71',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Fed. Gimnasia Ast.',email:'secretaria@gimnastur.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Fed. Pádel Ast.',email:'contacto@fppastur.com',score:'69',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Fed. Hípica Ast.',email:'info@fhpa.es',score:'68',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Universidad de Oviedo',email:'oneo@uniovi.es',score:'66',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Ayuntamiento de Oviedo',email:'ayuntamiento@oviedo.es',score:'65',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Fed. Karate Ast.',email:'fakyda@fakyda.com',score:'61',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Fed. Tenis Mesa Ast.',email:'ftmpa@ftmpa.es',score:'60',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Fed. Taekwondo Ast.',email:'ftppa@hotmail.com',score:'59',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Fed. Salvamento Ast.',email:'info@salvastur.com',score:'58',status:'Enviado',notes:''},
-  {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'FDM Avilés',email:'medicinadeportiva@ayto-aviles.es',score:'54',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'BRIIK',city:'A Coruña',name:'Nai Family Concept Store',email:'hola@naiconceptstore.com',score:'85',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'BRIIK',city:'A Coruña',name:'Brétema Babies & Kids',email:'info@bretemakids.es',score:'80',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'BRIIK',city:'Gijón',name:'Jo Mami Kids',email:'hola@jomamikids.com',score:'82',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'BRIIK',city:'Santiago',name:'Lunares en Mayo',email:'lunaresenmayo@lunaresenmayo.com',score:'78',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'BRIIK',city:'Pontevedra',name:'Ma Petite',email:'mapetitepontevedra@gmail.com',score:'76',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'BRIIK',city:'Vigo',name:'The Tree House',email:'hola@thetreehousekids.com',score:'78',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'BRIIK',city:'Vigo',name:'Nenel Shop',email:'hola@nenelshop.es',score:'80',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'BRIIK',city:'Vigo',name:'MAPIS VIGO',email:'hola@mapis.es',score:'82',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'BRIIK',city:'Lugo',name:'Bebé Ratón',email:'info@beberaton.es',score:'78',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'BRIIK',city:'Oviedo',name:'Ñácaru Puericultura',email:'nacaru@nacaru.es',score:'75',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'BRIIK',city:'Gijón',name:'Baby\'s House Puericultura',email:'info@babyshouse.es',score:'74',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'BRIIK',city:'Avilés',name:'Kekos Bebés',email:'kekos@kekosbebes.com',score:'72',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'BRIIK',city:'Oviedo',name:'La Cesta Mágica',email:'info@lacestamagica.com',score:'78',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'BRIIK',city:'Gijón',name:'Santa Rita baby & kids',email:'contacto@santaritakids.es',score:'76',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'BRIIK',city:'Gijón',name:'Carlitos Baby',email:'info@carlitosbaby.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'iAwards',city:'Baleares',name:'FAIB - Atletismo Baleares',email:'faib@faib.es',score:'86',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'iAwards',city:'Baleares',name:'FBIB - Baloncesto Baleares',email:'federacio@fbib.es',score:'85',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'iAwards',city:'Baleares',name:'FFIB - Fútbol Baleares',email:'ffib@ffib.es',score:'84',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'iAwards',city:'Baleares',name:'Consell Mallorca - Gala Deporte',email:'esports@conselldemallorca.es',score:'85',status:'Enviado',notes:''},
-  {date:'2026-07-23',brand:'iAwards',city:'Baleares',name:'UIB - CampusEsport',email:'campusesport@uib.es',score:'78',status:'Enviado',notes:''},
-  {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'IMD Segovia',email:'deportes@imdsg.es',score:'72',status:'Enviado',notes:''},
-  {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'Ayto. Burgos Deportes',email:'deportes@aytoburgos.es',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'Ayto. Salamanca Deportes',email:'deportes@aytosalamanca.es',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'Club Tenis Burgos',email:'clubtenisburgos@gmail.com',score:'65',status:'Enviado',notes:''},
-  {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'Tenis Salamanca',email:'info@tenissalamanca.org',score:'65',status:'Enviado',notes:''},
-  {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'Entrepinos Club Golf',email:'comunicacion@golfentrepinos.com',score:'65',status:'Enviado',notes:''},
-  {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'Salamanca Golf',email:'zarapicos@salamancagolf.com',score:'65',status:'Enviado',notes:''},
-  {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'RS Hipica Valladolid',email:'hipica@hipicavalladolid.es',score:'65',status:'Enviado',notes:''},
-  {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'CT Campeador',email:'hello@ctcampeador.es',score:'62',status:'Enviado',notes:''},
-  {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'CES Salamanca',email:'info@cesalamanca.com',score:'62',status:'Enviado',notes:''},
-  {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'CT Zamora',email:'ctz@hotmail.es',score:'62',status:'Enviado',notes:''},
-  {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'Casino Abulense Golf',email:'administracion@casinoabulense.com',score:'60',status:'Enviado',notes:''},
-  {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'Lerma Club Golf',email:'reservas@golflerma.com',score:'60',status:'Enviado',notes:''},
-  {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'Campo de Tiro Salamanca',email:'info@campotiro.es',score:'60',status:'Enviado',notes:''},
-  {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'El Tiro Club Golf',email:'eltiro@eltiro.es',score:'60',status:'Enviado',notes:''},
-  {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'El Espinar Club Golf',email:'golfespinar@gmail.com',score:'60',status:'Enviado',notes:''},
-  {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'Aldeamayor Club Golf',email:'info@aldeamayorclub.com',score:'60',status:'Enviado',notes:''},
-  {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'SotoOcio Hipica',email:'info@sotoocio.com',score:'60',status:'Enviado',notes:''},
-  {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'Bierzo Club Golf',email:'golfdelbierzo@gmail.com',score:'58',status:'Enviado',notes:''},
-  {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'Isla Dos Aguas Golf',email:'golfisladosaguas@pmdpalencia.com',score:'58',status:'Enviado',notes:''},
-  {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'Candeleda Club Golf',email:'golfcandeleda@hotmail.com',score:'55',status:'Enviado',notes:''},
-  {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'CD Nautico Leon',email:'clubnauticodeleon@gmail.com',score:'55',status:'Enviado',notes:''},
-  {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'Club Montana Capra',email:'clubmontanacapra@gmail.com',score:'55',status:'Enviado',notes:''},
-  {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'Pegaso Montana',email:'licencias@montanapegaso.es',score:'55',status:'Enviado',notes:''},
-  {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'Bocigas Club Golf',email:'clubgolfbocigas@gmail.com',score:'55',status:'Enviado',notes:''},
-  {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'CN Riano',email:'clubnauticoriano@gmail.com',score:'50',status:'Enviado',notes:''},
-  {date:'2026-07-24',brand:'BRIIK',city:'Alicante-Castellón',name:'Puericultura Lara',email:'clientes@puericulturalara.com',score:'90',status:'Enviado',notes:''},
-  {date:'2026-07-24',brand:'BRIIK',city:'Alicante-Castellón',name:'Bebelín Elche',email:'info@tiendasbebelin.com',score:'85',status:'Enviado',notes:''},
-  {date:'2026-07-24',brand:'BRIIK',city:'Alicante-Castellón',name:'Chiquitines Benidorm',email:'info@chiquitines.net',score:'85',status:'Enviado',notes:''},
-  {date:'2026-07-24',brand:'BRIIK',city:'Alicante-Castellón',name:'Entrealgodones Bebé',email:'info@entrealgodonesbebe.com',score:'85',status:'Enviado',notes:''},
-  {date:'2026-07-24',brand:'BRIIK',city:'Alicante-Castellón',name:'FRIDA Y YO',email:'info@fridayyo.com',score:'80',status:'Enviado',notes:''},
-  {date:'2026-07-24',brand:'BRIIK',city:'Alicante-Castellón',name:'Verdi Bebé',email:'verdibebe@hotmail.com',score:'80',status:'Enviado',notes:''},
-  {date:'2026-07-24',brand:'BRIIK',city:'Alicante-Castellón',name:'El Vellón de Oro',email:'elvellondeoro@elvellondeoro.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-24',brand:'BRIIK',city:'Alicante-Castellón',name:'El Baúl de Brianda',email:'info@elbauldebrianda.com',score:'65',status:'Enviado',notes:''},
-  {date:'2026-07-24',brand:'BRIIK',city:'Alicante-Castellón',name:'Pistatxo Roba Infantil',email:'pistatxorobainfantil@yahoo.es',score:'65',status:'Enviado',notes:''},
-  {date:'2026-07-24',brand:'BRIIK',city:'Alicante-Castellón',name:'Cristis Baby',email:'info@cristisbaby.es',score:'60',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'BRIIK',city:'Palma',name:'Pe and Clo',email:'peandclo@gmail.com',score:'85',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'BRIIK',city:'Palma',name:'Genoveva Bebé',email:'clientes@genovevabebe.es',score:'88',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'BRIIK',city:'Palma',name:'Bebeplanet',email:'hola@bebeplanet.com',score:'80',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'BRIIK',city:'Palma',name:'Bebedreams',email:'info@bebedreams.com',score:'78',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'BRIIK',city:'Palma',name:'BABY TARTA',email:'info@babytarta.es',score:'82',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'BRIIK',city:'Palma',name:'TititNins',email:'info@tititnins.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'BRIIK',city:'Palma',name:'Mimitos Boutique Infantil',email:'info@mimitosbebe.com',score:'68',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'BRIIK',city:'Palma',name:'Guinyol',email:'csalommoll@gmail.com',score:'65',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'BRIIK',city:'Menorca',name:'MOM Kids Concept Store',email:'hola@momkidstore.com',score:'90',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'BRIIK',city:'Menorca',name:'Carussa',email:'reservas@carussa.es',score:'85',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'BRIIK',city:'Menorca',name:'Luna Puericultura',email:'lunamoda@gmail.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'BRIIK',city:'Ibiza',name:'Moms dads & babies',email:'a.cliente@momsandbabies.es',score:'75',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'BRIIK',city:'Cuenca',name:'Mamá #AContramarcha',email:'contacto@mamaacontramarcha.com',score:'85',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'BRIIK',city:'Talavera',name:'El Osito Verde',email:'info@elositoverde.es',score:'82',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'BRIIK',city:'La Roda',name:'La Boutique del BEBE',email:'hola@laboutiquedelbebe.es',score:'80',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'BRIIK',city:'Cuenca',name:'Nidito Baby',email:'info@niditobaby.com',score:'78',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'BRIIK',city:'Valdepeñas',name:'Galandrines',email:'galandrines@telefonica.net',score:'75',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'BRIIK',city:'Cáceres',name:'La Tita Ali',email:'modadiver@latitaali.com',score:'82',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'BRIIK',city:'Plasencia',name:'El Buen Descanso',email:'bebe@elbuendescanso.com',score:'80',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'BRIIK',city:'Badajoz',name:'Cosas de Bebés',email:'ventaonline@elmundodelbebeytu.es',score:'78',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'BRIIK',city:'Mérida',name:'Bebes Mérida',email:'bebesmerida@bebesmerida.es',score:'72',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'BRIIK',city:'Almendralejo',name:'CRiOH!',email:'crioh@crioh.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'BRIIK',city:'Badajoz',name:'Mi Pequeña Tienda',email:'shopmipequenatienda@gmail.com',score:'68',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'BRIIK',city:'Badajoz',name:'Little Kings',email:'central@littlekings.es',score:'62',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'iAwards',city:'Burgos',name:'Club Tenis de Burgos',email:'clubtenisburgos@gmail.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'iAwards',city:'Burgos',name:'Club de Tenis Campeador',email:'hello@ctcampeador.es',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'iAwards',city:'Burgos',name:'Ayto. Burgos - Deportes',email:'deportes@aytoburgos.es',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'iAwards',city:'León',name:'CD Náutico León',email:'clubnauticodeleon@gmail.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'iAwards',city:'León',name:'Club Náutico Riaño',email:'clubnauticoriano@gmail.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'iAwards',city:'León',name:'Bierzo Club de Golf',email:'golfdelbierzo@gmail.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'iAwards',city:'Salamanca',name:'CD Tenis Salamanca',email:'info@tenissalamanca.org',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'iAwards',city:'Salamanca',name:'Centro Ecuestre de Salamanca',email:'info@cesalamanca.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'iAwards',city:'Salamanca',name:'Campo de Tiro de Salamanca',email:'info@campotiro.es',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'iAwards',city:'Salamanca',name:'Escuela de Triatlón Salmantina',email:'escuelatrisalmantina@gmail.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'iAwards',city:'Salamanca',name:'Campo de Golf de Salamanca',email:'zarapicos@salamancagolf.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'iAwards',city:'Salamanca',name:'Ayto. Salamanca - Deportes',email:'deportes@aytosalamanca.es',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'iAwards',city:'Segovia',name:'IMD Segovia',email:'deportes@imdsg.es',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'iAwards',city:'Valladolid',name:'Club Atletismo Valladolid',email:'clubatletismovalladolid@gmail.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'iAwards',city:'Valladolid',name:'Real Sociedad Hípica Valladolid',email:'hipica@hipicavalladolid.es',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'iAwards',city:'Valladolid',name:'Centro Hípico SotoOcio',email:'info@sotoocio.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'iAwards',city:'Zamora',name:'Club de Tenis y Pádel Zamora',email:'ctz@hotmail.es',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'iAwards',city:'León',name:'Club de Montaña Capra',email:'clubmontanacapra@gmail.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'iAwards',city:'Cantabria',name:'Fed. Cántabra de Ciclismo',email:'info@fcciclismo.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'iAwards',city:'Cantabria',name:'Fed. Cántabra de Golf',email:'oficina@federacioncantabradegolf.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'iAwards',city:'Cantabria',name:'Fed. Cántabra de Natación',email:'info@fcnat.net',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'iAwards',city:'Cantabria',name:'Fed. Cántabra de Atletismo',email:'fcatle@fcatle.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'iAwards',city:'Cantabria',name:'Fed. Cántabra de Pádel',email:'info@federacioncantabradepadel.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'iAwards',city:'Cantabria',name:'Fed. Cántabra de Tenis',email:'fecantenis@gmail.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-27',brand:'iAwards',city:'Torrelavega',name:'Ayto. Torrelavega - Deportes',email:'reservasdeportes@aytotorrelavega.es',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'BRIIK',city:'Salamanca',name:'El Rincón de Mi Bebé',email:'info@elrincondemibebe.com',score:'88',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'BRIIK',city:'Salamanca',name:'BabyCucadas',email:'info@babycucadas.com',score:'75',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'BRIIK',city:'Ciudad Rodrigo',name:"D'ANNA Moda Infantil",email:'d.annamodainfantil@gmail.com',score:'65',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'BRIIK',city:'Salamanca',name:'Conny-Land',email:'contacto@connyland.es',score:'60',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'BRIIK',city:'Salamanca',name:'Laura & Carla',email:'info@lauraycarla.com',score:'58',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'BRIIK',city:'Béjar',name:'Little Kings',email:'central@littlekings.es',score:'55',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'BRIIK',city:'Valladolid',name:'Area Kids',email:'tienda@areakids.es',score:'90',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'BRIIK',city:'Valladolid',name:'Pavito Real',email:'sandra@pavitorealvalladolid.es',score:'85',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'BRIIK',city:'Valladolid',name:'ALPI Moda Infantil',email:'alpinet.tienda@gmail.com',score:'75',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'BRIIK',city:'Valladolid',name:'Oh! Luna Regalos',email:'criscos2010@gmail.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'BRIIK',city:'Valladolid',name:'Ro Infantil',email:'hola@roinfantil.com',score:'65',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'BRIIK',city:'Ávila',name:'Infantil Esla',email:'info@infantilesla.es',score:'90',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'BRIIK',city:'Ávila',name:'BabyShop Ávila',email:'info@babyshopavila.com',score:'85',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'BRIIK',city:'Ávila',name:'Arlequin Bebés',email:'arlequinavila@gmail.com',score:'80',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'BRIIK',city:'Ávila',name:'LittleCocoBaby',email:'tienda@littlecocobaby.es',score:'75',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'BRIIK',city:'Zamora',name:'BABYDIN',email:'info@babydin.es',score:'75',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'BRIIK',city:'Zamora',name:'MIMITOS HOME',email:'mimitoshome@gmail.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'BRIIK',city:'Zamora',name:'Primer Bebé',email:'info@primerdia.es',score:'55',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'BRIIK',city:'Cuéllar',name:'El Vestidor de Jauja',email:'elvestidordejauja@elvestidordejauja.es',score:'50',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'iAwards',city:'Cuenca',name:'Fed. Fútbol CLM',email:'ffcm@ffcm.es',score:'88',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'iAwards',city:'Albacete',name:'Fed. Baloncesto CLM',email:'secretaria@fbclm.net',score:'85',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'iAwards',city:'Albacete',name:'Fed. Atletismo CLM',email:'faclm@faclm.com',score:'84',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'iAwards',city:'Albacete',name:'Fed. Pádel CLM',email:'federacion@fpclm.com',score:'83',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'iAwards',city:'Albacete',name:'Fed. Natación CLM',email:'federacion@fnclm.com',score:'82',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'iAwards',city:'Albacete',name:'Fed. Triatlón CLM',email:'federacion@triatlonclm.org',score:'80',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'iAwards',city:'Ciudad Real',name:'Fed. Voleibol CLM',email:'fvcm@fvcm.es',score:'78',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'iAwards',city:'Toledo',name:'Fed. Tenis CLM',email:'fedetenisclm@fedetenisclm.es',score:'77',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'iAwards',city:'Toledo',name:'Fed. Golf CLM',email:'federacion@fedgolfclm.com',score:'76',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'iAwards',city:'Talavera',name:'Fed. Montaña CLM',email:'contacto@fdmcm.com',score:'74',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'iAwards',city:'Albacete',name:'Fed. Caza CLM',email:'fcazacm@fccm.es',score:'72',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'iAwards',city:'Guadalajara',name:'Fed. Salvamento CLM',email:'fssclm@fssclm.com',score:'72',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'iAwards',city:'Toledo',name:'Ayto. Toledo - Deportes',email:'concedeportes@toledo.es',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'iAwards',city:'Toledo',name:'Fed. Karate CLM',email:'info@fcmkda.com',score:'68',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'iAwards',city:'Toledo',name:'Patronato Dep. Toledo',email:'atencionalusuario@pdmtoledo.es',score:'68',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'iAwards',city:'Toledo',name:'Fed. Ajedrez CLM',email:'faclm@faclm.org',score:'64',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'iAwards',city:'Albacete',name:'Fed. Esgrima CLM',email:'feesclm@yahoo.es',score:'63',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'iAwards',city:'Cuenca',name:'Fed. Pelota CLM',email:'administracion@fpclm.es',score:'62',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'iAwards',city:'Toledo',name:'Fed. Automovilismo CLM',email:'info@facm.es',score:'55',status:'Enviado',notes:''},
-  {date:'2026-07-28',brand:'iAwards',city:'Toledo',name:'Fed. Motociclismo CLM',email:'fcmm@fcmm.net',score:'55',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'iAwards',city:'Barcelona',name:'Real Club de Polo de Barcelona',email:'info@rcpolo.com',score:'87',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'iAwards',city:'Barcelona',name:'Real Club Náutico de Barcelona',email:'info@rcnb.com',score:'85',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'iAwards',city:'Tarragona',name:'Real Club Náutico de Tarragona',email:'info@rcntarragona.org',score:'84',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'iAwards',city:'Barcelona',name:'Club de Golf Barcelona',email:'info@golfbarcelona.com',score:'82',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'iAwards',city:'Barcelona',name:'Club de Golf Llavaneras',email:'club@golfllavaneras.com',score:'80',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'iAwards',city:'Barcelona',name:'Club de Golf Sant Cugat',email:'info@golfsantcugat.com',score:'80',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'iAwards',city:'Tarragona',name:'Club Tennis Tarragona',email:'gerencia@tennistarragona.com',score:'80',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'iAwards',city:'Barcelona',name:'Real Club de Golf El Prat',email:'vallesgolf@rcgep.com',score:'78',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'iAwards',city:'Tarragona',name:'Gaudí Reus Golf Club',email:'reservas@gaudigolfclub.com',score:'78',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'iAwards',city:'Barcelona',name:'Club Esportiu Laietà',email:'cel@laieta.cat',score:'77',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'iAwards',city:'Tarragona',name:'Infinitum Golf',email:'golf@infinitumliving.com',score:'77',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'iAwards',city:'Tarragona',name:'Club Tennis Reus Monterols',email:'info@tennismonterols.cat',score:'76',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'iAwards',city:'Barcelona',name:'Club de Golf Terramar',email:'info@golfterramar.com',score:'75',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'iAwards',city:'Barcelona',name:'Golf Taradell',email:'golf@golftaradell.com',score:'75',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'iAwards',city:'Girona',name:'Club Tennis i Padel lEscala',email:'clubdetennislescala@hotmail.com',score:'74',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'iAwards',city:'Tarragona',name:'Golf Costa Daurada',email:'reservas@golfcostadaurada.com',score:'74',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'iAwards',city:'Girona',name:'Camiral Golf (PGA Catalunya)',email:'reservations@camiral.com',score:'73',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'iAwards',city:'Girona',name:'Empordà Golf Resort',email:'golf@empordagolf.com',score:'73',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'iAwards',city:'Barcelona',name:'Can Cuyàs Golf',email:'recepcion@cancuyasgolf.com',score:'72',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'iAwards',city:'Barcelona',name:'Club de Golf Vallromanes',email:'info@golfvallromanes.com',score:'72',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'iAwards',city:'Barcelona',name:'Club Bàsquet Granollers',email:'cbg@cbgranollers.cat',score:'72',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'iAwards',city:'Girona',name:'Torremirona Golf Club',email:'info@golftorremirona.com',score:'71',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'iAwards',city:'Lleida',name:'Club de Golf Lleida',email:'recepcio@golflleida.com',score:'71',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'iAwards',city:'Barcelona',name:'Vall Parc Club Tenis i Pàdel',email:'info@vallparc.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'iAwards',city:'Girona',name:'Serres de Pals Golf',email:'info@serresdepals.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'iAwards',city:'Girona',name:'Club Tennis i Pàdel Lloret',email:'info@clubtennislloret.es',score:'69',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'iAwards',city:'Barcelona',name:'Club Hípica Collserola',email:'info@clubhipicacollserola.com',score:'68',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'iAwards',city:'Barcelona',name:'Open Sport Club Hípica Barcelona',email:'info@openhipica.com',score:'67',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'iAwards',city:'Barcelona',name:'Club Nàutic Poblenou',email:'info@clubnauticpoblenou.com',score:'66',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'iAwards',city:'Barcelona',name:'Nick Pádel Club',email:'contacto@nickpadel.com',score:'65',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'BRIIK',city:'Ciutadella',name:'MOM Kids Concept Store',email:'hola@momkidstore.com',score:'90',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'BRIIK',city:'Palma',name:'Genoveva Bebé',email:'clientes@genovevabebe.es',score:'88',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'BRIIK',city:'Palma',name:'Pe and Clo',email:'peandclo@gmail.com',score:'85',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'BRIIK',city:'Ciutadella',name:'Carussa',email:'reservas@carussa.es',score:'85',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'BRIIK',city:'Manacor',name:'Meumoix',email:'hola@meumoix.com',score:'85',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'BRIIK',city:'Palma',name:'MAMUCHEANDO',email:'hola@mamucheando.com',score:'84',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'BRIIK',city:'Palma',name:'BABY TARTA',email:'info@babytarta.es',score:'82',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'BRIIK',city:'Ciutadella',name:'Nurka Kids',email:'info@nurkakids.com',score:'82',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'BRIIK',city:'Manacor',name:'DePekes',email:'info@depekes.com',score:'80',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'BRIIK',city:'Palma',name:'Bebeplanet',email:'hola@bebeplanet.com',score:'80',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'BRIIK',city:'Palma',name:'Bebedreams',email:'info@bebedreams.com',score:'78',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'BRIIK',city:'Ibiza',name:'bebeaway Ibiza',email:'reservas@bebeaway.com',score:'78',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'BRIIK',city:'Ibiza',name:'Moms dads & babies',email:'a.cliente@momsandbabies.es',score:'75',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'BRIIK',city:'Palma',name:'TititNins',email:'info@tititnins.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'BRIIK',city:'Palma',name:'Mimitos Boutique Infantil',email:'info@mimitosbebe.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'BRIIK',city:'Ciutadella',name:'Luna Puericultura',email:'lunamoda@gmail.com',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'BRIIK',city:'Formentera',name:'WeAreCosta',email:'tienda@wearecosta.es',score:'70',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'BRIIK',city:'Palma',name:'Guinyol Moda Infantil',email:'csalommoll@gmail.com',score:'65',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'BRIIK',city:'Sa Pobla',name:'Dida Infants',email:'didainfants@hotmail.com',score:'62',status:'Enviado',notes:''}
+  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Museum of Mini',email:'i***@m***.com',score:'80',status:'Enviado',notes:''},
+  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Cositas Chulas',email:'i***@c***.com',score:'75',status:'Enviado',notes:''},
+  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Chiva Chivita',email:'i***@c***.com',score:'74',status:'Enviado',notes:''},
+  {date:'2026-07-16',brand:'iAwards',city:'CyL',name:'RugbyCyL',email:'s***@r***.org',score:'85',status:'Enviado',notes:''},
+  {date:'2026-07-16',brand:'iAwards',city:'CyL',name:'FBCyL Baloncesto',email:'f***@f***.es',score:'82',status:'Enviado',notes:''},
+  {date:'2026-07-16',brand:'iAwards',city:'CyL',name:'PadelCyL',email:'f***@p***.es',score:'71',status:'Enviado',notes:''},
+  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'Nonetes',email:'i***@n***.es',score:'72',status:'Enviado',notes:''},
+  {date:'2026-07-22',brand:'BRIIK',city:'Bilbao',name:'Abracadabra',email:'c***@j***.es',score:'70',status:'Enviado',notes:''},
+  {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Fed. Atletismo Ast.',email:'f***@f***.org',score:'85',status:'Enviado',notes:''},
+  {date:'2026-07-23',brand:'BRIIK',city:'A Coruña',name:'Nai Family Concept Store',email:'h***@n***.com',score:'85',status:'Enviado',notes:''},
+  {date:'2026-07-23',brand:'iAwards',city:'Baleares',name:'FAIB - Atletismo Bal.',email:'f***@f***.es',score:'86',status:'Enviado',notes:''},
+  {date:'2026-07-24',brand:'BRIIK',city:'Alicante',name:'Puericultura Lara',email:'c***@p***.com',score:'90',status:'Enviado',notes:''},
+  {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'IMD Segovia',email:'d***@i***.es',score:'72',status:'Enviado',notes:''},
+  {date:'2026-07-27',brand:'BRIIK',city:'Palma',name:'Pe and Clo',email:'p***@g***.com',score:'85',status:'Enviado',notes:''},
+  {date:'2026-07-27',brand:'BRIIK',city:'Menorca',name:'MOM Kids Concept Store',email:'h***@m***.com',score:'90',status:'Enviado',notes:''},
+  {date:'2026-07-27',brand:'iAwards',city:'Burgos',name:'Club Tenis de Burgos',email:'c***@g***.com',score:'70',status:'Enviado',notes:''},
+  {date:'2026-07-28',brand:'BRIIK',city:'Salamanca',name:'El Rincón de Mi Bebé',email:'i***@e***.com',score:'88',status:'Enviado',notes:''},
+  {date:'2026-07-28',brand:'BRIIK',city:'Valladolid',name:'Area Kids',email:'t***@a***.es',score:'90',status:'Enviado',notes:''},
+  {date:'2026-07-28',brand:'BRIIK',city:'Ávila',name:'Infantil Esla',email:'i***@i***.es',score:'90',status:'Enviado',notes:''},
+  {date:'2026-07-28',brand:'iAwards',city:'Cuenca',name:'Fed. Fútbol CLM',email:'f***@f***.es',score:'88',status:'Enviado',notes:''},
+  {date:'2026-07-29',brand:'iAwards',city:'Barcelona',name:'Real Club de Polo BCN',email:'i***@r***.com',score:'87',status:'Enviado',notes:''},
+  {date:'2026-07-29',brand:'iAwards',city:'Barcelona',name:'RCN Barcelona',email:'i***@r***.com',score:'85',status:'Enviado',notes:''},
+  {date:'2026-07-29',brand:'iAwards',city:'Tarragona',name:'Club Tennis Tarragona',email:'g***@t***.com',score:'80',status:'Enviado',notes:''},
+  {date:'2026-07-29',brand:'BRIIK',city:'Ciutadella',name:'MOM Kids Concept Store',email:'h***@m***.com',score:'90',status:'Enviado',notes:''},
+  {date:'2026-07-29',brand:'BRIIK',city:'Manacor',name:'Meumoix',email:'h***@m***.com',score:'85',status:'Enviado',notes:''},
+  {date:'2026-07-29',brand:'BRIIK',city:'Palma',name:'Bebeplanet',email:'h***@b***.com',score:'80',status:'Enviado',notes:''}
 ];
 
 // ============================================================
@@ -494,7 +274,7 @@ const allData = [
 function switchTab(tab) {
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-  document.querySelector(`[onclick="switchTab('${tab}')"]`).classList.add('active');
+  document.querySelector('[onclick="switchTab(\'' + tab + '\')"]').classList.add('active');
   document.getElementById('tab-' + tab).classList.add('active');
   if (tab === 'revisar') renderReview();
   if (tab === 'enviados') renderSent();
@@ -503,179 +283,168 @@ function switchTab(tab) {
 // ============================================================
 // REVIEW TAB
 // ============================================================
-let expandedId = null;
-let selectedIds = new Set();
-
 function renderReview() {
   if (!draftsData.length) { updateReviewKPIs(); return; }
   updateReviewKPIs();
 
-  // Filters
-  const runIds = [...new Set(draftsData.map(d => d.id?.split('-').slice(0,3).join('-') || ''))];
   const brands = [...new Set(draftsData.map(d => d.brand))];
   const fi = document.getElementById('filters-review');
-  let brandOpts = brands.map(b => `<option value="${b}">${b}</option>`).join('');
-  let runOpts = runIds.map(r => `<option value="${r}">${r}</option>`).join('');
-  fi.innerHTML = `
-    <div class="filter-group"><label>Marca</label><select id="rev-filter-brand" onchange="applyReviewFilters()"><option value="all">Todas</option>${brandOpts}</select></div>
-    <div class="filter-group"><label>Tanda</label><select id="rev-filter-run" onchange="applyReviewFilters()"><option value="all">Todas</option>${runOpts}</select></div>
-    <div class="filter-group"><label>Puntuación</label><select id="rev-filter-score" onchange="applyReviewFilters()"><option value="all">Todas</option><option value="80">≥ 80</option><option value="65">≥ 65</option></select></div>
-    <div class="filter-group"><label>Estado</label><select id="rev-filter-status" onchange="applyReviewFilters()"><option value="all">Todos</option><option value="drafted">drafted</option><option value="needs_review">needs_review</option></select></div>
-    <button class="btn-reset" onclick="resetReviewFilters()">✕ Limpiar</button>
-  `;
+  fi.innerHTML =
+    '<div class="filter-group"><label>Marca</label><select id="rev-filter-brand" onchange="applyReviewFilters()"><option value="all">Todas</option>' +
+    brands.map(b => '<option value="' + b + '">' + b + '</option>').join('') + '</select></div>' +
+    '<div class="filter-group"><label>Punt.</label><select id="rev-filter-score" onchange="applyReviewFilters()"><option value="all">Todas</option><option value="80">≥ 80</option><option value="65">≥ 65</option></select></div>' +
+    '<div class="filter-group"><label>Estado</label><select id="rev-filter-status" onchange="applyReviewFilters()"><option value="all">Todos</option><option value="drafted">drafted</option><option value="approved">approved</option><option value="needs_review">needs_review</option><option value="rejected">rejected</option></select></div>' +
+    '<button class="btn-reset" onclick="resetReviewFilters()">✕</button>';
 
   applyReviewFilters();
 }
 
+let revFiltered = [];
 function applyReviewFilters() {
   const brand = document.getElementById('rev-filter-brand')?.value || 'all';
-  const run = document.getElementById('rev-filter-run')?.value || 'all';
   const score = document.getElementById('rev-filter-score')?.value || 'all';
   const status = document.getElementById('rev-filter-status')?.value || 'all';
 
-  let filtered = draftsData;
-  if (brand !== 'all') filtered = filtered.filter(d => d.brand === brand);
-  if (run !== 'all') filtered = filtered.filter(d => (d.id || '').startsWith(run));
-  if (score !== 'all') filtered = filtered.filter(d => (d.score || 0) >= parseInt(score));
-  if (status !== 'all') filtered = filtered.filter(d => d.status === status);
+  revFiltered = draftsData;
+  if (brand !== 'all') revFiltered = revFiltered.filter(d => d.brand === brand);
+  if (score !== 'all') revFiltered = revFiltered.filter(d => (d.score || 0) >= parseInt(score));
+  if (status !== 'all') revFiltered = revFiltered.filter(d => d.status === status);
 
   const tbody = document.getElementById('review-table');
   tbody.innerHTML = '';
 
-  if (!filtered.length) {
+  if (!revFiltered.length) {
     document.getElementById('no-results-review').style.display = 'block';
     document.getElementById('result-info-review').textContent = '';
+    updateBtnCount();
     return;
   }
   document.getElementById('no-results-review').style.display = 'none';
-  document.getElementById('result-info-review').textContent = 'Mostrando ' + filtered.length + ' de ' + draftsData.length + ' borradores';
+  document.getElementById('result-info-review').textContent = 'Mostrando ' + revFiltered.length + ' de ' + draftsData.length + ' borradores';
 
-  const runId = draftRuns[0]?.run_id || '';
-
-  filtered.forEach(d => {
+  revFiltered.forEach(d => {
     const brandColor = d.brand === 'briik' ? '#6B7DAF' : '#CC3333';
     const brandLabel = d.brand === 'briik' ? 'BRIIK' : 'iAwards';
-    const verifLabel = d.email_verification === 'official' ? 'Oficial' : d.email_verification === 'official_directory' ? 'Directorio' : d.email_verification || '';
+    const verifMap = {official:'Oficial',official_directory:'Directorio',corroborated_directory:'Directorio'};
+    const verifLabel = verifMap[d.email_verification] || d.email_verification || '';
     const verifClass = d.email_verification === 'official' ? 'tag-verification-official' : 'tag-verification-directory';
-    const statusLabel = d.status === 'needs_review' ? '⚠️ revisar' : 'drafted';
-    const statusClass = d.status === 'needs_review' ? 'tag-needs_review' : 'tag-drafted';
+    const statusLabels = {drafted:'drafted',needs_review:'⚠ revisar',approved:'✓ aprobado',rejected:'✗ rechazado',sent:'enviado',error:'error'};
+    const statusLabel = statusLabels[d.status] || d.status;
+    const statusClass = 'tag-' + (d.status === 'needs_review' ? 'needs_review' : d.status === 'approved' ? 'approved' : d.status === 'rejected' ? 'rejected' : d.status === 'sent' ? 'sent' : 'drafted');
+    const isNeedsReview = d.status === 'needs_review';
     const checked = selectedIds.has(d.id) ? 'checked' : '';
 
-    // Main row
     const tr = document.createElement('tr');
     tr.className = 'expandable';
     tr.setAttribute('data-id', d.id);
+    if (selectedIds.has(d.id)) tr.classList.add('selected');
     tr.onclick = (e) => { if (e.target.tagName !== 'INPUT') toggleExpand(d.id); };
-    tr.innerHTML = `
-      <td class="check-col" onclick="event.stopPropagation()"><input type="checkbox" ${checked} onchange="toggleSelect('${d.id}', this.checked)"></td>
-      <td style="font-size:0.75em;color:#888;">${d.id}</td>
-      <td style="color:${brandColor};font-weight:600;">${brandLabel}</td>
-      <td>${d.organization}</td>
-      <td>${d.city}</td>
-      <td style="font-size:0.8em;">${d.segment}</td>
-      <td>${d.score}</td>
-      <td><span class="tag ${verifClass}">${verifLabel}</span></td>
-      <td><span class="tag ${statusClass}">${statusLabel}</span></td>
-    `;
+    tr.innerHTML =
+      '<td class="check-col" onclick="event.stopPropagation()"><input type="checkbox" ' + checked + ' onchange="toggleSelect(\'' + d.id + '\', this.checked)"></td>' +
+      '<td style="font-size:0.7em;color:#888;">' + d.id + '</td>' +
+      '<td style="color:' + brandColor + ';font-weight:600;">' + brandLabel + '</td>' +
+      '<td>' + d.organization + '</td>' +
+      '<td>' + d.city + '</td>' +
+      '<td style="font-size:0.7em;">' + d.segment + '</td>' +
+      '<td>' + d.score + '</td>' +
+      '<td><span class="tag ' + verifClass + '">' + verifLabel + '</span></td>' +
+      '<td><span class="tag ' + statusClass + '">' + statusLabel + '</span></td>';
     tbody.appendChild(tr);
 
-    // Expand row
     const expTr = document.createElement('tr');
     expTr.className = 'expand-row';
     expTr.id = 'exp-' + d.id;
-    expTr.innerHTML = `
-      <td colspan="9">
-        <div class="expand-content">
-          <div class="expand-grid">
-            <div class="field">
-              <div class="field-label">Evidencia</div>
-              <div class="field-value">${d.evidence || ''} <a href="${d.evidence_url || '#'}" target="_blank" style="color:#6B7DAF;font-size:0.8em;">[fuente]</a></div>
-            </div>
-            <div class="field">
-              <div class="field-label">Email · Verificación</div>
-              <div class="field-value">${d.email || ''} <span class="tag ${verifClass}">${verifLabel}</span> <a href="${d.email_source_url || '#'}" target="_blank" style="color:#6B7DAF;font-size:0.8em;">[fuente]</a></div>
-            </div>
-            <div class="field expand-full">
-              <div class="field-label">Asunto</div>
-              <div class="field-value" style="font-weight:600;">${d.subject || ''}</div>
-            </div>
-            <div class="field expand-full">
-              <div class="field-label">Cuerpo</div>
-              <div class="expand-body">${d.body || ''}</div>
-            </div>
-            <div class="field">
-              <div class="field-label">Adjunto</div>
-              <div class="field-value">📎 ${d.attachment || 'N/A'}</div>
-            </div>
-            <div class="field">
-              <div class="field-label">Hash</div>
-              <div class="field-value" style="font-size:0.7em;color:#555;">${d.draft_hash || ''}</div>
-            </div>
-            ${d.review_issue ? `<div class="field expand-full"><div class="field-label" style="color:#FF9800;">⚠️ Incidencia</div><div class="field-value" style="color:#FF9800;">${d.review_issue}</div></div>` : ''}
-          </div>
-          <div class="expand-actions">
-            <button class="btn-action btn-approve" onclick="event.stopPropagation(); copyCmd('APROBAR ${d.id}')">📋 Copiar APROBAR</button>
-            <button class="btn-action btn-modify" onclick="event.stopPropagation(); copyCmd('MODIFICAR ${d.id}: ')">📋 Copiar MODIFICAR</button>
-            <button class="btn-action btn-reject" onclick="event.stopPropagation(); copyCmd('RECHAZAR ${d.id}: ')">📋 Copiar RECHAZAR</button>
-            <button class="btn-action btn-view" onclick="event.stopPropagation(); copyCmd('VER ${d.id}')">📋 Copiar VER</button>
-          </div>
-        </div>
-      </td>
-    `;
+    expTr.innerHTML =
+      '<td colspan="9"><div class="expand-content"><div class="expand-grid">' +
+      '<div class="field"><div class="field-label">Evidencia</div><div class="field-value">' + (d.evidence||'') + ' <a href="' + (d.evidence_url||'#') + '" target="_blank" style="color:#6B7DAF;font-size:0.75em;">[fuente]</a></div></div>' +
+      '<div class="field"><div class="field-label">Email · Verificación</div><div class="field-value">' + (d.email||'--') + ' <span class="tag ' + verifClass + '">' + verifLabel + '</span> <a href="' + (d.email_source_url||'#') + '" target="_blank" style="color:#6B7DAF;font-size:0.75em;">[fuente]</a></div></div>' +
+      '<div class="field expand-full"><div class="field-label">Asunto</div><div class="field-value" style="font-weight:600;">' + (d.subject||'') + '</div></div>' +
+      '<div class="field expand-full"><div class="field-label">Cuerpo</div><div class="expand-body">' + (d.body||'') + '</div></div>' +
+      '<div class="field"><div class="field-label">Adjunto</div><div class="field-value">📎 ' + (d.attachment||'N/A') + '</div></div>' +
+      '<div class="field"><div class="field-label">Hash · ' + (d.draft_hash||'--') + '</div><div class="field-value" style="font-size:0.65em;color:#555;">' + (d.status==='approved'&&d.draft_hash?'⚠ Aprobación inválida si el hash cambia':'') + '</div></div>' +
+      (d.review_issue ? '<div class="field expand-full"><div class="field-label" style="color:#FF9800;">⚠ Incidencia</div><div class="field-value" style="color:#FF9800;">' + d.review_issue + '</div></div>' : '') +
+      '</div><div class="expand-actions">' +
+      '<button class="btn-action btn-approve" onclick="event.stopPropagation(); copyCmd(\'APROBAR ' + d.id + '\')">📋 APROBAR</button>' +
+      '<button class="btn-action btn-modify" onclick="event.stopPropagation(); copyCmd(\'MODIFICAR ' + d.id + ': \')">📋 MODIFICAR</button>' +
+      '<button class="btn-action btn-reject" onclick="event.stopPropagation(); copyCmd(\'RECHAZAR ' + d.id + ': \')">📋 RECHAZAR</button>' +
+      '<button class="btn-action btn-view" onclick="event.stopPropagation(); copyCmd(\'VER ' + d.id + '\')">📋 VER</button>' +
+      '</div></div></td>';
     tbody.appendChild(expTr);
   });
+  updateBtnCount();
 }
 
 function toggleExpand(id) {
   const row = document.getElementById('exp-' + id);
   if (!row) return;
-  const isOpen = row.classList.contains('open');
-  // Close all
   document.querySelectorAll('.expand-row.open').forEach(r => r.classList.remove('open'));
-  if (!isOpen) row.classList.add('open');
-  expandedId = isOpen ? null : id;
+  if (!row.classList.contains('open')) row.classList.add('open');
 }
 
 function toggleSelect(id, checked) {
-  if (checked) selectedIds.add(id);
-  else selectedIds.delete(id);
+  if (checked) selectedIds.add(id); else selectedIds.delete(id);
+  document.querySelectorAll('tr[data-id="' + id + '"]').forEach(r => {
+    if (checked) r.classList.add('selected'); else r.classList.remove('selected');
+  });
+  updateBtnCount();
   updateSelectAllCheck();
 }
 
 function toggleAllCheck(el) {
-  if (el.checked) {
-    draftsData.forEach(d => selectedIds.add(d.id));
-  } else {
-    selectedIds.clear();
-  }
+  revFiltered.forEach(d => {
+    if (el.checked) selectedIds.add(d.id); else selectedIds.delete(d.id);
+  });
   applyReviewFilters();
+  updateBtnCount();
 }
 
 function updateSelectAllCheck() {
   const all = document.getElementById('select-all-check');
-  if (all) all.checked = selectedIds.size === draftsData.length && draftsData.length > 0;
+  const eligible = revFiltered.filter(d => d.status !== 'needs_review');
+  if (all) all.checked = eligible.length > 0 && eligible.every(d => selectedIds.has(d.id));
 }
 
-function selectAll() { draftsData.forEach(d => selectedIds.add(d.id)); applyReviewFilters(); }
+function updateBtnCount() {
+  const eligible = [...selectedIds].filter(id => {
+    const d = draftsData.find(c => c.id === id);
+    return d && d.status !== 'needs_review';
+  });
+  const btn = document.getElementById('btn-approve-sel');
+  if (btn) btn.textContent = '📋 Copiar APROBAR seleccionados (' + eligible.length + ')';
+
+  // Visual feedback: strike through needs_review in selection display
+  document.querySelectorAll('.expandable').forEach(tr => {
+    const id = tr.getAttribute('data-id');
+    const d = draftsData.find(c => c.id === id);
+    if (d && d.status === 'needs_review' && selectedIds.has(id)) {
+      tr.style.opacity = '0.5';
+    } else {
+      tr.style.opacity = '1';
+    }
+  });
+}
+
+function copySelected() {
+  const eligible = [...selectedIds].filter(id => {
+    const d = draftsData.find(c => c.id === id);
+    return d && d.status !== 'needs_review';
+  });
+  if (!eligible.length) return;
+  const runId = getRunId();
+  const cmd = eligible.map(id => 'APROBAR ' + id).join('\n');
+  copyCmd('APROBAR ' + runId + ' TODO\n\n-- o individuales --\n' + cmd);
+}
+
+function selectAll() { draftsData.forEach(d => { if (d.status !== 'sent' && d.status !== 'rejected') selectedIds.add(d.id); }); applyReviewFilters(); }
 function selectNone() { selectedIds.clear(); applyReviewFilters(); }
 
 function copyCmd(text) {
-  navigator.clipboard.writeText(text).then(() => {
-    // Brief visual feedback
-  }).catch(() => {});
-}
-
-function copyCommand(type) {
-  const runId = draftRuns[0]?.run_id || '';
-  if (type === 'APROBAR_TODO') {
-    copyCmd('APROBAR ' + runId + ' TODO');
-  }
+  navigator.clipboard.writeText(text).catch(() => {});
 }
 
 function resetReviewFilters() {
-  ['rev-filter-brand','rev-filter-run','rev-filter-score','rev-filter-status'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.value = 'all';
+  ['rev-filter-brand','rev-filter-score','rev-filter-status'].forEach(id => {
+    const el = document.getElementById(id); if (el) el.value = 'all';
   });
   applyReviewFilters();
 }
@@ -684,29 +453,29 @@ function updateReviewKPIs() {
   const briik = draftsData.filter(d => d.brand === 'briik');
   const iawards = draftsData.filter(d => d.brand === 'iawards');
   const drafted = draftsData.filter(d => d.status === 'drafted').length;
+  const approved = draftsData.filter(d => d.status === 'approved').length;
   const review = draftsData.filter(d => d.status === 'needs_review').length;
-  const runId = draftRuns[0]?.run_id || 'SIN-TANDA';
+  const rejected = draftsData.filter(d => d.status === 'rejected').length;
+  const runId = draftMeta.run_id || 'SIN-TANDA';
 
-  document.getElementById('kpi-review').innerHTML = `
-    <div class="card briik-card"><div class="label">BRIIK Borradores</div><div class="value blue">${briik.length}</div><div class="sub">${briik.filter(d=>d.status==='drafted').length} listos · ${briik.filter(d=>d.status==='needs_review').length} revisar</div></div>
-    <div class="card iawards-card"><div class="label">iAwards Borradores</div><div class="value red">${iawards.length}</div><div class="sub">${iawards.filter(d=>d.status==='drafted').length} listos · ${iawards.filter(d=>d.status==='needs_review').length} revisar</div></div>
-    <div class="card total-card"><div class="label">Total tanda</div><div class="value green">${draftsData.length}</div><div class="sub">${runId}</div></div>
-    <div class="card" style="border-left:3px solid #FF9800;"><div class="label">Pendiente revisión</div><div class="value orange">${review}</div><div class="sub">Necesitan atención</div></div>
-  `;
+  document.getElementById('kpi-review').innerHTML =
+    '<div class="card briik-card"><div class="label">BRIIK</div><div class="value blue">' + briik.length + '</div><div class="sub">' + briik.filter(d=>d.status==='drafted').length + ' listos · ' + briik.filter(d=>d.status==='needs_review').length + ' revisar · ' + briik.filter(d=>d.status==='approved').length + ' ✓</div></div>' +
+    '<div class="card iawards-card"><div class="label">iAwards</div><div class="value red">' + iawards.length + '</div><div class="sub">' + iawards.filter(d=>d.status==='drafted').length + ' listos · ' + iawards.filter(d=>d.status==='approved').length + ' ✓</div></div>' +
+    '<div class="card total-card"><div class="label">Tanda</div><div class="value green">' + draftsData.length + '</div><div class="sub">' + runId + '</div></div>' +
+    '<div class="card warn-card"><div class="label">Pendiente</div><div class="value orange">' + review + '</div><div class="sub">' + approved + ' aprobados · ' + rejected + ' rechazados</div></div>';
 }
 
 // ============================================================
-// SENT TAB (existing functionality, preserved)
+// SENT TAB
 // ============================================================
 let filteredSent = [...allData];
-let sortCol = 0;
-let sortDir = -1;
+let sortCol = 0, sortDir = -1;
 
 function initSentFilters() {
   const cities = [...new Set(allData.map(d=>d.city))].sort();
-  const citySelect = document.getElementById('filter-city');
-  citySelect.innerHTML = '<option value="all">Todas</option>';
-  cities.forEach(c => { const o = document.createElement('option'); o.value=c; o.textContent=c; citySelect.appendChild(o); });
+  const sel = document.getElementById('filter-city');
+  sel.innerHTML = '<option value="all">Todas</option>';
+  cities.forEach(c => { const o = document.createElement('option'); o.value=c; o.textContent=c; sel.appendChild(o); });
   const dates = allData.map(d=>d.date).sort();
   document.getElementById('filter-from').value = dates[0];
   document.getElementById('filter-to').value = dates[dates.length-1];
@@ -726,10 +495,10 @@ function applySentFilters() {
     if (city !== 'all' && d.city !== city) return false;
     if (status === 'Enviado' && d.status !== 'Enviado') return false;
     if (status === 'Interesada' && !d.notes.toLowerCase().includes('interesada')) return false;
-    if (status === 'No interesa' && !d.notes.toLowerCase().includes('no interesa') && !d.notes.toLowerCase().includes('no trabaja')) return false;
+    if (status === 'NoInteresa' && !d.notes.toLowerCase().includes('no interesa') && !d.notes.toLowerCase().includes('no trabaja')) return false;
     if (from && d.date < from) return false;
     if (to && d.date > to) return false;
-    if (search && !d.name.toLowerCase().includes(search) && !d.email.toLowerCase().includes(search) && !d.notes.toLowerCase().includes(search)) return false;
+    if (search && !d.name.toLowerCase().includes(search) && !d.email.toLowerCase().includes(search)) return false;
     return true;
   });
 
@@ -740,15 +509,14 @@ function applySentFilters() {
     if (key === 'score') { va = parseInt(va)||0; vb = parseInt(vb)||0; return (va-vb)*sortDir; }
     return String(va).localeCompare(String(vb)) * sortDir;
   });
-
   renderSent();
 }
 
 function renderSent() {
   const tbody = document.getElementById('sent-table');
-  document.getElementById('sent-table').innerHTML = '';
+  tbody.innerHTML = '';
   document.getElementById('no-results-sent').style.display = filteredSent.length ? 'none' : 'block';
-  document.getElementById('result-info-sent').textContent = filteredSent.length ? 'Mostrando ' + filteredSent.length + ' de ' + allData.length + ' contactos' : '';
+  document.getElementById('result-info-sent').textContent = filteredSent.length ? 'Mostrando ' + filteredSent.length + ' de ' + allData.length : '';
 
   filteredSent.forEach(d => {
     const tr = document.createElement('tr');
@@ -757,24 +525,21 @@ function renderSent() {
     let noteTag = '';
     if (d.notes.toLowerCase().includes('interesada')) noteTag = 'tag-replied';
     else if (d.notes.toLowerCase().includes('no interesa') || d.notes.toLowerCase().includes('no trabaja')) noteTag = 'tag-rejected';
-    const maskedEmail = d.email ? d.email.replace(/(..).*(@.*)/, '$1***$2') : '';
 
-    tr.innerHTML = `<td>${d.date.split('-').reverse().slice(0,2).join('/')}</td>
-      <td style="color:${brandColor};font-weight:600;">${d.brand}</td>
-      <td>${d.city}</td>
-      <td>${d.name}</td>
-      <td style="font-size:0.8em;color:#aaa;">${maskedEmail}</td>
-      <td>${d.score}</td>
-      <td><span class="tag ${tag}">${d.status}</span></td>
-      <td>${noteTag?'<span class="tag '+noteTag+'">'+d.notes+'</span>':d.notes}</td>`;
+    tr.innerHTML = '<td>' + d.date.split('-').reverse().slice(0,2).join('/') + '</td>' +
+      '<td style="color:' + brandColor + ';font-weight:600;">' + d.brand + '</td>' +
+      '<td>' + d.city + '</td><td>' + d.name + '</td>' +
+      '<td style="font-size:0.7em;color:#aaa;">' + (d.email||'') + '</td>' +
+      '<td>' + d.score + '</td>' +
+      '<td><span class="tag ' + tag + '">' + d.status + '</span></td>' +
+      '<td>' + (noteTag?'<span class="tag '+noteTag+'">'+d.notes+'</span>':d.notes) + '</td>';
     tbody.appendChild(tr);
   });
   updateSentKPIs();
 }
 
 function sortSent(col) {
-  if (sortCol === col) sortDir *= -1;
-  else { sortCol = col; sortDir = col===0?-1:1; }
+  if (sortCol === col) sortDir *= -1; else { sortCol = col; sortDir = col===0?-1:1; }
   applySentFilters();
 }
 
@@ -788,27 +553,23 @@ function resetFilters() {
 }
 
 function updateSentKPIs() {
-  const total = filteredSent.length;
-  const briik = filteredSent.filter(d=>d.brand==='BRIIK').length;
-  const iawards = filteredSent.filter(d=>d.brand==='iAwards').length;
-  const replies = filteredSent.filter(d=>d.notes).length;
-  const interest = filteredSent.filter(d=>d.notes.toLowerCase().includes('interesada')).length;
-  const overallTotal = allData.length;
-
-  document.getElementById('kpi-sent').innerHTML = `
-    <div class="card briik-card"><div class="label">BRIIK Enviados</div><div class="value blue">${allData.filter(d=>d.brand==='BRIIK').length}</div><div class="sub">${briik} en filtro</div></div>
-    <div class="card iawards-card"><div class="label">iAwards Enviados</div><div class="value red">${allData.filter(d=>d.brand==='iAwards').length}</div><div class="sub">${iawards} en filtro</div></div>
-    <div class="card total-card"><div class="label">Total histórico</div><div class="value green">${overallTotal}</div><div class="sub">${total} en filtro</div></div>
-    <div class="card" style="border-left:3px solid #FFC107;"><div class="label">Respuestas</div><div class="value yellow">${replies}</div><div class="sub">${interest} interés · ${overallTotal>0?Math.round(replies/overallTotal*100):0}% tasa</div></div>
-  `;
+  const total = allData.length;
+  const briik = allData.filter(d=>d.brand==='BRIIK').length;
+  const iawards = allData.filter(d=>d.brand==='iAwards').length;
+  const replies = allData.filter(d=>d.notes).length;
+  const interest = allData.filter(d=>d.notes.toLowerCase().includes('interesada')).length;
+  document.getElementById('kpi-sent').innerHTML =
+    '<div class="card briik-card"><div class="label">BRIIK</div><div class="value blue">' + briik + '</div></div>' +
+    '<div class="card iawards-card"><div class="label">iAwards</div><div class="value red">' + iawards + '</div></div>' +
+    '<div class="card total-card"><div class="label">Total</div><div class="value green">' + total + '</div></div>' +
+    '<div class="card" style="border-left:3px solid #FFC107;"><div class="label">Respuestas</div><div class="value yellow">' + replies + '</div><div class="sub">' + interest + ' interés · ' + (total>0?Math.round(replies/total*100):0) + '%</div></div>';
 }
 
 // ============================================================
 // INIT
 // ============================================================
 ['filter-brand','filter-city','filter-status','filter-from','filter-to'].forEach(id => {
-  const el = document.getElementById(id);
-  if (el) el.addEventListener('change', applySentFilters);
+  const el = document.getElementById(id); if (el) el.addEventListener('change', applySentFilters);
 });
 document.getElementById('filter-search')?.addEventListener('input', applySentFilters);
 
