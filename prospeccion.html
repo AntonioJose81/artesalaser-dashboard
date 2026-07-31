@@ -239,7 +239,11 @@ function getRunId() { return draftMeta.run_id; }
 // ============================================================
 // SENT DATA
 // ============================================================
-const allData = [
+const allData = [  {date:'31/07/2026',brand:'iAwards',city:'Valencia',name:'S.D. Correcaminos - Maratón Valencia',email:'info@valenciaciudaddelrunning.com',score:'88',status:'Pendiente',notes:'46ª ed, 14 categ, Platinum Label, 36K dorsales'},
+  {date:'31/07/2026',brand:'iAwards',city:'Madrid',name:'Real Fed. Española Tiro con Arco',email:'info@federarco.es',score:'78',status:'Pendiente',notes:'Campeonatos nacionales 2026'},
+  {date:'31/07/2026',brand:'iAwards',city:'Madrid',name:'Premios Dircom Ramón del Corral',email:'info@dircom.org',score:'75',status:'Pendiente',notes:'9ª ed, 263 candidaturas, 24 categorías'},
+  {date:'31/07/2026',brand:'iAwards',city:'Adeje',name:'Ayto. Adeje - Campus SUMA 2026',email:'deportes@adeje.es',score:'68',status:'Pendiente',notes:'Programa deportivo municipal activo'},
+  {date:'31/07/2026',brand:'iAwards',city:'Madrid',name:'ForoRunners - Cross Cerro Almodóvar',email:'info@fororunners.es',score:'70',status:'Pendiente',notes:'IV edición, 26 sep 2026'},
   {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Museum of Mini',email:'i***@m***.com',score:'80',status:'Enviado',notes:''},
   {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Cositas Chulas',email:'i***@c***.com',score:'75',status:'Enviado',notes:''},
   {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Chiva Chivita',email:'i***@c***.com',score:'74',status:'Enviado',notes:''},
@@ -265,7 +269,33 @@ const allData = [
   {date:'2026-07-29',brand:'iAwards',city:'Tarragona',name:'Club Tennis Tarragona',email:'g***@t***.com',score:'80',status:'Enviado',notes:''},
   {date:'2026-07-29',brand:'BRIIK',city:'Ciutadella',name:'MOM Kids Concept Store',email:'h***@m***.com',score:'90',status:'Enviado',notes:''},
   {date:'2026-07-29',brand:'BRIIK',city:'Manacor',name:'Meumoix',email:'h***@m***.com',score:'85',status:'Enviado',notes:''},
-  {date:'2026-07-29',brand:'BRIIK',city:'Palma',name:'Bebeplanet',email:'h***@b***.com',score:'80',status:'Enviado',notes:''}
+  {date:'2026-07-29',brand:'BRIIK',city:'Palma',name:'Bebeplanet',email:'h***@b***.com',score:'80',status:'Enviado',notes:''},
+  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Museum of Mini',email:'i***@m***.com',score:'80',status:'Enviado',notes:''},
+  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Cositas Chulas',email:'i***@c***.com',score:'75',status:'Enviado',notes:''},
+  {date:'2026-07-16',brand:'BRIIK',city:'Madrid',name:'Chiva Chivita',email:'i***@c***.com',score:'74',status:'Enviado',notes:''},
+  {date:'2026-07-16',brand:'iAwards',city:'CyL',name:'RugbyCyL',email:'s***@r***.org',score:'85',status:'Enviado',notes:''},
+  {date:'2026-07-16',brand:'iAwards',city:'CyL',name:'FBCyL Baloncesto',email:'f***@f***.es',score:'82',status:'Enviado',notes:''},
+  {date:'2026-07-16',brand:'iAwards',city:'CyL',name:'PadelCyL',email:'f***@p***.es',score:'71',status:'Enviado',notes:''},
+  {date:'2026-07-20',brand:'iAwards',city:'CyL',name:'Nonetes',email:'i***@n***.es',score:'72',status:'Enviado',notes:''},
+  {date:'2026-07-22',brand:'BRIIK',city:'Bilbao',name:'Abracadabra',email:'c***@j***.es',score:'70',status:'Enviado',notes:''},
+  {date:'2026-07-22',brand:'iAwards',city:'Asturias',name:'Fed. Atletismo Ast.',email:'f***@f***.org',score:'85',status:'Enviado',notes:''},
+  {date:'2026-07-23',brand:'BRIIK',city:'A Coruña',name:'Nai Family Concept Store',email:'h***@n***.com',score:'85',status:'Enviado',notes:''},
+  {date:'2026-07-23',brand:'iAwards',city:'Baleares',name:'FAIB - Atletismo Bal.',email:'f***@f***.es',score:'86',status:'Enviado',notes:''},
+  {date:'2026-07-24',brand:'BRIIK',city:'Alicante',name:'Puericultura Lara',email:'c***@p***.com',score:'90',status:'Enviado',notes:''},
+  {date:'2026-07-24',brand:'iAwards',city:'CyL-Clubes',name:'IMD Segovia',email:'d***@i***.es',score:'72',status:'Enviado',notes:''},
+  {date:'2026-07-27',brand:'BRIIK',city:'Palma',name:'Pe and Clo',email:'p***@g***.com',score:'85',status:'Enviado',notes:''},
+  {date:'2026-07-27',brand:'BRIIK',city:'Menorca',name:'MOM Kids Concept Store',email:'h***@m***.com',score:'90',status:'Enviado',notes:''},
+  {date:'2026-07-27',brand:'iAwards',city:'Burgos',name:'Club Tenis de Burgos',email:'c***@g***.com',score:'70',status:'Enviado',notes:''},
+  {date:'2026-07-28',brand:'BRIIK',city:'Salamanca',name:'El Rincón de Mi Bebé',email:'i***@e***.com',score:'88',status:'Enviado',notes:''},
+  {date:'2026-07-28',brand:'BRIIK',city:'Valladolid',name:'Area Kids',email:'t***@a***.es',score:'90',status:'Enviado',notes:''},
+  {date:'2026-07-28',brand:'BRIIK',city:'Ávila',name:'Infantil Esla',email:'i***@i***.es',score:'90',status:'Enviado',notes:''},
+  {date:'2026-07-28',brand:'iAwards',city:'Cuenca',name:'Fed. Fútbol CLM',email:'f***@f***.es',score:'88',status:'Enviado',notes:''},
+  {date:'2026-07-29',brand:'iAwards',city:'Barcelona',name:'Real Club de Polo BCN',email:'i***@r***.com',score:'87',status:'Enviado',notes:''},
+  {date:'2026-07-29',brand:'iAwards',city:'Barcelona',name:'RCN Barcelona',email:'i***@r***.com',score:'85',status:'Enviado',notes:''},
+  {date:'2026-07-29',brand:'iAwards',city:'Tarragona',name:'Club Tennis Tarragona',email:'g***@t***.com',score:'80',status:'Enviado',notes:''},
+  {date:'2026-07-29',brand:'BRIIK',city:'Ciutadella',name:'MOM Kids Concept Store',email:'h***@m***.com',score:'90',status:'Enviado',notes:''},
+  {date:'2026-07-29',brand:'BRIIK',city:'Manacor',name:'Meumoix',email:'h***@m***.com',score:'85',status:'Enviado',notes:''},
+  {date:'2026-07-29',brand:'BRIIK',city:'Palma',name:'Bebeplanet',email:'h***@b***.com',score:'80',status:'Enviado',notes:''},
 ];
 
 // ============================================================
