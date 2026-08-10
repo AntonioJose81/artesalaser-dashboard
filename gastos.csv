@@ -11,3 +11,5 @@ fecha,proveedor,concepto,categoria,base_imponible,iva,total,justificante
 2026-07-27,DeepSeek,Consumo API Hermes (semana 20-27 jul),API,157.48,0.00,157.48,
 2026-07-27,MiniMax,Consumo API Hermes (semana 20-27 jul),API,0.01,0.00,0.01,
 2026-08-01,Luis Ángel Junco Sánchez,Alquiler nave industrial agosto 2026 (IVA 21% + IRPF -19%),Alquiler,550.00,115.50,561.00,Factura Agosto Artesalaser 2026.pdf
+2026-08-10,DeepSeek,Consumo API Hermes (semana 03-10 ago),API,128.52,0.00,128.52,
+2026-08-10,MiniMax,Consumo API Hermes (semana 03-10 ago),API,0.01,0.00,0.01,
