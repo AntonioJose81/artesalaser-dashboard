@@ -4,12 +4,16 @@ fecha,proveedor,concepto,categoria,base_imponible,iva,total,justificante
 2026-07-14,Porras Estampación & Banderas SL,DTF Rápido - Completa tu pedido #2550,Materiales,5.99,1.26,7.25,DTF_Rapido_F2621203.pdf
 2026-07-16,DonDominio,Renovacion dominio (briik.es),Dominios,3.45,0.72,4.17,Factura_DD2026-127201_DonDominio.pdf
 2026-07-16,MKTO CATAL IMPORTACIONES S.L.,Cajas presentación Rubrux + Ratón Mirabek + Bolsas Loiles,Materiales,16.02,3.36,19.38,Makito_2607115954.pdf
-2026-07-20,DeepSeek,Consumo API Hermes (julio),Suscripciones,5.00,0.00,5.00,
 2026-07-20,DonDominio,Alojamiento Mail unomas.digital (1 año),Suscripciones,10.00,2.10,12.10,DonDominio_DD2026-128741.pdf
 2026-07-21,Porras Estampación & Banderas SL,DTF Rápido - DTF UV por centímetros #3040,Materiales,12.00,2.52,14.52,DTF_Rapido_F2621808.pdf
 2026-07-27,TotalEnergies,Electricidad taller (periodo 22.06.2026-23.07.2026),Suministros,73.45,15.42,88.87,1NSN260700174910.pdf
-2026-07-27,DeepSeek,Consumo API Hermes (semana 20-27 jul),API,157.48,0.00,157.48,
-2026-07-27,MiniMax,Consumo API Hermes (semana 20-27 jul),API,0.01,0.00,0.01,
 2026-08-01,Luis Ángel Junco Sánchez,Alquiler nave industrial agosto 2026 (IVA 21% + IRPF -19%),Alquiler,550.00,115.50,561.00,Factura Agosto Artesalaser 2026.pdf
-2026-08-10,DeepSeek,Consumo API Hermes (semana 03-10 ago),API,128.52,0.00,128.52,
-2026-08-10,MiniMax,Consumo API Hermes (semana 03-10 ago),API,0.01,0.00,0.01,
+2026-07-16,Red Naranja Expres,Envíos web julio 2026 (factura real),Envíos,74.35,15.61,89.96,Factura Red Naranja julio.pdf
+2026-07-31,Fonseca Gestión Integral,Gestoría mensual fiscal autónomo (AP26104),Gestoría,75.00,15.75,90.75,Factura-2026-07-31-AP26104.pdf
+2026-07-31,Seguridad Social,Cuota autónomos julio 2026,Autónomos,300.00,0.00,300.00,
+2026-07-31,Internet,Internet julio 2026,Suministros,35.00,0.00,35.00,
+2026-08-14,DeepSeek/Hermes,Consumo API Hermes jul-ago 2026 (real),API,30.00,0.00,30.00,
+2026-08-31,Fonseca Gestión Integral,Gestoría mensual agosto 2026 (estimada),Gestoría,75.00,15.75,90.75,
+2026-08-31,Seguridad Social,Cuota autónomos agosto 2026,Autónomos,300.00,0.00,300.00,
+2026-08-31,TotalEnergies,Luz agosto 2026 (estimada),Suministros,80.00,0.00,80.00,
+2026-08-31,Internet,Internet agosto 2026,Suministros,35.00,0.00,35.00,
