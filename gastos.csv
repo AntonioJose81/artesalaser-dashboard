@@ -13,6 +13,7 @@ fecha,proveedor,concepto,categoria,base_imponible,iva,total,justificante
 2026-07-31,Seguridad Social,Cuota autónomos julio 2026,Autónomos,300.00,0.00,300.00,
 2026-07-31,Internet,Internet julio 2026,Suministros,35.00,0.00,35.00,
 2026-08-14,DeepSeek/Hermes,Consumo API Hermes jul-ago 2026 (real),API,30.00,0.00,30.00,
+2026-08-22,DeepSeek,API ~0.5M tokens (sem 16-22 ago),API,0.25,0.00,0.25,
 2026-08-31,Fonseca Gestión Integral,Gestoría mensual agosto 2026 (estimada),Gestoría,75.00,15.75,90.75,
 2026-08-31,Seguridad Social,Cuota autónomos agosto 2026,Autónomos,300.00,0.00,300.00,
 2026-08-31,TotalEnergies,Luz agosto 2026 (estimada),Suministros,80.00,0.00,80.00,
