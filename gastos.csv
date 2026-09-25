@@ -11,19 +11,18 @@ fecha,proveedor,concepto,categoria,base_imponible,iva,total,justificante
 2026-07-16,Red Naranja Expres,Envíos web julio 2026 (factura real),Envíos,74.35,15.61,89.96,Factura Red Naranja julio.pdf
 2026-07-31,Fonseca Gestión Integral,Gestoría mensual fiscal autónomo (AP26104),Gestoría,75.00,15.75,90.75,Factura-2026-07-31-AP26104.pdf
 2026-07-31,Seguridad Social,Cuota autónomos julio 2026,Autónomos,300.00,0.00,300.00,
-2026-07-31,Internet,Internet julio 2026,Suministros,35.00,0.00,35.00,
+2026-07-31,Pepephone,Fibra 1Gb + 1 móvil 129GB julio 2026 (factura 202690005569045),Suministros,32.15,6.75,38.90,Pepephone 202690005569045.pdf
 2026-08-14,DeepSeek/Hermes,Consumo API Hermes jul-ago 2026 (real),API,30.00,0.00,30.00,
 2026-08-22,DeepSeek,API ~0.5M tokens (sem 16-22 ago),API,0.25,0.00,0.25,
 2026-08-31,Fonseca Gestión Integral,Gestoría mensual agosto 2026 (estimada),Gestoría,75.00,15.75,90.75,
 2026-08-31,Seguridad Social,Cuota autónomos agosto 2026,Autónomos,300.00,0.00,300.00,
-2026-08-31,TotalEnergies,Luz agosto 2026 (estimada),Suministros,80.00,0.00,80.00,
-2026-08-31,Internet,Internet agosto 2026,Suministros,35.00,0.00,35.00,
+2026-08-31,TotalEnergies,"Electricidad taller agosto 2026 (periodo 24.07-23.08, factura 26TEAHN000072505)",Suministros,80.17,21.75,101.92,26TEAHN000072505.pdf
+2026-08-31,Pepephone,Fibra 1Gb + 1 móvil 129GB agosto 2026 (factura 202690006274054),Suministros,32.15,6.75,38.90,Pepephone 202690006274054.pdf
 2026-08-13,MKTO CATAL IMPORTACIONES S.L.,Llavero Mappets Rectángulo (230 uds) + Portes,Materiales,50.90,10.69,61.59,Makito_2608108200.pdf
 2026-08-28,MKTO CATAL IMPORTACIONES S.L.,Placa Vertu (50 uds),Materiales,360.00,75.60,435.60,Makito_2608119070.pdf
 2026-08-31,MKTO CATAL IMPORTACIONES S.L.,Placa Sindar Natural (25 uds) + Libreta Madguire (27 uds),Materiales,277.12,58.20,335.32,Makito_2608121500.pdf
 2026-08-31,Red Naranja Expres,Envios web agosto 2026 (factura real),Envios,34.50,7.25,41.75,Factura_1862.pdf
 2026-09-01,Luis Ángel Junco Sánchez,Alquiler nave industrial septiembre 2026 (IVA 21% + IRPF -19%),Alquiler,550.00,115.50,561.00,Factura Septiembre Artesalaser 2026.pdf
-
 2026-09-02,Porras Estampación & Banderas SL,DTF Rápido - BONO5 DTF UV (#6658),Materiales,105.00,22.05,127.05,DTF_Rapido_F2625669.pdf
 2026-09-03,Manteca Muñoz S.L.,DM 5mm (6 uds) + corte (albaran S0308249),Materiales,121.81,25.58,147.39,Factura A0091200.pdf
 2026-09-07,DeepSeek + MiniMax,API Hermes 362.8M tokens (sem 31 ago-07 sep),API,172.33,0.00,172.33,
@@ -33,3 +32,6 @@ fecha,proveedor,concepto,categoria,base_imponible,iva,total,justificante
 2026-09-07,DonDominio,Dominios unomasdigital.eu + somosunomas.eu + unomasia.eu + Alojamiento Mail (anual) [DD2026-157074],Dominios,44.85,9.42,54.27,Factura DD2026-157074.pdf
 2026-08-25,"PIXEL INNOVACIÓN Y DESARROLLO, S.L.",Hosting web y mantenimiento técnico anual [FV2600919],Suscripciones,199.00,41.79,240.79,FV2600919.pdf
 2026-09-07,"PIXEL INNOVACIÓN Y DESARROLLO, S.L.",Abono (rectificativa) de la factura FV2600919 [FV2600975],Suscripciones,-199.00,-41.79,-240.79,FV2600975.pdf
+2026-09-02,Apple,ChatGPT Plus (mensual) - suscripción App Store,Suscripciones,19.00,3.99,22.99,Apple ChatGPT Plus 02-09-2026.pdf
+2026-09-16,"CARPINTERÍA HERMANOS PRADAS, S.L.",Peana canto recto blanco mate 170x90x30 (11 uds) + transporte [MAD-SPORT 261443],Materiales,95.01,19.95,114.96,madsport_efactura_261443.pdf
+2026-09-16,Apple,iCloud+ 50 GB (mensual) - suscripción App Store,Suscripciones,0.82,0.17,0.99,Apple iCloud+ 16-09-2026.pdf
