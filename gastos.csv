@@ -51,3 +51,4 @@ fecha,proveedor,concepto,categoria,base_imponible,iva,total,justificante
 2026-10-19,DeepSeek,API Hermes 265.6M tokens (sem 12-19 oct),API,138.67,0.00,138.67,
 2026-10-16,Manteca Muñoz S.L.,"DM 2,5 mm P (29,770 m2, albarán S0313142) [factura A0092558]",Materiales,61.33,12.88,74.21,Factura A0092558.pdf
 2026-10-26,DeepSeek,API Hermes 259.8M tokens (sem 19-26 oct),API,135.62,0.00,135.62,
+2026-11-02,DeepSeek,API Hermes 293.2M tokens (sem 26 oct-02 nov),API,153.04,0.00,153.04,
