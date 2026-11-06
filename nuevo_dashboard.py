@@ -82,8 +82,22 @@ for r in gas:
 mov.sort(key=lambda x: x["fecha"], reverse=True)
 mov = mov[:40]
 
+detalle = []
+for r in fac:
+    detalle.append({"mes": r["mes"], "fecha": r["fecha"], "tipo": "ingreso", "fuente": "facturado",
+                    "titulo": r.get("cliente", ""), "detalle": r.get("concepto", ""),
+                    "importe": r["importe"], "proyecto": r.get("proyecto", "")})
+for r in sin:
+    detalle.append({"mes": r["mes"], "fecha": r["fecha"], "tipo": "ingreso", "fuente": "sin factura",
+                    "titulo": r.get("cliente", ""), "detalle": r.get("concepto", ""),
+                    "importe": r["importe"], "proyecto": r.get("proyecto", "")})
+for r in gas:
+    detalle.append({"mes": r["mes"], "fecha": r["fecha"], "tipo": "gasto", "fuente": "gasto",
+                    "titulo": r.get("proveedor", ""), "detalle": r.get("concepto", ""),
+                    "importe": r["importe"], "proyecto": (r.get("categoria") or "").strip().capitalize()})
+
 D = json.dumps({"datos": datos, "tot": tot, "proyectos": proyectos,
-                "categorias": categorias, "movimientos": mov}, ensure_ascii=False)
+                "categorias": categorias, "movimientos": mov, "detalle": detalle}, ensure_ascii=False)
 
 HTML = """<!DOCTYPE html>
 <html lang="es">
@@ -138,6 +152,8 @@ th:first-child,td:first-child{text-align:left}
 td{padding:8px 4px;border-bottom:1px solid #1a2230;text-align:right;white-space:nowrap}
 tfoot td{font-weight:700;border-top:1px solid var(--line)}
 .hide{display:none}
+.mesgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}
+.mesgrid .tab{text-align:center;padding:9px 0;font-size:12.5px}
 </style>
 </head>
 <body>
@@ -165,6 +181,18 @@ tfoot td{font-weight:700;border-top:1px solid var(--line)}
     <span><i style="background:var(--blue)"></i>Resultado</span>
   </div>
   <div id="chart"></div>
+</section>
+
+<section>
+  <h2>Filtrar por mes</h2>
+  <div class="mesgrid" id="mesTabs"></div>
+  <div class="tabs" id="tipoTabs" style="margin-bottom:12px">
+    <div class="tab on" data-tipo="todo">Todo</div>
+    <div class="tab" data-tipo="ingreso">Solo ingresos</div>
+    <div class="tab" data-tipo="gasto">Solo gastos</div>
+  </div>
+  <div id="resumen"></div>
+  <div id="detalle"></div>
 </section>
 
 <div class="tabs">
@@ -270,6 +298,45 @@ document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>{
   document.querySelectorAll(".tab").forEach(x=>x.classList.remove("on"));
   t.classList.add("on"); pintar(t.dataset.t);
 });
+
+// ---- filtro por mes y tipo ----
+let mesSel = "todos", tipoSel = "todo";
+const mt = document.getElementById("mesTabs");
+mt.innerHTML = '<div class="tab on" data-m="todos">Todos</div>' +
+  D.datos.map(d=>`<div class="tab" data-m="${d.mes}">${d.etiqueta}</div>`).join("");
+
+function pintarFiltro(){
+  const del = D.detalle.filter(x => (mesSel==="todos" || x.mes===mesSel) && (tipoSel==="todo" || x.tipo===tipoSel));
+  const ing = del.filter(x=>x.tipo==="ingreso").reduce((a,b)=>a+b.importe,0);
+  const gas = del.filter(x=>x.tipo==="gasto").reduce((a,b)=>a+b.importe,0);
+  const neto = ing - gas;
+  document.getElementById("resumen").innerHTML = `
+    <div class="grid" style="margin-bottom:12px">
+      <div class="card"><div class="lbl">Ingresos</div><div class="val pos">${miles(ing)} €</div></div>
+      <div class="card"><div class="lbl">Gastos</div><div class="val neg">${miles(gas)} €</div></div>
+      <div class="card"><div class="lbl">Resultado</div><div class="val ${neto>=0?'pos':'neg'}">${miles(neto)} €</div></div>
+      <div class="card"><div class="lbl">Movimientos</div><div class="val">${del.length}</div></div>
+    </div>`;
+  const orden = del.slice().sort((a,b)=>b.fecha.localeCompare(a.fecha));
+  document.getElementById("detalle").innerHTML = orden.length
+    ? orden.map(m=>`<div class="mov">
+        <div>
+          <div class="t">${m.titulo}</div>
+          <div class="d">${m.fecha} · ${m.detalle}${m.proyecto?" · "+m.proyecto:""}${m.fuente==="sin factura"?" · sin factura":""}</div>
+        </div>
+        <div class="a ${m.tipo==='ingreso'?'pos':'neg'}">${m.tipo==='ingreso'?'+':'\u2212'}${miles(m.importe)} €</div>
+      </div>`).join("")
+    : '<div class="d" style="color:var(--muted);font-size:13px">Sin movimientos con ese filtro.</div>';
+}
+mt.querySelectorAll(".tab").forEach(t=>t.onclick=()=>{
+  mt.querySelectorAll(".tab").forEach(x=>x.classList.remove("on"));
+  t.classList.add("on"); mesSel = t.dataset.m; pintarFiltro();
+});
+document.querySelectorAll("#tipoTabs .tab").forEach(t=>t.onclick=()=>{
+  document.querySelectorAll("#tipoTabs .tab").forEach(x=>x.classList.remove("on"));
+  t.classList.add("on"); tipoSel = t.dataset.tipo; pintarFiltro();
+});
+pintarFiltro();
 
 document.getElementById("movs").innerHTML = D.movimientos.map(m=>`
   <div class="mov">
